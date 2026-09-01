@@ -1,1441 +1,1717 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<meta name="theme-color" content="#111827">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1,
+               maximum-scale=1,
+               user-scalable=no">
 
 <title>ROMANEIO INTERNO</title>
 
 <style>
 
-:root{
-    --bg:#f3f4f6;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
-    --line:#e5e7eb;
-    --primary:#111827;
-    --secondary:#eef0f2;
-    --danger-bg:#fee2e2;
-    --danger:#991b1b;
-    --ok:#166534;
-    --warning:#b45309;
+/* ============================= */
+/* CONFIGURAÇÕES GERAIS */
+/* ============================= */
+
+* {
+    box-sizing: border-box;
 }
 
-*{
-    box-sizing:border-box;
+body {
+    margin: 0;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #f1f3f6;
+    color: #111827;
+
+    padding-bottom: 100px;
 }
 
-body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:Arial,Helvetica,sans-serif;
-    padding-bottom:100px;
+/* ============================= */
+/* CABEÇALHO */
+/* ============================= */
+
+.header {
+
+    height: 76px;
+
+    background: #111827;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 22px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
 }
 
-header{
-    background:var(--primary);
-    color:#fff;
-    padding:18px 16px;
-    position:sticky;
-    top:0;
-    z-index:10;
+.header-title {
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    letter-spacing: .3px;
 }
 
-.header-inner{
-    max-width:980px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+.header-new {
+
+    margin-left: auto;
+
+    border: none;
+
+    background: #f3f4f6;
+
+    color: #111827;
+
+    border-radius: 13px;
+
+    padding: 12px 18px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
 }
 
-.brand h1{
-    margin:0;
-    font-size:22px;
-    letter-spacing:.3px;
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
+
+.container {
+
+    max-width: 700px;
+
+    margin: 16px auto;
+
+    padding: 0 14px;
 }
 
-main{
-    max-width:720px;
-    margin:auto;
-    padding:14px 12px 100px;
+/* ============================= */
+/* CARDS */
+/* ============================= */
+
+.card {
+
+    background: white;
+
+    border: 1px solid #e1e5ea;
+
+    border-radius: 17px;
+
+    padding: 16px;
+
+    margin-bottom: 14px;
+
+    box-shadow:
+        0 2px 7px rgba(0,0,0,.04);
 }
 
-.card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:14px;
-    margin-bottom:12px;
-    box-shadow:0 2px 8px rgba(0,0,0,.03);
+.card-title {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    margin-bottom: 14px;
 }
 
-.pallet-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:12px;
+/* ============================= */
+/* CAMPOS */
+/* ============================= */
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
 }
 
-.pallet-title{
-    font-size:18px;
-    font-weight:800;
+.field {
+
+    display: flex;
+
+    flex-direction: column;
 }
 
-.badge{
-    font-size:12px;
-    padding:5px 9px;
-    border-radius:999px;
-    background:#f3f4f6;
-    color:var(--muted);
+.field.full {
+
+    grid-column:
+        1 / -1;
 }
 
-.info-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+label {
+
+    font-size: 13px;
+
+    color: #475569;
+
+    margin-bottom: 6px;
 }
 
-.info-grid .wide{
-    grid-column:1 / -1;
+input {
+
+    width: 100%;
+
+    height: 46px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 11px;
+
+    padding:
+        0 12px;
+
+    font-size: 16px;
+
+    background: white;
+
+    color: #111827;
+
+    outline: none;
 }
 
-label{
-    display:block;
-    margin-bottom:6px;
-    color:var(--muted);
-    font-size:12px;
-    font-weight:700;
+input:focus {
+
+    border-color:
+        #111827;
 }
 
-input{
-    width:100%;
-    height:46px;
-    border:1px solid #d1d5db;
-    border-radius:10px;
-    padding:0 12px;
-    font-size:16px;
-    background:#fff;
+/* ============================= */
+/* RESUMO */
+/* ============================= */
+
+.summary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
 }
 
-input:focus{
-    outline:2px solid #9ca3af;
-    border-color:#6b7280;
+.summary-box {
+
+    background: #f7f8fa;
+
+    border-radius: 13px;
+
+    padding: 13px;
 }
 
-.summary{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+.summary-label {
+
+    font-size: 13px;
+
+    color: #64748b;
 }
 
-.stat{
-    background:#f9fafb;
-    border-radius:12px;
-    padding:12px;
+.summary-value {
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    margin-top: 4px;
 }
 
-.stat span{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
+/* ============================= */
+/* PALLET */
+/* ============================= */
+
+.pallet-title {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
 }
 
-.stat b{
-    display:block;
-    font-size:20px;
-    margin-top:4px;
+.pallet-title h2 {
+
+    margin: 0;
+
+    font-size: 20px;
 }
 
-.item{
-    border-top:1px solid var(--line);
-    padding:12px 0;
+.remove-pallet {
+
+    border: none;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    border-radius: 9px;
+
+    padding:
+        8px 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
 }
 
-.item:first-child{
-    border-top:0;
-    padding-top:0;
+.help {
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin:
+        8px 0 16px;
 }
 
-.item-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:8px;
+/* ============================= */
+/* ITEM */
+/* ============================= */
+
+.item {
+
+    border-top:
+        1px solid #e5e7eb;
+
+    padding-top: 14px;
+
+    margin-top: 14px;
 }
 
-.item-num{
-    font-size:14px;
-    font-weight:700;
+.item:first-of-type {
+
+    border-top: none;
+
+    padding-top: 0;
+
+    margin-top: 0;
 }
 
-.item-status{
-    font-size:11px;
-    color:var(--warning);
+.item-head {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom: 9px;
+
+    gap: 8px;
 }
 
-.item-status.ok{
-    color:var(--ok);
+.item-name {
+
+    font-weight: 800;
 }
 
-.item-fields{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+.item-status {
+
+    color: #008a4b;
+
+    font-size: 12px;
 }
 
-.actions{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+.item-head-right {
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
 }
 
-button{
-    border:0;
-    border-radius:11px;
-    padding:12px 14px;
-    font-weight:700;
-    font-size:14px;
-    cursor:pointer;
+/* ============================= */
+/* BOTÃO EXCLUIR ITEM */
+/* ============================= */
+
+.remove-item {
+
+    border: none;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    border-radius: 9px;
+
+    padding:
+        7px 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
 }
 
-.primary{
-    background:var(--primary);
-    color:#fff;
+/* ============================= */
+/* CAMPOS DOS ITENS */
+/* ============================= */
+
+.item-fields {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
 }
 
-.secondary{
-    background:var(--secondary);
-    color:var(--text);
+/* ============================= */
+/* PESO BRUTO */
+/* ============================= */
+
+.bruto {
+
+    margin-top: 15px;
+
+    padding-top: 14px;
+
+    border-top:
+        1px dashed #d1d5db;
 }
 
-.danger{
-    background:var(--danger-bg);
-    color:var(--danger);
+.bruto-title {
+
+    font-size: 13px;
+
+    color: #475569;
+
+    margin-bottom: 6px;
 }
 
-.full{
-    width:100%;
-    margin-top:5px;
+/* ============================= */
+/* ADICIONAR ITEM */
+/* ============================= */
+
+.add-item {
+
+    width: 100%;
+
+    height: 44px;
+
+    margin-top: 14px;
+
+    border:
+        1px dashed #94a3b8;
+
+    background: #f8fafc;
+
+    border-radius: 11px;
+
+    font-weight: 700;
+
+    color: #334155;
+
+    cursor: pointer;
 }
 
-.small{
-    font-size:12px;
-    color:var(--muted);
-    line-height:1.4;
+/* ============================= */
+/* BARRA INFERIOR */
+/* ============================= */
+
+.bottom {
+
+    position: fixed;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    background: white;
+
+    border-top:
+        1px solid #dbe0e6;
+
+    padding:
+        10px 14px;
+
+    display: flex;
+
+    gap: 8px;
+
+    z-index: 30;
 }
 
-.pallet-bruto{
-    border-top:1px solid var(--line);
-    margin-top:10px;
-    padding-top:12px;
+.bottom button {
+
+    flex: 1;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
 }
 
-.pallet-bruto-title{
-    color:var(--muted);
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:6px;
+.btn-light {
+
+    background: #eef0f2;
+
+    color: #111827;
 }
 
-.bottom{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    background:#fff;
-    border-top:1px solid var(--line);
-    padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-    z-index:20;
+.btn-dark {
+
+    background: #111827;
+
+    color: white;
 }
 
-.bottom-inner{
-    max-width:720px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+/* ============================= */
+/* TELA FINAL */
+/* ============================= */
+
+.final-page {
+
+    padding:
+        20px 14px 30px;
 }
 
-.final-card{
-    display:none;
-    background:#fff;
-    border:2px solid #111827;
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:14px;
+.final-card {
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    background: white;
+
+    border:
+        1.5px solid #111827;
+
+    border-radius: 18px;
+
+    padding: 18px;
 }
 
-.final-title{
-    text-align:center;
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:1px;
-    margin-bottom:16px;
+/* ============================= */
+/* CABEÇALHO FINAL */
+/* ============================= */
+
+.final-header {
+
+    display: flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    border-bottom:
+        2px solid #e5e7eb;
+
+    padding-bottom: 17px;
+
+    margin-bottom: 18px;
 }
 
-.final-info{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    border-bottom:1px solid var(--line);
-    padding-bottom:14px;
-    margin-bottom:14px;
+.final-title {
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-align: center;
 }
 
-.final-field{
-    background:#f9fafb;
-    border-radius:10px;
-    padding:10px;
+/* ============================= */
+/* INFORMAÇÕES FINAIS */
+/* ============================= */
+
+.final-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
 }
 
-.final-field span{
-    display:block;
-    color:var(--muted);
-    font-size:11px;
-    font-weight:700;
-    margin-bottom:4px;
+.final-info {
+
+    background: #f7f8fa;
+
+    border-radius: 12px;
+
+    padding: 12px;
 }
 
-.final-field b{
-    display:block;
-    font-size:14px;
-    word-break:break-word;
+.final-label {
+
+    color: #6b7280;
+
+    font-size: 13px;
 }
 
-.weight-total{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+.final-value {
+
+    font-weight: 800;
+
+    font-size: 16px;
+
+    margin-top: 4px;
 }
 
-.weight-box{
-    background:#f3f4f6;
-    border-radius:12px;
-    padding:14px;
-    text-align:center;
+.final-line {
+
+    border-top:
+        2px solid #e5e7eb;
+
+    margin:
+        18px 0;
 }
 
-.weight-box span{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-    font-weight:700;
+/* ============================= */
+/* PESOS FINAIS */
+/* ============================= */
+
+.final-weight-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
 }
 
-.weight-box b{
-    display:block;
-    font-size:23px;
-    margin-top:5px;
+.final-weight {
+
+    background: #f3f4f6;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    padding:
+        22px 10px;
 }
 
-.final-actions{
-    display:none;
-    gap:8px;
-    flex-wrap:wrap;
+.final-weight-label {
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    font-weight: 700;
 }
 
-.final-actions button{
-    flex:1;
-    min-height:46px;
+.final-weight-value {
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    margin-top: 10px;
 }
 
-body.final-mode header{
-    display:none;
+.final-footer {
+
+    text-align: center;
+
+    color: #6b7280;
+
+    margin-top: 70px;
+
+    font-size: 14px;
 }
 
-body.final-mode .editor-only{
-    display:none !important;
+/* ============================= */
+/* BOTÕES FINAIS */
+/* ============================= */
+
+.final-buttons {
+
+    max-width: 700px;
+
+    margin:
+        14px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 8px;
 }
 
-body.final-mode .bottom{
-    display:none;
+.final-buttons button {
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-weight: 800;
+
+    font-size: 14px;
+
+    cursor: pointer;
 }
 
-body.final-mode .final-card{
-    display:block;
+.share {
+
+    background: #111827;
+
+    color: white;
 }
 
-body.final-mode .final-actions{
-    display:flex;
+.back {
+
+    background: #eef0f2;
 }
 
-body.final-mode main{
-    max-width:720px;
-    padding-top:18px;
+.new {
+
+    background: #eef0f2;
 }
 
-@media(max-width:600px){
+/* ============================= */
+/* CELULAR */
+/* ============================= */
 
-    .brand h1{
-        font-size:19px;
+@media(max-width:600px) {
+
+    .header {
+
+        height: 72px;
+
+        padding:
+            0 16px;
     }
 
-    .info-grid{
-        grid-template-columns:1fr 1fr;
+    .header-title {
+
+        font-size: 21px;
     }
 
-    .item-fields{
-        grid-template-columns:1fr 1fr;
+    .grid,
+    .summary-grid,
+    .final-grid,
+    .final-weight-grid,
+    .item-fields {
+
+        grid-template-columns:
+            1fr 1fr;
     }
 
-}
+    .final-title {
 
-@media(max-width:420px){
-
-    .brand h1{
-        font-size:18px;
+        font-size: 22px;
     }
 
-    .info-grid{
-        grid-template-columns:1fr;
+    .final-buttons {
+
+        grid-template-columns:
+            1fr 1fr 1fr;
     }
 
-    .info-grid .wide{
-        grid-column:auto;
+    .final-buttons button {
+
+        font-size: 12px;
     }
 
-    .summary{
-        grid-template-columns:1fr 1fr;
-    }
+    .remove-item {
 
-    .item-fields{
-        grid-template-columns:1fr;
-    }
+        font-size: 11px;
 
-    .final-info{
-        grid-template-columns:1fr 1fr;
+        padding:
+            6px 8px;
     }
-
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
-
-    <div class="header-inner">
-
-        <div class="brand">
-            <h1>ROMANEIO INTERNO</h1>
-        </div>
-
-        <button
-            class="secondary"
-            onclick="novoRomaneio()">
-            ＋ Novo
-        </button>
-
-    </div>
-
-</header>
-
-
-<main id="app"></main>
-
-
-<div class="bottom">
-
-    <div class="bottom-inner">
-
-        <button
-            class="secondary"
-            onclick="adicionarPallet()">
-            ＋ Adicionar pallet
-        </button>
-
-        <button
-            class="primary"
-            onclick="finalizar()">
-            ✓ Finalizar romaneio
-        </button>
-
-    </div>
-
-</div>
-
+<div id="app"></div>
 
 <script>
 
-const STORAGE_KEY = "romaneio_interno_v1";
+/* ================================= */
+/* DADOS DO ROMANEIO */
+/* ================================= */
+
+let pallets = [
+
+    {
+
+        items: [
+
+            {
+                numero: 1,
+                liquido: ""
+            }
+
+        ],
+
+        bruto: ""
+
+    }
+
+];
 
 
-let state =
-    JSON.parse(
-        localStorage.getItem(STORAGE_KEY)
-    ) || criarEstadoInicial();
+/* ================================= */
+/* DADOS PRINCIPAIS */
+/* ================================= */
+
+let dados = {
+
+    cliente: "",
+
+    item: "",
+
+    lote: "",
+
+    data: "",
+
+    dimensao: ""
+
+};
 
 
-function criarEstadoInicial(){
+/* ================================= */
+/* CONTROLE DA TELA */
+/* ================================= */
 
-    return {
+let telaFinal = false;
 
-        info:{
-            cliente:"",
-            item:"",
-            lote:"",
-            data:"",
-            dimensao:""
-        },
 
-        pallets:[
-            criarPallet()
-        ]
+/* ================================= */
+/* DATA ATUAL */
+/* ================================= */
 
-    };
+function dataHoje() {
 
+    const d = new Date();
+
+    const ano =
+        d.getFullYear();
+
+    const mes =
+        String(
+            d.getMonth() + 1
+        ).padStart(2, "0");
+
+    const dia =
+        String(
+            d.getDate()
+        ).padStart(2, "0");
+
+    return (
+        ano +
+        "-" +
+        mes +
+        "-" +
+        dia
+    );
 }
 
 
-function criarPallet(){
+/* ================================= */
+/* FORMATA DATA */
+/* ================================= */
 
-    return {
+function formatarData(valor) {
 
-        id:Date.now() + Math.random(),
+    if (!valor) return "";
 
-        bruto:"",
+    const partes =
+        valor.split("-");
 
-        items:Array.from(
-            {length:5},
-            (_,i)=>({
+    if (partes.length !== 3) {
 
-                numero:i+1,
+        return valor;
 
-                p1:""
+    }
 
-            })
-        )
+    return (
 
-    };
+        partes[2] +
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0]
 
+    );
 }
 
 
-function salvar(){
+/* ================================= */
+/* PROTEÇÃO HTML */
+/* ================================= */
 
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(state)
+function escapeHtml(text) {
+
+    return String(
+        text ?? ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
     );
 
 }
 
 
-function numero(valor){
+/* ================================= */
+/* CONVERTE PESO */
+/* ================================= */
 
-    const n =
-        parseFloat(
-            String(valor)
-                .replace(",",".")
+function valorNumerico(valor) {
+
+    if (
+        valor === null ||
+        valor === undefined ||
+        valor === ""
+    ) {
+
+        return NaN;
+
+    }
+
+    return parseFloat(
+
+        String(valor)
+            .replace(",", ".")
+
+    );
+
+}
+
+
+/* ================================= */
+/* FORMATA PESO */
+/* ================================= */
+
+function formatPeso(valor) {
+
+    if (
+        valor === null ||
+        valor === undefined ||
+        isNaN(valor)
+    ) {
+
+        return "0";
+
+    }
+
+    return Number(valor)
+        .toLocaleString(
+            "pt-BR",
+            {
+                maximumFractionDigits: 2
+            }
         );
 
-    return Number.isFinite(n)
-        ? n
-        : 0;
-
 }
 
 
-function formatarPeso(valor){
+/* ================================= */
+/* CALCULA PENDÊNCIAS */
+/* ================================= */
 
-    return new Intl.NumberFormat(
-        "pt-BR",
-        {
-            minimumFractionDigits:0,
-            maximumFractionDigits:2
-        }
-    ).format(valor);
-
-}
-
-
-function totais(){
-
-    let liquido = 0;
-
-    let itens = 0;
+function calcularPendencias() {
 
     let pendencias = 0;
 
+    pallets.forEach(
 
-    state.pallets.forEach(
-        pallet=>{
+        pallet => {
 
             pallet.items.forEach(
-                item=>{
 
-                    itens++;
+                item => {
 
-                    liquido += numero(
-                        item.p1
-                    );
+                    if (
 
-                    if(
-                        item.p1 === "" ||
-                        item.p1 === null ||
-                        item.p1 === undefined
-                    ){
+                        item.liquido === "" ||
+
+                        isNaN(
+                            valorNumerico(
+                                item.liquido
+                            )
+                        )
+
+                    ) {
 
                         pendencias++;
 
                     }
 
                 }
+
             );
 
         }
+
     );
 
-
-    return {
-
-        liquido,
-
-        itens,
-
-        pendencias
-
-    };
+    return pendencias;
 
 }
 
 
-function brutoTotal(){
+/* ================================= */
+/* RENDERIZA A TELA */
+/* ================================= */
 
-    return state.pallets.reduce(
-        (total,pallet)=>
-            total + numero(pallet.bruto),
-        0
-    );
+function render() {
 
-}
+    if (telaFinal) {
 
+        renderFinal();
 
-function render(){
+        return;
 
-    const app =
-        document.getElementById("app");
+    }
 
 
-    app.innerHTML = "";
+    let html = "";
 
 
-    criarCardInformacoes(app);
+/* ================================= */
+/* CABEÇALHO */
+/* ================================= */
 
+    html += `
 
-    criarCardResumo(app);
+    <div class="header">
 
-
-    state.pallets.forEach(
-        (pallet,index)=>
-            criarCardPallet(
-                app,
-                pallet,
-                index
-            )
-    );
-
-
-    criarCardFinal(app);
-
-
-    criarBotoesFinais(app);
-
-}
-
-
-function criarCardInformacoes(app){
-
-    const card =
-        document.createElement("section");
-
-    card.className =
-        "card editor-only";
-
-
-    card.innerHTML = `
-
-        <div class="pallet-head">
-
-            <div class="pallet-title">
-                Dados do Romaneio
-            </div>
-
+        <div class="header-title">
+            ROMANEIO INTERNO
         </div>
 
+        <button
+            class="header-new"
+            onclick="novoRomaneio()">
 
-        <div class="info-grid">
+            + Novo
 
-            <div class="wide">
+        </button>
 
-                <label>Cliente</label>
+    </div>
+
+    `;
+
+
+/* ================================= */
+/* CONTAINER */
+/* ================================= */
+
+    html += `
+
+    <div class="container">
+
+    `;
+
+
+/* ================================= */
+/* DADOS DO ROMANEIO */
+/* ================================= */
+
+    html += `
+
+    <div class="card">
+
+        <div class="card-title">
+            Dados do Romaneio
+        </div>
+
+        <div class="grid">
+
+
+            <div class="field full">
+
+                <label>
+                    Cliente
+                </label>
 
                 <input
-                    type="text"
-                    value="${esc(state.info.cliente)}"
+                    value="${escapeHtml(dados.cliente)}"
                     placeholder="Digite o cliente"
-                    onchange="
-                        alterarInfo(
-                            'cliente',
-                            this.value
-                        )
-                    "
-                >
+                    oninput="dados.cliente=this.value">
 
             </div>
 
 
-            <div>
+            <div class="field">
 
-                <label>Item</label>
+                <label>
+                    Item
+                </label>
 
                 <input
-                    type="text"
-                    value="${esc(state.info.item)}"
+                    value="${escapeHtml(dados.item)}"
                     placeholder="Item"
-                    onchange="
-                        alterarInfo(
-                            'item',
-                            this.value
-                        )
-                    "
-                >
+                    oninput="dados.item=this.value">
 
             </div>
 
 
-            <div>
+            <div class="field">
 
-                <label>Nº do lote</label>
+                <label>
+                    Nº do lote
+                </label>
 
                 <input
-                    type="text"
-                    value="${esc(state.info.lote)}"
+                    value="${escapeHtml(dados.lote)}"
                     placeholder="Lote"
-                    onchange="
-                        alterarInfo(
-                            'lote',
-                            this.value
-                        )
-                    "
-                >
+                    oninput="dados.lote=this.value">
 
             </div>
 
 
-            <div>
+            <div class="field">
 
-                <label>Data de produção</label>
+                <label>
+                    Data de produção
+                </label>
 
                 <input
                     type="date"
-                    value="${esc(state.info.data)}"
-                    onchange="
-                        alterarInfo(
-                            'data',
-                            this.value
-                        )
-                    "
-                >
+                    value="${dados.data}"
+                    onchange="dados.data=this.value">
 
             </div>
 
 
-            <div>
+            <div class="field">
 
-                <label>Dimensão</label>
+                <label>
+                    Dimensão
+                </label>
 
                 <input
-                    type="text"
-                    value="${esc(state.info.dimensao)}"
+                    value="${escapeHtml(dados.dimensao)}"
                     placeholder="Ex.: 100 x 200 mm"
-                    onchange="
-                        alterarInfo(
-                            'dimensao',
-                            this.value
-                        )
-                    "
-                >
+                    oninput="dados.dimensao=this.value">
 
             </div>
 
+
         </div>
+
+    </div>
 
     `;
 
 
-    app.appendChild(card);
+/* ================================= */
+/* TOTAIS */
+/* ================================= */
 
-}
+    let totalLiquido = 0;
 
+    let totalBruto = 0;
 
-function criarCardResumo(app){
-
-    const t = totais();
-
-
-    const card =
-        document.createElement("section");
+    let quantidadeItens = 0;
 
 
-    card.className =
-        "card editor-only";
+    pallets.forEach(
 
+        pallet => {
 
-    const bruto =
-        brutoTotal();
+            pallet.items.forEach(
 
+                item => {
 
-    card.innerHTML = `
+                    const peso =
+                        valorNumerico(
+                            item.liquido
+                        );
 
-        <div class="pallet-head">
+                    if (
+                        !isNaN(peso)
+                    ) {
 
-            <div class="pallet-title">
-                Resumo
-            </div>
+                        totalLiquido +=
+                            peso;
 
-            <div class="badge">
-
-                ${state.pallets.length}
-                pallet${state.pallets.length === 1 ? "" : "s"}
-
-            </div>
-
-        </div>
-
-
-        <div class="summary">
-
-            <div class="stat">
-
-                <span>
-                    Peso Líquido Total
-                </span>
-
-                <b>
-                    ${formatarPeso(t.liquido)} kg
-                </b>
-
-            </div>
-
-
-            <div class="stat">
-
-                <span>
-                    Peso Bruto Total
-                </span>
-
-                <b>
-                    ${
-                        bruto > 0
-                        ? formatarPeso(bruto) + " kg"
-                        : "Não informado"
                     }
-                </b>
 
-            </div>
+                    quantidadeItens++;
 
-
-            <div class="stat">
-
-                <span>
-                    Itens
-                </span>
-
-                <b>
-                    ${t.itens}
-                </b>
-
-            </div>
-
-
-            <div class="stat">
-
-                <span>
-                    Pendências
-                </span>
-
-                <b>
-                    ${t.pendencias}
-                </b>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    app.appendChild(card);
-
-}
-
-
-function criarCardPallet(
-    app,
-    pallet,
-    index
-){
-
-    const card =
-        document.createElement("section");
-
-
-    card.className =
-        "card editor-only";
-
-
-    card.innerHTML = `
-
-        <div class="pallet-head">
-
-            <div class="pallet-title">
-
-                Pallet ${index + 1}
-
-            </div>
-
-
-            <div class="actions">
-
-                ${
-                    state.pallets.length > 1
-
-                    ?
-
-                    `
-                    <button
-                        class="danger"
-                        onclick="
-                            removerPallet(
-                                '${pallet.id}'
-                            )
-                        "
-                    >
-                        Excluir
-                    </button>
-                    `
-
-                    :
-
-                    ""
                 }
 
+            );
+
+
+            const bruto =
+                valorNumerico(
+                    pallet.bruto
+                );
+
+            if (
+                !isNaN(bruto)
+            ) {
+
+                totalBruto +=
+                    bruto;
+
+            }
+
+        }
+
+    );
+
+
+/* ================================= */
+/* RESUMO */
+/* ================================= */
+
+    html += `
+
+    <div class="card">
+
+        <div
+            class="card-title"
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+            ">
+
+            <span>
+                Resumo
+            </span>
+
+            <span
+                style="
+                    background:#f1f3f5;
+                    padding:6px 10px;
+                    border-radius:20px;
+                    font-size:12px;
+                    font-weight:500;
+                ">
+
+                ${pallets.length}
+                pallet${pallets.length !== 1 ? "s" : ""}
+
+            </span>
+
+        </div>
+
+
+        <div class="summary-grid">
+
+
+            <div class="summary-box">
+
+                <div class="summary-label">
+                    Peso Líquido Total
+                </div>
+
+                <div class="summary-value">
+                    ${formatPeso(totalLiquido)} kg
+                </div>
+
             </div>
 
+
+            <div class="summary-box">
+
+                <div class="summary-label">
+                    Peso Bruto Total
+                </div>
+
+                <div class="summary-value">
+
+                    ${
+                        totalBruto > 0
+                        ? formatPeso(totalBruto) + " kg"
+                        : "Não informado"
+                    }
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <div class="summary-label">
+                    Itens
+                </div>
+
+                <div class="summary-value">
+                    ${quantidadeItens}
+                </div>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <div class="summary-label">
+                    Pendências
+                </div>
+
+                <div class="summary-value">
+                    ${calcularPendencias()}
+                </div>
+
+            </div>
+
+
         </div>
 
-
-        <div class="small">
-
-            Preencha o peso líquido de cada item.
-            O peso bruto do pallet é opcional.
-
-        </div>
+    </div>
 
     `;
 
 
-    pallet.items.forEach(
-        (item,itemIndex)=>{
+/* ================================= */
+/* PALLETS */
+/* ================================= */
 
-            const preenchido =
-                item.p1 !== "" &&
-                Number.isFinite(
-                    numero(item.p1)
-                );
+    pallets.forEach(
 
-
-            const itemDiv =
-                document.createElement("div");
+        (pallet, pi) => {
 
 
-            itemDiv.className =
-                "item";
+            html += `
+
+            <div class="card">
+
+                <div class="pallet-title">
+
+                    <h2>
+                        Pallet ${pi + 1}
+                    </h2>
 
 
-            itemDiv.innerHTML = `
+                    ${
+                        pallets.length > 1
+                        ? `
 
-                <div class="item-head">
+                        <button
+                            class="remove-pallet"
+                            onclick="removerPallet(${pi})">
 
-                    <div class="item-num">
-                        Item ${itemIndex + 1}
-                    </div>
+                            Excluir pallet
 
+                        </button>
 
-                    <div class="
-                        item-status
-                        ${preenchido ? "ok" : ""}
-                    ">
-
-                        ${
-                            preenchido
-                            ? "✓ preenchido"
-                            : ""
-                        }
-
-                    </div>
+                        `
+                        : ""
+                    }
 
                 </div>
 
 
-                <div class="item-fields">
+                <div class="help">
 
-                    <div>
+                    Preencha o peso líquido
+                    de cada item.
 
-                        <label>
-                            Número
-                        </label>
-
-                        <input
-                            type="number"
-                            value="${item.numero}"
-                            onchange="
-                                alterarNumero(
-                                    '${pallet.id}',
-                                    ${itemIndex},
-                                    this.value
-                                )
-                            "
-                        >
-
-                    </div>
-
-
-                    <div>
-
-                        <label>
-                            Peso líquido (kg)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="0.01"
-                            min="0"
-                            inputmode="decimal"
-                            value="${esc(item.p1)}"
-                            placeholder="0,00"
-                            oninput="
-                                alterarLiquido(
-                                    '${pallet.id}',
-                                    ${itemIndex},
-                                    this.value
-                                )
-                            "
-                        >
-
-                    </div>
+                    O peso bruto do pallet
+                    é opcional.
 
                 </div>
 
             `;
 
 
-            card.appendChild(itemDiv);
+/* ================================= */
+/* ITENS */
+/* ================================= */
+
+            pallet.items.forEach(
+
+                (item, ii) => {
+
+
+                    const preenchido =
+
+                        item.liquido !== "" &&
+
+                        !isNaN(
+                            valorNumerico(
+                                item.liquido
+                            )
+                        );
+
+
+                    html += `
+
+                    <div class="item">
+
+
+                        <div class="item-head">
+
+
+                            <span class="item-name">
+
+                                Item ${ii + 1}
+
+                            </span>
+
+
+                            <div
+                                class="item-head-right">
+
+
+                                <span
+                                    class="item-status">
+
+                                    ${
+                                        preenchido
+                                        ? "✓ preenchido"
+                                        : ""
+                                    }
+
+                                </span>
+
+
+                                <!--
+                                BOTÃO EXCLUIR
+                                APARECE SEMPRE
+                                -->
+
+                                <button
+                                    class="remove-item"
+                                    onclick="
+                                        removerItem(
+                                            ${pi},
+                                            ${ii}
+                                        )
+                                    ">
+
+                                    Excluir item
+
+                                </button>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="item-fields">
+
+
+                            <div class="field">
+
+                                <label>
+                                    Número
+                                </label>
+
+                                <input
+                                    type="number"
+                                    value="${item.numero}"
+                                    onchange="
+                                        alterarNumero(
+                                            ${pi},
+                                            ${ii},
+                                            this.value
+                                        )
+                                    ">
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Peso líquido (kg)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    inputmode="decimal"
+                                    placeholder="0,00"
+                                    value="${escapeHtml(item.liquido)}"
+                                    oninput="
+                                        alterarLiquido(
+                                            ${pi},
+                                            ${ii},
+                                            this.value
+                                        )
+                                    "
+                                    onchange="
+                                        atualizarDepoisDaEdicao()
+                                    ">
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    `;
+
+                }
+
+            );
+
+
+/* ================================= */
+/* ADICIONAR ITEM */
+/* ================================= */
+
+            if (
+                pallet.items.length < 5
+            ) {
+
+                html += `
+
+                    <button
+                        class="add-item"
+                        onclick="
+                            adicionarItem(${pi})
+                        ">
+
+                        + Adicionar item
+
+                    </button>
+
+                `;
+
+            }
+
+
+/* ================================= */
+/* PESO BRUTO */
+/* ================================= */
+
+            html += `
+
+                <div class="bruto">
+
+
+                    <div class="bruto-title">
+
+                        Peso Bruto do pallet
+                        (opcional)
+
+                    </div>
+
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        inputmode="decimal"
+                        placeholder="Digite o peso bruto"
+                        value="${escapeHtml(pallet.bruto)}"
+                        oninput="
+                            alterarBruto(
+                                ${pi},
+                                this.value
+                            )
+                        "
+                        onchange="
+                            atualizarDepoisDaEdicao()
+                        ">
+
+
+                </div>
+
+
+            </div>
+
+            `;
 
         }
+
     );
 
 
-    if(pallet.items.length < 5){
+/* ================================= */
+/* FECHA CONTAINER */
+/* ================================= */
 
-        const adicionar =
-            document.createElement("button");
+    html += `
 
-
-        adicionar.className =
-            "secondary full";
-
-
-        adicionar.textContent =
-            "＋ Adicionar item";
-
-
-        adicionar.onclick =
-            ()=>adicionarItem(pallet.id);
-
-
-        card.appendChild(adicionar);
-
-    }
-
-
-    const bruto =
-        document.createElement("div");
-
-
-    bruto.className =
-        "pallet-bruto";
-
-
-    bruto.innerHTML = `
-
-        <div class="pallet-bruto-title">
-
-            Peso Bruto do pallet
-            (opcional)
-
-        </div>
-
-
-        <input
-            type="number"
-            step="0.01"
-            min="0"
-            inputmode="decimal"
-            placeholder="0,00"
-            value="${esc(pallet.bruto || "")}"
-            onchange="
-                alterarBruto(
-                    '${pallet.id}',
-                    this.value
-                )
-            "
-        >
+    </div>
 
     `;
 
 
-    card.appendChild(bruto);
+/* ================================= */
+/* BOTÕES INFERIORES */
+/* ================================= */
+
+    html += `
+
+    <div class="bottom">
 
 
-    app.appendChild(card);
+        <button
+            class="btn-light"
+            onclick="adicionarPallet()">
 
-}
+            + Adicionar pallet
 
-
-function criarCardFinal(app){
-
-    const card =
-        document.createElement("section");
+        </button>
 
 
-    card.className =
-        "final-card";
+        <button
+            class="btn-dark"
+            onclick="finalizar()">
+
+            ✓ Finalizar romaneio
+
+        </button>
 
 
-    card.id =
-        "finalCard";
-
-
-    card.innerHTML = `
-
-        <div class="final-title">
-
-            ROMANEIO INTERNO
-
-        </div>
-
-
-        <div class="final-info">
-
-            <div class="final-field">
-
-                <span>
-                    Cliente
-                </span>
-
-                <b id="f-cliente"></b>
-
-            </div>
-
-
-            <div class="final-field">
-
-                <span>
-                    Item
-                </span>
-
-                <b id="f-item"></b>
-
-            </div>
-
-
-            <div class="final-field">
-
-                <span>
-                    Nº do lote
-                </span>
-
-                <b id="f-lote"></b>
-
-            </div>
-
-
-            <div class="final-field">
-
-                <span>
-                    Data de produção
-                </span>
-
-                <b id="f-data"></b>
-
-            </div>
-
-
-            <div class="final-field">
-
-                <span>
-                    Dimensão
-                </span>
-
-                <b id="f-dimensao"></b>
-
-            </div>
-
-
-            <div class="final-field">
-
-                <span>
-                    Pallets / Itens
-                </span>
-
-                <b id="f-qtd"></b>
-
-            </div>
-
-        </div>
-
-
-        <div class="weight-total">
-
-            <div class="weight-box">
-
-                <span>
-                    Peso Líquido Total
-                </span>
-
-                <b id="f-p1"></b>
-
-            </div>
-
-
-            <div class="weight-box">
-
-                <span>
-                    Peso Bruto Total
-                </span>
-
-                <b id="f-p2"></b>
-
-            </div>
-
-        </div>
+    </div>
 
     `;
 
 
-    app.appendChild(card);
+/* ================================= */
+/* COLOCA NA PÁGINA */
+/* ================================= */
+
+    document
+        .getElementById("app")
+        .innerHTML = html;
 
 }
 
 
-function criarBotoesFinais(app){
-
-    const div =
-        document.createElement("div");
-
-
-    div.className =
-        "final-actions";
-
-
-    div.innerHTML = `
-
-        <button
-            class="primary"
-            onclick="compartilharImagem()"
-        >
-            ↗ Compartilhar imagem
-        </button>
-
-
-        <button
-            class="secondary"
-            onclick="voltarEditar()"
-        >
-            ← Voltar e alterar
-        </button>
-
-
-        <button
-            class="secondary"
-            onclick="novoRomaneio()"
-        >
-            ＋ Novo romaneio
-        </button>
-
-    `;
-
-
-    app.appendChild(div);
-
-}
-
-
-function alterarInfo(
-    campo,
-    valor
-){
-
-    state.info[campo] =
-        valor;
-
-
-    salvar();
-
-}
-
-
-function localizarPallet(id){
-
-    return state.pallets.find(
-        pallet =>
-            String(pallet.id) === String(id)
-    );
-
-}
-
-
-function alterarNumero(
-    palletId,
-    itemIndex,
-    valor
-){
-
-    const pallet =
-        localizarPallet(palletId);
-
-
-    if(!pallet){
-        return;
-    }
-
-
-    pallet.items[itemIndex].numero =
-        valor;
-
-
-    salvar();
-
-}
-
+/* ================================= */
+/* ALTERAR PESO LÍQUIDO */
+/* ================================= */
 
 function alterarLiquido(
-    palletId,
-    itemIndex,
+    pi,
+    ii,
     valor
-){
+) {
 
-    const pallet =
-        localizarPallet(palletId);
-
-
-    if(!pallet){
-        return;
-    }
-
-
-    pallet.items[itemIndex].p1 =
-        valor;
-
-
-    salvar();
-
-
-    atualizarResumo();
+    pallets[pi]
+        .items[ii]
+        .liquido = valor;
 
 }
 
 
-function atualizarResumo(){
-
-    const t =
-        totais();
-
-
-    const bruto =
-        brutoTotal();
-
-
-    const estatisticas =
-        document.querySelectorAll(
-            ".stat b"
-        );
-
-
-    if(estatisticas.length >= 4){
-
-        estatisticas[0].textContent =
-            formatarPeso(t.liquido) + " kg";
-
-
-        estatisticas[1].textContent =
-            bruto > 0
-            ? formatarPeso(bruto) + " kg"
-            : "Não informado";
-
-
-        estatisticas[2].textContent =
-            t.itens;
-
-
-        estatisticas[3].textContent =
-            t.pendencias;
-
-    }
-
-}
-
+/* ================================= */
+/* ALTERAR PESO BRUTO */
+/* ================================= */
 
 function alterarBruto(
-    palletId,
+    pi,
     valor
-){
+) {
 
-    const pallet =
-        localizarPallet(palletId);
+    pallets[pi]
+        .bruto = valor;
 
-
-    if(!pallet){
-        return;
-    }
+}
 
 
-    pallet.bruto =
-        valor;
+/* ================================= */
+/* ATUALIZAR APÓS EDIÇÃO */
+/* ================================= */
 
-
-    salvar();
-
+function atualizarDepoisDaEdicao() {
 
     render();
 
 }
 
 
-function adicionarItem(
-    palletId
-){
+/* ================================= */
+/* ALTERAR NÚMERO */
+/* ================================= */
 
-    const pallet =
-        localizarPallet(palletId);
+function alterarNumero(
+    pi,
+    ii,
+    valor
+) {
+
+    pallets[pi]
+        .items[ii]
+        .numero = valor;
+
+}
 
 
-    if(!pallet){
-        return;
-    }
+/* ================================= */
+/* ADICIONAR ITEM */
+/* ================================= */
+
+function adicionarItem(pi) {
 
 
-    if(pallet.items.length >= 5){
+    if (
+        pallets[pi]
+            .items
+            .length >= 5
+    ) {
 
         alert(
             "Cada pallet pode ter no máximo 5 itens."
@@ -1446,38 +1722,40 @@ function adicionarItem(
     }
 
 
-    pallet.items.push({
+    pallets[pi]
+        .items
+        .push({
 
-        numero:
-            pallet.items.length + 1,
+            numero:
+                pallets[pi]
+                    .items
+                    .length + 1,
 
-        p1:""
+            liquido: ""
 
-    });
+        });
 
-
-    salvar();
 
     render();
 
 }
 
 
+/* ================================= */
+/* EXCLUIR ITEM */
+/* ================================= */
+
 function removerItem(
-    palletId,
-    itemIndex
-){
-
-    const pallet =
-        localizarPallet(palletId);
+    pi,
+    ii
+) {
 
 
-    if(!pallet){
-        return;
-    }
-
-
-    if(pallet.items.length <= 1){
+    if (
+        pallets[pi]
+            .items
+            .length <= 1
+    ) {
 
         alert(
             "O pallet precisa ter pelo menos 1 item."
@@ -1488,68 +1766,78 @@ function removerItem(
     }
 
 
-    if(
-        !confirm(
-            "Excluir este item?"
-        )
-    ){
-
-        return;
-
-    }
+    pallets[pi]
+        .items
+        .splice(
+            ii,
+            1
+        );
 
 
-    pallet.items.splice(
-        itemIndex,
-        1
-    );
+/*
+    REORGANIZA A NUMERAÇÃO
+*/
 
+    pallets[pi]
+        .items
+        .forEach(
 
-    pallet.items.forEach(
-        (item,index)=>{
-            item.numero =
-                index + 1;
-        }
-    );
+            (item, index) => {
 
+                item.numero =
+                    index + 1;
 
-    salvar();
+            }
+
+        );
+
 
     render();
 
 }
 
 
-function adicionarPallet(){
+/* ================================= */
+/* ADICIONAR PALLET */
+/* ================================= */
 
-    state.pallets.push(
-        criarPallet()
-    );
-
-
-    salvar();
-
-    render();
+function adicionarPallet() {
 
 
-    window.scrollTo({
+    pallets.push({
 
-        top:
-            document.body.scrollHeight,
+        items: [
 
-        behavior:
-            "smooth"
+            {
+
+                numero: 1,
+
+                liquido: ""
+
+            }
+
+        ],
+
+        bruto: ""
 
     });
 
+
+    render();
+
 }
 
 
-function removerPallet(id){
+/* ================================= */
+/* EXCLUIR PALLET */
+/* ================================= */
 
-    if(
-        state.pallets.length <= 1
-    ){
+function removerPallet(pi) {
+
+
+    if (
+        pallets.length <= 1
+    ) {
 
         alert(
             "O romaneio precisa ter pelo menos 1 pallet."
@@ -1560,707 +1848,474 @@ function removerPallet(id){
     }
 
 
-    if(
-        !confirm(
-            "Excluir este pallet e todos os seus itens?"
-        )
-    ){
+    pallets.splice(
+        pi,
+        1
+    );
 
-        return;
-
-    }
-
-
-    state.pallets =
-        state.pallets.filter(
-            pallet =>
-                String(pallet.id)
-                !== String(id)
-        );
-
-
-    salvar();
 
     render();
 
 }
 
 
-function finalizar(){
+/* ================================= */
+/* NOVO ROMANEIO */
+/* ================================= */
 
-    const t =
-        totais();
+function novoRomaneio() {
 
 
-    if(t.pendencias > 0){
-
-        alert(
-            "Ainda existem " +
-            t.pendencias +
-            " item(ns) sem peso líquido preenchido."
+    const confirmar =
+        confirm(
+            "Deseja iniciar um novo romaneio? Os dados atuais serão apagados."
         );
+
+
+    if (!confirmar) {
 
         return;
 
     }
 
 
-    const campos = [
+    dados = {
 
-        ["Cliente",state.info.cliente],
+        cliente: "",
 
-        ["Item",state.info.item],
+        item: "",
 
-        ["Nº do lote",state.info.lote],
+        lote: "",
 
-        ["Data de produção",state.info.data],
+        data: dataHoje(),
 
-        ["Dimensão",state.info.dimensao]
+        dimensao: ""
+
+    };
+
+
+    pallets = [
+
+        {
+
+            items: [
+
+                {
+
+                    numero: 1,
+
+                    liquido: ""
+
+                }
+
+            ],
+
+            bruto: ""
+
+        }
 
     ];
 
 
-    const faltando =
-        campos
-            .filter(
-                campo =>
-                    !String(campo[1] || "").trim()
-            )
-            .map(
-                campo =>
-                    campo[0]
-            );
-
-
-    if(faltando.length > 0){
-
-        alert(
-            "Preencha antes de finalizar:\n\n" +
-            faltando.join("\n")
-        );
-
-        return;
-
-    }
-
-
-    const bruto =
-        brutoTotal();
-
-
-    document.getElementById(
-        "f-cliente"
-    ).textContent =
-        state.info.cliente;
-
-
-    document.getElementById(
-        "f-item"
-    ).textContent =
-        state.info.item;
-
-
-    document.getElementById(
-        "f-lote"
-    ).textContent =
-        state.info.lote;
-
-
-    document.getElementById(
-        "f-data"
-    ).textContent =
-        formatarData(
-            state.info.data
-        );
-
-
-    document.getElementById(
-        "f-dimensao"
-    ).textContent =
-        state.info.dimensao;
-
-
-    document.getElementById(
-        "f-qtd"
-    ).textContent =
-
-        state.pallets.length +
-        (
-            state.pallets.length === 1
-            ? " pallet"
-            : " pallets"
-        ) +
-        " / " +
-        t.itens +
-        " itens";
-
-
-    document.getElementById(
-        "f-p1"
-    ).textContent =
-        formatarPeso(t.liquido) +
-        " kg";
-
-
-    document.getElementById(
-        "f-p2"
-    ).textContent =
-
-        bruto > 0
-        ? formatarPeso(bruto) + " kg"
-        : "Não informado";
-
-
-    document.body.classList.add(
-        "final-mode"
-    );
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-function formatarData(data){
-
-    if(!data){
-        return "";
-    }
-
-
-    const partes =
-        data.split("-");
-
-
-    if(partes.length !== 3){
-        return data;
-    }
-
-
-    return (
-        partes[2] +
-        "/" +
-        partes[1] +
-        "/" +
-        partes[0]
-    );
-
-}
-
-
-function voltarEditar(){
-
-    document.body.classList.remove(
-        "final-mode"
-    );
+    telaFinal = false;
 
 
     render();
 
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
 }
 
 
-function novoRomaneio(){
+/* ================================= */
+/* FINALIZAR */
+/* ================================= */
 
-    if(
-        !confirm(
-            "Iniciar um novo romaneio? Todas as informações e pesos preenchidos serão apagados."
-        )
-    ){
+function finalizar() {
 
-        return;
+
+    const pendencias =
+        calcularPendencias();
+
+
+    if (
+        pendencias > 0
+    ) {
+
+
+        const continuar =
+            confirm(
+
+                "Existem " +
+                pendencias +
+                " item(ns) sem peso líquido. Deseja finalizar mesmo assim?"
+
+            );
+
+
+        if (!continuar) {
+
+            return;
+
+        }
 
     }
 
 
-    state =
-        criarEstadoInicial();
-
-
-    salvar();
-
-
-    document.body.classList.remove(
-        "final-mode"
-    );
+    telaFinal = true;
 
 
     render();
 
+}
 
-    window.scrollTo({
 
-        top:0,
+/* ================================= */
+/* VOLTAR */
+/* ================================= */
 
-        behavior:"smooth"
+function voltar() {
 
-    });
+    telaFinal = false;
+
+    render();
 
 }
 
 
-function esc(valor){
+/* ================================= */
+/* TELA FINAL */
+/* ================================= */
 
-    return String(valor ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+function renderFinal() {
 
-}
 
+    let totalLiquido = 0;
 
-function criarImagemRomaneio(){
+    let totalBruto = 0;
 
-    const t =
-        totais();
+    let totalItens = 0;
 
 
-    const bruto =
-        brutoTotal();
+    pallets.forEach(
 
+        pallet => {
 
-    const data =
-        formatarData(
-            state.info.data
-        );
 
+            pallet.items.forEach(
 
-    const W = 900;
+                item => {
 
-    const H = 760;
 
-
-    const svg = `
-
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="${W}"
-        height="${H}"
-    >
-
-        <rect
-            width="100%"
-            height="100%"
-            fill="#f3f4f6"
-        />
-
-
-        <rect
-            x="40"
-            y="35"
-            width="820"
-            height="690"
-            rx="24"
-            fill="white"
-            stroke="#111827"
-            stroke-width="3"
-        />
-
-
-        <text
-            x="450"
-            y="88"
-            text-anchor="middle"
-            font-family="Arial"
-            font-size="30"
-            font-weight="900"
-            fill="#111827"
-        >
-            ROMANEIO INTERNO
-        </text>
-
-
-        <line
-            x1="70"
-            y1="115"
-            x2="830"
-            y2="115"
-            stroke="#e5e7eb"
-            stroke-width="2"
-        />
-
-
-        ${campoImagem(
-            "Cliente",
-            state.info.cliente,
-            70,
-            150
-        )}
-
-
-        ${campoImagem(
-            "Item",
-            state.info.item,
-            460,
-            150
-        )}
-
-
-        ${campoImagem(
-            "Nº do lote",
-            state.info.lote,
-            70,
-            235
-        )}
-
-
-        ${campoImagem(
-            "Data de produção",
-            data,
-            460,
-            235
-        )}
-
-
-        ${campoImagem(
-            "Dimensão",
-            state.info.dimensao,
-            70,
-            320
-        )}
-
-
-        ${campoImagem(
-            "Pallets / Itens",
-            state.pallets.length +
-            (
-                state.pallets.length === 1
-                ? " pallet"
-                : " pallets"
-            ) +
-            " / " +
-            t.itens +
-            " itens",
-            460,
-            320
-        )}
-
-
-        <line
-            x1="70"
-            y1="415"
-            x2="830"
-            y2="415"
-            stroke="#e5e7eb"
-            stroke-width="2"
-        />
-
-
-        <rect
-            x="70"
-            y="450"
-            width="370"
-            height="150"
-            rx="16"
-            fill="#f3f4f6"
-        />
-
-
-        <rect
-            x="460"
-            y="450"
-            width="370"
-            height="150"
-            rx="16"
-            fill="#f3f4f6"
-        />
-
-
-        <text
-            x="255"
-            y="492"
-            text-anchor="middle"
-            font-family="Arial"
-            font-size="15"
-            fill="#6b7280"
-        >
-            PESO LÍQUIDO TOTAL
-        </text>
-
-
-        <text
-            x="255"
-            y="548"
-            text-anchor="middle"
-            font-family="Arial"
-            font-size="34"
-            font-weight="900"
-            fill="#111827"
-        >
-            ${esc(formatarPeso(t.liquido))} kg
-        </text>
-
-
-        <text
-            x="645"
-            y="492"
-            text-anchor="middle"
-            font-family="Arial"
-            font-size="15"
-            fill="#6b7280"
-        >
-            PESO BRUTO TOTAL
-        </text>
-
-
-        <text
-            x="645"
-            y="548"
-            text-anchor="middle"
-            font-family="Arial"
-            font-size="34"
-            font-weight="900"
-            fill="#111827"
-        >
-            ${
-                bruto > 0
-                ? esc(formatarPeso(bruto)) + " kg"
-                : "Não informado"
-            }
-        </text>
-
-
-        <text
-            x="450"
-            y="680"
-            text-anchor="middle"
-            font-family="Arial"
-            font-size="13"
-            fill="#6b7280"
-        >
-            Romaneio interno
-        </text>
-
-    </svg>
-
-    `;
-
-
-    return svg;
-
-}
-
-
-function campoImagem(
-    titulo,
-    valor,
-    x,
-    y
-){
-
-    return `
-
-        <rect
-            x="${x}"
-            y="${y}"
-            width="370"
-            height="65"
-            rx="12"
-            fill="#f9fafb"
-        />
-
-
-        <text
-            x="${x + 14}"
-            y="${y + 22}"
-            font-family="Arial"
-            font-size="14"
-            fill="#6b7280"
-        >
-            ${esc(titulo)}
-        </text>
-
-
-        <text
-            x="${x + 14}"
-            y="${y + 48}"
-            font-family="Arial"
-            font-size="18"
-            font-weight="700"
-            fill="#111827"
-        >
-            ${esc(valor)}
-        </text>
-
-    `;
-
-}
-
-
-async function compartilharImagem(){
-
-    const svg =
-        criarImagemRomaneio();
-
-
-    const blobSvg =
-        new Blob(
-            [svg],
-            {
-                type:
-                    "image/svg+xml;charset=utf-8"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blobSvg
-        );
-
-
-    const imagem =
-        new Image();
-
-
-    imagem.onload =
-        async function(){
-
-            const canvas =
-                document.createElement(
-                    "canvas"
-                );
-
-
-            canvas.width = 1800;
-
-            canvas.height = 1520;
-
-
-            const ctx =
-                canvas.getContext("2d");
-
-
-            ctx.drawImage(
-                imagem,
-                0,
-                0,
-                1800,
-                1520
-            );
-
-
-            URL.revokeObjectURL(
-                url
-            );
-
-
-            canvas.toBlob(
-                async function(blob){
-
-                    if(!blob){
-                        return;
-                    }
-
-
-                    const arquivo =
-                        new File(
-                            [blob],
-                            "romaneio-interno.png",
-                            {
-                                type:
-                                    "image/png"
-                            }
+                    const peso =
+                        valorNumerico(
+                            item.liquido
                         );
 
 
-                    try{
+                    if (
+                        !isNaN(peso)
+                    ) {
 
-                        if(
-                            navigator.share &&
-                            (
-                                !navigator.canShare ||
-                                navigator.canShare({
-                                    files:[arquivo]
-                                })
-                            )
-                        ){
-
-                            await navigator.share({
-
-                                title:
-                                    "Romaneio Interno",
-
-                                files:[
-                                    arquivo
-                                ]
-
-                            });
-
-                        }else{
-
-                            const link =
-                                document.createElement(
-                                    "a"
-                                );
-
-
-                            link.href =
-                                URL.createObjectURL(
-                                    blob
-                                );
-
-
-                            link.download =
-                                "romaneio-interno.png";
-
-
-                            link.click();
-
-
-                            setTimeout(
-                                ()=>{
-                                    URL.revokeObjectURL(
-                                        link.href
-                                    );
-                                },
-                                1000
-                            );
-
-                        }
-
-                    }catch(erro){
-
-                        if(
-                            erro.name !==
-                            "AbortError"
-                        ){
-
-                            alert(
-                                "Não foi possível compartilhar a imagem neste dispositivo."
-                            );
-
-                        }
+                        totalLiquido +=
+                            peso;
 
                     }
 
-                },
-                "image/png"
+
+                    totalItens++;
+
+                }
+
             );
 
-        };
+
+            const bruto =
+                valorNumerico(
+                    pallet.bruto
+                );
 
 
-    imagem.src = url;
+            if (
+                !isNaN(bruto)
+            ) {
+
+                totalBruto +=
+                    bruto;
+
+            }
+
+        }
+
+    );
+
+
+/* ================================= */
+/* HTML DA TELA FINAL */
+/* ================================= */
+
+    const html = `
+
+    <div class="final-page">
+
+
+        <div
+            class="final-card"
+            id="romaneioImagem">
+
+
+            <div class="final-header">
+
+                <div class="final-title">
+
+                    ROMANEIO INTERNO
+
+                </div>
+
+            </div>
+
+
+            <div class="final-grid">
+
+
+                <div class="final-info">
+
+                    <div class="final-label">
+                        Cliente
+                    </div>
+
+                    <div class="final-value">
+
+                        ${
+                            escapeHtml(
+                                dados.cliente
+                            ) || "-"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="final-info">
+
+                    <div class="final-label">
+                        Item
+                    </div>
+
+                    <div class="final-value">
+
+                        ${
+                            escapeHtml(
+                                dados.item
+                            ) || "-"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="final-info">
+
+                    <div class="final-label">
+                        Nº do lote
+                    </div>
+
+                    <div class="final-value">
+
+                        ${
+                            escapeHtml(
+                                dados.lote
+                            ) || "-"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="final-info">
+
+                    <div class="final-label">
+                        Data de produção
+                    </div>
+
+                    <div class="final-value">
+
+                        ${
+                            formatarData(
+                                dados.data
+                            ) || "-"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="final-info">
+
+                    <div class="final-label">
+                        Dimensão
+                    </div>
+
+                    <div class="final-value">
+
+                        ${
+                            escapeHtml(
+                                dados.dimensao
+                            ) || "-"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="final-info">
+
+                    <div class="final-label">
+                        Pallets / Itens
+                    </div>
+
+                    <div class="final-value">
+
+                        ${pallets.length}
+                        pallet${pallets.length !== 1 ? "s" : ""}
+
+                        /
+
+                        ${totalItens}
+                        itens
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="final-line"></div>
+
+
+            <div class="final-weight-grid">
+
+
+                <div class="final-weight">
+
+                    <div class="final-weight-label">
+
+                        Peso Líquido Total
+
+                    </div>
+
+                    <div class="final-weight-value">
+
+                        ${formatPeso(totalLiquido)}
+                        kg
+
+                    </div>
+
+                </div>
+
+
+                <div class="final-weight">
+
+                    <div class="final-weight-label">
+
+                        Peso Bruto Total
+
+                    </div>
+
+                    <div class="final-weight-value">
+
+                        ${
+                            totalBruto > 0
+                            ? formatPeso(totalBruto) + " kg"
+                            : "Não informado"
+                        }
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="final-footer">
+
+                Romaneio interno
+
+            </div>
+
+
+        </div>
+
+
+        <div class="final-buttons">
+
+
+            <button
+                class="share"
+                onclick="compartilhar()">
+
+                ↗ Compartilhar imagem
+
+            </button>
+
+
+            <button
+                class="back"
+                onclick="voltar()">
+
+                ← Voltar e alterar
+
+            </button>
+
+
+            <button
+                class="new"
+                onclick="novoRomaneio()">
+
+                + Novo romaneio
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+    `;
+
+
+    document
+        .getElementById("app")
+        .innerHTML = html;
 
 }
+
+
+/* ================================= */
+/* COMPARTILHAR */
+/* ================================= */
+
+async function compartilhar() {
+
+    window.location.href =
+        "scriptable://compartilhar";
+
+}
+
+
+/* ================================= */
+/* INICIALIZAÇÃO */
+/* ================================= */
+
+dados.data =
+    dataHoje();
 
 
 render();
@@ -2268,4 +2323,5 @@ render();
 </script>
 
 </body>
+
 </html>
