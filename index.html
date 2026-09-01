@@ -31,9 +31,13 @@ body {
     height: 84px;
     background: #111827;
     color: white;
+
     display: flex;
     align-items: center;
+
     padding: 0 22px;
+    gap: 20px;
+
     position: sticky;
     top: 0;
     z-index: 20;
@@ -47,11 +51,16 @@ body {
 
 .header-new {
     margin-left: auto;
+
     border: none;
+
     background: #f3f4f6;
     color: #111827;
+
     border-radius: 13px;
+
     padding: 12px 18px;
+
     font-size: 16px;
     font-weight: 700;
 }
@@ -64,10 +73,13 @@ body {
 
 .card {
     background: white;
+
     border: 1px solid #e1e5ea;
     border-radius: 17px;
+
     padding: 16px;
     margin-bottom: 14px;
+
     box-shadow: 0 2px 7px rgba(0,0,0,.04);
 }
 
@@ -79,7 +91,9 @@ body {
 
 .grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 12px;
 }
 
@@ -95,34 +109,50 @@ body {
 label {
     font-size: 13px;
     color: #475569;
+
     margin-bottom: 6px;
 }
 
 input {
     width: 100%;
+
     height: 46px;
+
     border: 1px solid #cbd5e1;
     border-radius: 11px;
+
     padding: 0 12px;
+
     font-size: 16px;
+
     background: white;
     color: #111827;
+
     outline: none;
+
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 input:focus {
     border-color: #111827;
 }
 
+/* RESUMO */
+
 .summary-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 10px;
 }
 
 .summary-box {
     background: #f7f8fa;
+
     border-radius: 13px;
+
     padding: 13px;
 }
 
@@ -133,52 +163,69 @@ input:focus {
 
 .summary-value {
     font-size: 21px;
+
     font-weight: 800;
+
     margin-top: 4px;
 }
 
+/* PALLET */
+
 .pallet-title {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 }
 
 .pallet-title h2 {
     margin: 0;
+
     font-size: 20px;
 }
 
 .remove-pallet {
     border: none;
+
     background: #fee2e2;
     color: #b91c1c;
+
     border-radius: 9px;
+
     padding: 8px 10px;
+
     font-weight: 700;
 }
 
 .help {
     color: #64748b;
+
     font-size: 13px;
+
     margin: 8px 0 16px;
 }
 
 .item {
     border-top: 1px solid #e5e7eb;
+
     padding-top: 14px;
     margin-top: 14px;
 }
 
 .item:first-of-type {
     border-top: none;
+
     padding-top: 0;
     margin-top: 0;
 }
 
 .item-head {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     margin-bottom: 9px;
 }
 
@@ -188,66 +235,98 @@ input:focus {
 
 .item-status {
     color: #008a4b;
+
     font-size: 12px;
 }
 
 .remove-item {
     border: none;
+
     background: #fee2e2;
     color: #b91c1c;
+
     border-radius: 9px;
+
     padding: 7px 10px;
+
     font-weight: 700;
 }
 
 .item-fields {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 10px;
 }
 
 .bruto {
     margin-top: 15px;
+
     padding-top: 14px;
+
     border-top: 1px dashed #d1d5db;
 }
 
 .bruto-title {
     font-size: 13px;
+
     color: #475569;
+
     margin-bottom: 6px;
 }
 
 .add-item {
     width: 100%;
+
     height: 44px;
+
     margin-top: 14px;
+
     border: 1px dashed #94a3b8;
+
     background: #f8fafc;
+
     border-radius: 11px;
+
     font-weight: 700;
+
     color: #334155;
 }
 
+/* BARRA INFERIOR */
+
 .bottom {
     position: fixed;
+
     left: 0;
     right: 0;
     bottom: 0;
+
     background: white;
+
     border-top: 1px solid #dbe0e6;
+
     padding: 10px 14px;
+
     display: flex;
+
     gap: 8px;
+
     z-index: 30;
 }
 
 .bottom button {
     flex: 1;
+
     height: 48px;
+
     border: none;
+
     border-radius: 12px;
+
     font-size: 15px;
+
     font-weight: 800;
 }
 
@@ -261,107 +340,151 @@ input:focus {
     color: white;
 }
 
+/* TELA FINAL */
+
 .final-page {
     padding: 20px 14px 30px;
 }
 
 .final-card {
     max-width: 700px;
+
     margin: 0 auto;
+
     background: white;
+
     border: 1.5px solid #111827;
+
     border-radius: 18px;
+
     padding: 18px;
 }
 
 .final-header {
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
+    gap: 16px;
+
     border-bottom: 2px solid #e5e7eb;
+
     padding-bottom: 17px;
+
     margin-bottom: 18px;
 }
 
 .final-title {
     font-size: 27px;
+
     font-weight: 900;
+
     letter-spacing: 1px;
 }
 
 .final-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 10px;
 }
 
 .final-info {
     background: #f7f8fa;
+
     border-radius: 12px;
+
     padding: 12px;
 }
 
 .final-label {
     color: #6b7280;
+
     font-size: 13px;
 }
 
 .final-value {
     font-weight: 800;
+
     font-size: 16px;
+
     margin-top: 4px;
 }
 
 .final-line {
     border-top: 2px solid #e5e7eb;
+
     margin: 18px 0;
 }
 
 .final-weight-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 12px;
 }
 
 .final-weight {
     background: #f3f4f6;
+
     border-radius: 15px;
+
     text-align: center;
+
     padding: 22px 10px;
 }
 
 .final-weight-label {
     color: #6b7280;
+
     font-size: 15px;
+
     text-transform: uppercase;
 }
 
 .final-weight-value {
     font-size: 30px;
+
     font-weight: 900;
+
     margin-top: 10px;
 }
 
 .final-footer {
     text-align: center;
+
     color: #6b7280;
+
     margin-top: 70px;
+
     font-size: 14px;
 }
 
 .final-buttons {
     max-width: 700px;
+
     margin: 14px auto 0;
+
     display: grid;
+
     grid-template-columns: 1fr 1fr 1fr;
+
     gap: 8px;
 }
 
 .final-buttons button {
     height: 48px;
+
     border: none;
+
     border-radius: 12px;
+
     font-weight: 800;
+
     font-size: 14px;
 }
 
@@ -378,11 +501,16 @@ input:focus {
     background: #eef0f2;
 }
 
+/* CELULAR */
+
 @media(max-width:600px) {
 
     .header {
         height: 82px;
+
         padding: 0 16px;
+
+        gap: 12px;
     }
 
     .header-title {
@@ -401,6 +529,10 @@ input:focus {
         font-size: 22px;
     }
 
+    .final-buttons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
     .final-buttons button {
         font-size: 12px;
     }
@@ -416,7 +548,12 @@ input:focus {
 
 <script>
 
+/* ============================================================
+   DADOS
+============================================================ */
+
 let pallets = [
+
     {
         items: [
             {
@@ -424,24 +561,28 @@ let pallets = [
                 liquido: ""
             }
         ],
+
         bruto: ""
     }
+
 ];
 
 let dados = {
+
     cliente: "",
     item: "",
     lote: "",
     data: "",
     dimensao: ""
+
 };
 
 let telaFinal = false;
 
 
-// ------------------------------------------------------------
-// DATA
-// ------------------------------------------------------------
+/* ============================================================
+   DATA
+============================================================ */
 
 function dataHoje() {
 
@@ -449,36 +590,22 @@ function dataHoje() {
 
     const ano = d.getFullYear();
 
-    const mes =
-        String(d.getMonth() + 1).padStart(2, "0");
+    const mes = String(d.getMonth() + 1)
+        .padStart(2, "0");
 
-    const dia =
-        String(d.getDate()).padStart(2, "0");
+    const dia = String(d.getDate())
+        .padStart(2, "0");
 
     return ano + "-" + mes + "-" + dia;
+
 }
 
 dados.data = dataHoje();
 
 
-// ------------------------------------------------------------
-// ESCAPE
-// ------------------------------------------------------------
-
-function escapeHtml(text) {
-
-    return String(text ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-// ------------------------------------------------------------
-// FORMATA DATA
-// ------------------------------------------------------------
+/* ============================================================
+   FORMATA DATA
+============================================================ */
 
 function formatarData(valor) {
 
@@ -491,20 +618,42 @@ function formatarData(valor) {
     }
 
     return partes[2] +
-           "/" +
-           partes[1] +
-           "/" +
-           partes[0];
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0];
+
 }
 
 
-// ------------------------------------------------------------
-// FORMATA PESO
-// ------------------------------------------------------------
+/* ============================================================
+   ESCAPA HTML
+============================================================ */
+
+function escapeHtml(text) {
+
+    return String(text ?? "")
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* ============================================================
+   FORMATA PESO
+============================================================ */
 
 function formatPeso(valor) {
 
-    if (!valor) {
+    if (!valor || isNaN(valor)) {
         return "0";
     }
 
@@ -514,12 +663,13 @@ function formatPeso(valor) {
             maximumFractionDigits: 2
         }
     );
+
 }
 
 
-// ------------------------------------------------------------
-// PENDÊNCIAS
-// ------------------------------------------------------------
+/* ============================================================
+   PENDÊNCIAS
+============================================================ */
 
 function calcularPendencias() {
 
@@ -533,7 +683,9 @@ function calcularPendencias() {
                 i.liquido === "" ||
                 isNaN(parseFloat(i.liquido))
             ) {
+
                 pendencias++;
+
             }
 
         });
@@ -541,12 +693,13 @@ function calcularPendencias() {
     });
 
     return pendencias;
+
 }
 
 
-// ------------------------------------------------------------
-// RENDER
-// ------------------------------------------------------------
+/* ============================================================
+   RENDER
+============================================================ */
 
 function render() {
 
@@ -555,9 +708,13 @@ function render() {
         renderFinal();
 
         return;
+
     }
 
     let html = "";
+
+
+    /* HEADER */
 
     html += `
 
@@ -580,14 +737,12 @@ function render() {
     `;
 
 
-    html += `
-    <div class="container">
-    `;
+    html += `<div class="container">`;
 
 
-    // --------------------------------------------------------
-    // DADOS
-    // --------------------------------------------------------
+    /* ========================================================
+       DADOS DO ROMANEIO
+    ======================================================== */
 
     html += `
 
@@ -671,9 +826,9 @@ function render() {
     `;
 
 
-    // --------------------------------------------------------
-    // RESUMO
-    // --------------------------------------------------------
+    /* ========================================================
+       RESUMO
+    ======================================================== */
 
     let totalLiquido = 0;
 
@@ -687,9 +842,7 @@ function render() {
         p.items.forEach(i => {
 
             const peso =
-                parseFloat(
-                    String(i.liquido).replace(",", ".")
-                );
+                parseFloat(i.liquido);
 
             if (!isNaN(peso)) {
 
@@ -703,9 +856,7 @@ function render() {
 
 
         const bruto =
-            parseFloat(
-                String(p.bruto).replace(",", ".")
-            );
+            parseFloat(p.bruto);
 
         if (!isNaN(bruto)) {
 
@@ -759,7 +910,10 @@ function render() {
                     Peso líquido total
                 </div>
 
-                <div class="summary-value">
+                <div
+                    class="summary-value"
+                    id="totalLiquido"
+                >
 
                     ${formatPeso(totalLiquido)}
                     kg
@@ -775,7 +929,10 @@ function render() {
                     Peso bruto total
                 </div>
 
-                <div class="summary-value">
+                <div
+                    class="summary-value"
+                    id="totalBruto"
+                >
 
                     ${formatPeso(totalBruto)}
                     kg
@@ -791,7 +948,10 @@ function render() {
                     Itens
                 </div>
 
-                <div class="summary-value">
+                <div
+                    class="summary-value"
+                    id="quantidadeItens"
+                >
 
                     ${quantidadeItens}
 
@@ -806,14 +966,16 @@ function render() {
                     Pendências
                 </div>
 
-                <div class="summary-value">
+                <div
+                    class="summary-value"
+                    id="pendencias"
+                >
 
                     ${calcularPendencias()}
 
                 </div>
 
             </div>
-
 
         </div>
 
@@ -822,9 +984,9 @@ function render() {
     `;
 
 
-    // --------------------------------------------------------
-    // PALLETS
-    // --------------------------------------------------------
+    /* ========================================================
+       PALLETS
+    ======================================================== */
 
     pallets.forEach((pallet, pi) => {
 
@@ -838,22 +1000,27 @@ function render() {
                     Pallet ${pi + 1}
                 </h2>
 
+        `;
 
-                ${
-                    pallets.length > 1
-                    ?
-                    `
-                    <button
-                        class="remove-pallet"
-                        onclick="removerPallet(${pi})">
 
-                        Excluir pallet
+        if (pallets.length > 1) {
 
-                    </button>
-                    `
-                    :
-                    ""
-                }
+            html += `
+
+                <button
+                    class="remove-pallet"
+                    onclick="removerPallet(${pi})">
+
+                    Excluir pallet
+
+                </button>
+
+            `;
+
+        }
+
+
+        html += `
 
             </div>
 
@@ -872,18 +1039,12 @@ function render() {
 
             const preenchido =
                 item.liquido !== "" &&
-                !isNaN(
-                    parseFloat(
-                        String(item.liquido)
-                        .replace(",", ".")
-                    )
-                );
+                !isNaN(parseFloat(item.liquido));
 
 
             html += `
 
             <div class="item">
-
 
                 <div class="item-head">
 
@@ -904,26 +1065,33 @@ function render() {
 
                         <span class="item-status">
 
-                            ${preenchido ? "✓ preenchido" : ""}
+                            ${preenchido
+                                ? "✓ preenchido"
+                                : ""}
 
                         </span>
 
+            `;
 
-                        ${
-                            pallet.items.length > 1
-                            ?
-                            `
-                            <button
-                                class="remove-item"
-                                onclick="removerItem(${pi},${ii})">
 
-                                Excluir item
+            if (pallet.items.length > 1) {
 
-                            </button>
-                            `
-                            :
-                            ""
-                        }
+                html += `
+
+                        <button
+                            class="remove-item"
+                            onclick="removerItem(${pi},${ii})">
+
+                            Excluir item
+
+                        </button>
+
+                `;
+
+            }
+
+
+            html += `
 
                     </div>
 
@@ -941,6 +1109,7 @@ function render() {
 
                         <input
                             type="number"
+                            inputmode="numeric"
                             value="${item.numero}"
                             onchange="
                                 alterarNumero(
@@ -966,14 +1135,14 @@ function render() {
                             inputmode="decimal"
                             value="${item.liquido}"
                             oninput="
-                                alterarLiquidoSemRender(
+                                alterarLiquido(
                                     ${pi},
                                     ${ii},
                                     this.value
                                 )
                             "
-                            onblur="
-                                render()
+                            onchange="
+                                atualizarResumo()
                             "
                         >
 
@@ -1024,15 +1193,18 @@ function render() {
                     placeholder="Digite o peso bruto"
                     value="${pallet.bruto}"
                     oninput="
-                        alterarBrutoSemRender(
+                        alterarBruto(
                             ${pi},
                             this.value
                         )
                     "
-                    onblur="render()"
+                    onchange="
+                        atualizarResumo()
+                    "
                 >
 
             </div>
+
 
         </div>
 
@@ -1041,18 +1213,17 @@ function render() {
     });
 
 
-    html += `
-    </div>
-    `;
+    html += "</div>";
 
 
-    // --------------------------------------------------------
-    // BOTÕES
-    // --------------------------------------------------------
+    /* ========================================================
+       BOTÕES INFERIORES
+    ======================================================== */
 
     html += `
 
     <div class="bottom">
+
 
         <button
             class="btn-light"
@@ -1071,43 +1242,154 @@ function render() {
 
         </button>
 
+
     </div>
 
     `;
 
 
-    document.getElementById("app").innerHTML = html;
-}
-
-
-// ------------------------------------------------------------
-// ALTERAÇÕES SEM RENDER
-// ------------------------------------------------------------
-
-function alterarLiquidoSemRender(pi, ii, valor) {
-
-    pallets[pi].items[ii].liquido = valor;
+    document.getElementById("app").innerHTML =
+        html;
 
 }
 
 
-function alterarBrutoSemRender(pi, valor) {
-
-    pallets[pi].bruto = valor;
-
-}
-
+/* ============================================================
+   ALTERAR NÚMERO
+============================================================ */
 
 function alterarNumero(pi, ii, valor) {
 
-    pallets[pi].items[ii].numero = valor;
+    pallets[pi].items[ii].numero =
+        valor;
 
 }
 
 
-// ------------------------------------------------------------
-// ADICIONAR ITEM
-// ------------------------------------------------------------
+/* ============================================================
+   ALTERAR PESO LÍQUIDO
+   IMPORTANTE:
+   NÃO usamos render() aqui.
+   Isso mantém o teclado aberto.
+============================================================ */
+
+function alterarLiquido(pi, ii, valor) {
+
+    pallets[pi].items[ii].liquido =
+        valor;
+
+}
+
+
+/* ============================================================
+   ALTERAR PESO BRUTO
+   IMPORTANTE:
+   NÃO usamos render() aqui.
+============================================================ */
+
+function alterarBruto(pi, valor) {
+
+    pallets[pi].bruto =
+        valor;
+
+}
+
+
+/* ============================================================
+   ATUALIZAR RESUMO
+============================================================ */
+
+function atualizarResumo() {
+
+    let totalLiquido = 0;
+
+    let totalBruto = 0;
+
+    let quantidadeItens = 0;
+
+
+    pallets.forEach(p => {
+
+        p.items.forEach(i => {
+
+            const peso =
+                parseFloat(i.liquido);
+
+            if (!isNaN(peso)) {
+
+                totalLiquido += peso;
+
+            }
+
+            quantidadeItens++;
+
+        });
+
+
+        const bruto =
+            parseFloat(p.bruto);
+
+        if (!isNaN(bruto)) {
+
+            totalBruto += bruto;
+
+        }
+
+    });
+
+
+    const totalLiquidoElemento =
+        document.getElementById("totalLiquido");
+
+    const totalBrutoElemento =
+        document.getElementById("totalBruto");
+
+    const quantidadeItensElemento =
+        document.getElementById("quantidadeItens");
+
+    const pendenciasElemento =
+        document.getElementById("pendencias");
+
+
+    if (totalLiquidoElemento) {
+
+        totalLiquidoElemento.innerText =
+            formatPeso(totalLiquido) +
+            " kg";
+
+    }
+
+
+    if (totalBrutoElemento) {
+
+        totalBrutoElemento.innerText =
+            formatPeso(totalBruto) +
+            " kg";
+
+    }
+
+
+    if (quantidadeItensElemento) {
+
+        quantidadeItensElemento.innerText =
+            quantidadeItens;
+
+    }
+
+
+    if (pendenciasElemento) {
+
+        pendenciasElemento.innerText =
+            calcularPendencias();
+
+    }
+
+}
+
+
+/* ============================================================
+   ADICIONAR ITEM
+============================================================ */
 
 function adicionarItem(pi) {
 
@@ -1118,6 +1400,7 @@ function adicionarItem(pi) {
         );
 
         return;
+
     }
 
 
@@ -1132,12 +1415,13 @@ function adicionarItem(pi) {
 
 
     render();
+
 }
 
 
-// ------------------------------------------------------------
-// REMOVER ITEM
-// ------------------------------------------------------------
+/* ============================================================
+   REMOVER ITEM
+============================================================ */
 
 function removerItem(pi, ii) {
 
@@ -1148,6 +1432,7 @@ function removerItem(pi, ii) {
         );
 
         return;
+
     }
 
 
@@ -1157,29 +1442,33 @@ function removerItem(pi, ii) {
     pallets[pi].items.forEach(
         (item, index) => {
 
-            item.numero = index + 1;
+            item.numero =
+                index + 1;
 
         }
     );
 
 
     render();
+
 }
 
 
-// ------------------------------------------------------------
-// ADICIONAR PALLET
-// ------------------------------------------------------------
+/* ============================================================
+   ADICIONAR PALLET
+============================================================ */
 
 function adicionarPallet() {
 
     pallets.push({
 
         items: [
+
             {
                 numero: 1,
                 liquido: ""
             }
+
         ],
 
         bruto: ""
@@ -1188,12 +1477,13 @@ function adicionarPallet() {
 
 
     render();
+
 }
 
 
-// ------------------------------------------------------------
-// REMOVER PALLET
-// ------------------------------------------------------------
+/* ============================================================
+   REMOVER PALLET
+============================================================ */
 
 function removerPallet(pi) {
 
@@ -1204,28 +1494,32 @@ function removerPallet(pi) {
         );
 
         return;
+
     }
 
 
     pallets.splice(pi, 1);
 
     render();
+
 }
 
 
-// ------------------------------------------------------------
-// NOVO ROMANEIO
-// ------------------------------------------------------------
+/* ============================================================
+   NOVO ROMANEIO
+============================================================ */
 
 function novoRomaneio() {
 
-    const confirmar =
-        confirm(
-            "Deseja iniciar um novo romaneio? Os dados atuais serão apagados."
-        );
+    const confirmar = confirm(
+        "Deseja iniciar um novo romaneio? " +
+        "Os dados atuais serão apagados."
+    );
 
 
-    if (!confirmar) return;
+    if (!confirmar) {
+        return;
+    }
 
 
     dados = {
@@ -1270,12 +1564,13 @@ function novoRomaneio() {
 
 
     render();
+
 }
 
 
-// ------------------------------------------------------------
-// FINALIZAR
-// ------------------------------------------------------------
+/* ============================================================
+   FINALIZAR
+============================================================ */
 
 function finalizar() {
 
@@ -1285,15 +1580,19 @@ function finalizar() {
 
     if (pendencias > 0) {
 
-        const continuar =
-            confirm(
-                "Existem " +
-                pendencias +
-                " item(ns) sem peso líquido. Deseja finalizar mesmo assim?"
-            );
+        const continuar = confirm(
+
+            "Existem " +
+            pendencias +
+            " item(ns) sem peso líquido. " +
+            "Deseja finalizar mesmo assim?"
+
+        );
 
 
-        if (!continuar) return;
+        if (!continuar) {
+            return;
+        }
 
     }
 
@@ -1301,66 +1600,26 @@ function finalizar() {
     telaFinal = true;
 
     render();
+
 }
 
 
-// ------------------------------------------------------------
-// VOLTAR
-// ------------------------------------------------------------
+/* ============================================================
+   VOLTAR
+============================================================ */
 
 function voltar() {
 
     telaFinal = false;
 
     render();
-}
-
-
-// ------------------------------------------------------------
-// COMPARTILHAR
-// ------------------------------------------------------------
-
-async function compartilhar() {
-
-    if (navigator.share) {
-
-        try {
-
-            await navigator.share({
-
-                title: "Romaneio Interno",
-
-                text:
-                    "Romaneio Interno\n" +
-                    "Cliente: " +
-                    (dados.cliente || "-") +
-                    "\nItem: " +
-                    (dados.item || "-") +
-                    "\nLote: " +
-                    (dados.lote || "-")
-
-            });
-
-        } catch (e) {
-
-            console.log(e);
-
-        }
-
-    } else {
-
-        alert(
-            "O compartilhamento não está disponível neste navegador."
-        );
-
-    }
 
 }
 
 
-// ------------------------------------------------------------
-// TELA FINAL
-// ------------------------------------------------------------
+/* ============================================================
+   TELA FINAL
+============================================================ */
 
 function renderFinal() {
 
@@ -1376,10 +1635,7 @@ function renderFinal() {
         p.items.forEach(i => {
 
             const peso =
-                parseFloat(
-                    String(i.liquido)
-                    .replace(",", ".")
-                );
+                parseFloat(i.liquido);
 
 
             if (!isNaN(peso)) {
@@ -1395,10 +1651,7 @@ function renderFinal() {
 
 
         const bruto =
-            parseFloat(
-                String(p.bruto)
-                .replace(",", ".")
-            );
+            parseFloat(p.bruto);
 
 
         if (!isNaN(bruto)) {
@@ -1443,7 +1696,9 @@ function renderFinal() {
 
                     <div class="final-value">
 
-                        ${escapeHtml(dados.cliente) || "-"}
+                        ${escapeHtml(
+                            dados.cliente
+                        ) || "-"}
 
                     </div>
 
@@ -1458,7 +1713,9 @@ function renderFinal() {
 
                     <div class="final-value">
 
-                        ${escapeHtml(dados.item) || "-"}
+                        ${escapeHtml(
+                            dados.item
+                        ) || "-"}
 
                     </div>
 
@@ -1473,7 +1730,9 @@ function renderFinal() {
 
                     <div class="final-value">
 
-                        ${escapeHtml(dados.lote) || "-"}
+                        ${escapeHtml(
+                            dados.lote
+                        ) || "-"}
 
                     </div>
 
@@ -1488,7 +1747,9 @@ function renderFinal() {
 
                     <div class="final-value">
 
-                        ${formatarData(dados.data) || "-"}
+                        ${formatarData(
+                            dados.data
+                        ) || "-"}
 
                     </div>
 
@@ -1503,7 +1764,9 @@ function renderFinal() {
 
                     <div class="final-value">
 
-                        ${escapeHtml(dados.dimensao) || "-"}
+                        ${escapeHtml(
+                            dados.dimensao
+                        ) || "-"}
 
                     </div>
 
@@ -1549,7 +1812,9 @@ function renderFinal() {
 
                     <div class="final-weight-value">
 
-                        ${formatPeso(totalLiquido)}
+                        ${formatPeso(
+                            totalLiquido
+                        )}
                         kg
 
                     </div>
@@ -1568,7 +1833,9 @@ function renderFinal() {
 
                     <div class="final-weight-value">
 
-                        ${formatPeso(totalBruto)}
+                        ${formatPeso(
+                            totalBruto
+                        )}
                         kg
 
                     </div>
@@ -1596,7 +1863,7 @@ function renderFinal() {
                 class="share"
                 onclick="compartilhar()">
 
-                ↗ Compartilhar
+                ↗ Compartilhar imagem
 
             </button>
 
@@ -1627,14 +1894,56 @@ function renderFinal() {
     `;
 
 
-    document.getElementById("app").innerHTML = html;
+    document.getElementById("app").innerHTML =
+        html;
 
 }
 
 
-// ------------------------------------------------------------
-// INICIA
-// ------------------------------------------------------------
+/* ============================================================
+   COMPARTILHAR
+============================================================ */
+
+async function compartilhar() {
+
+    if (
+        navigator.share
+    ) {
+
+        try {
+
+            await navigator.share({
+
+                title:
+                    "Romaneio Interno",
+
+                text:
+                    "Romaneio Interno"
+
+            });
+
+        } catch (erro) {
+
+            console.log(
+                "Compartilhamento cancelado."
+            );
+
+        }
+
+    } else {
+
+        alert(
+            "O compartilhamento será disponibilizado nesta versão."
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   INICIAR
+============================================================ */
 
 render();
 
