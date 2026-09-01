@@ -2303,10 +2303,345 @@ function renderFinal() {
 /* ================================= */
 
 async function compartilhar() {
+    try {
+        const canvas = document.createElement("canvas");
 
-    window.location.href =
-        "scriptable://compartilhar";
+        const largura = 1200;
+        const altura = 900;
 
+        canvas.width = largura;
+        canvas.height = altura;
+
+        const ctx = canvas.getContext("2d");
+
+        // Fundo
+        ctx.fillStyle = "#f1f3f6";
+        ctx.fillRect(0, 0, largura, altura);
+
+        // Cartão principal
+        const margem = 70;
+        const cardX = margem;
+        const cardY = 50;
+        const cardW = largura - (margem * 2);
+        const cardH = 800;
+
+        ctx.fillStyle = "#ffffff";
+        ctx.strokeStyle = "#111827";
+        ctx.lineWidth = 3;
+
+        roundRect(ctx, cardX, cardY, cardW, cardH, 25);
+        ctx.fill();
+        ctx.stroke();
+
+        // Título
+        ctx.fillStyle = "#111827";
+        ctx.font = "900 42px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(
+            "ROMANEIO INTERNO",
+            largura / 2,
+            125
+        );
+
+        // Linha
+        ctx.strokeStyle = "#e5e7eb";
+        ctx.lineWidth = 3;
+
+        ctx.beginPath();
+        ctx.moveTo(110, 155);
+        ctx.lineTo(1090, 155);
+        ctx.stroke();
+
+        // Função para desenhar os campos
+        function campo(x, y, w, h, titulo, valor) {
+
+            ctx.fillStyle = "#f7f8fa";
+            roundRect(ctx, x, y, w, h, 18);
+            ctx.fill();
+
+            ctx.textAlign = "left";
+
+            ctx.fillStyle = "#6b7280";
+            ctx.font = "500 22px Arial";
+            ctx.fillText(titulo, x + 25, y + 35);
+
+            ctx.fillStyle = "#111827";
+            ctx.font = "800 28px Arial";
+
+            let texto = String(valor || "-");
+
+            // Evita que textos muito grandes estourem o campo
+            if (texto.length > 32) {
+                texto = texto.substring(0, 29) + "...";
+            }
+
+            ctx.fillText(texto, x + 25, y + 75);
+        }
+
+        const campoW = 475;
+        const campoH = 105;
+
+        campo(
+            110,
+            190,
+            campoW,
+            campoH,
+            "Cliente",
+            dados.cliente
+        );
+
+        campo(
+            615,
+            190,
+            campoW,
+            campoH,
+            "Item",
+            dados.item
+        );
+
+        campo(
+            110,
+            315,
+            campoW,
+            campoH,
+            "Nº do lote",
+            dados.lote
+        );
+
+        campo(
+            615,
+            315,
+            campoW,
+            campoH,
+            "Data de produção",
+            formatarData(dados.data)
+        );
+
+        campo(
+            110,
+            440,
+            campoW,
+            campoH,
+            "Dimensão",
+            dados.dimensao
+        );
+
+        campo(
+            615,
+            440,
+            campoW,
+            campoH,
+            "Pallets / Itens",
+            `${pallets.length} pallet${pallets.length !== 1 ? "s" : ""} / ${totalItens} itens`
+        );
+
+        // Linha divisória
+        ctx.strokeStyle = "#e5e7eb";
+        ctx.lineWidth = 3;
+
+        ctx.beginPath();
+        ctx.moveTo(110, 575);
+        ctx.lineTo(1090, 575);
+        ctx.stroke();
+
+        // Calcula os pesos
+        let totalLiquido = 0;
+        let totalBruto = 0;
+
+        pallets.forEach(pallet => {
+
+            pallet.items.forEach(item => {
+                const peso = valorNumerico(item.liquido);
+
+                if (!isNaN(peso)) {
+                    totalLiquido += peso;
+                }
+            });
+
+            const bruto = valorNumerico(pallet.bruto);
+
+            if (!isNaN(bruto)) {
+                totalBruto += bruto;
+            }
+        });
+
+        // Caixa peso líquido
+        ctx.fillStyle = "#f3f4f6";
+        roundRect(ctx, 110, 610, 475, 150, 20);
+        ctx.fill();
+
+        ctx.textAlign = "center";
+
+        ctx.fillStyle = "#6b7280";
+        ctx.font = "600 22px Arial";
+        ctx.fillText(
+            "Peso Líquido Total",
+            347,
+            655
+        );
+
+        ctx.fillStyle = "#111827";
+        ctx.font = "900 42px Arial";
+        ctx.fillText(
+            `${formatPeso(totalLiquido)} kg`,
+            347,
+            715
+        );
+
+        // Caixa peso bruto
+        ctx.fillStyle = "#f3f4f6";
+        roundRect(ctx, 615, 610, 475, 150, 20);
+        ctx.fill();
+
+        ctx.fillStyle = "#6b7280";
+        ctx.font = "600 22px Arial";
+        ctx.fillText(
+            "Peso Bruto Total",
+            852,
+            655
+        );
+
+        ctx.fillStyle = "#111827";
+        ctx.font = "900 42px Arial";
+
+        const brutoTexto =
+            totalBruto > 0
+                ? `${formatPeso(totalBruto)} kg`
+                : "Não informado";
+
+        ctx.fillText(
+            brutoTexto,
+            852,
+            715
+        );
+
+        // Rodapé
+        ctx.fillStyle = "#6b7280";
+        ctx.font = "18px Arial";
+        ctx.fillText(
+            "Romaneio interno",
+            largura / 2,
+            815
+        );
+
+        // Converte para PNG
+        canvas.toBlob(async function(blob) {
+
+            if (!blob) {
+                alert("Não foi possível gerar a imagem.");
+                return;
+            }
+
+            const arquivo = new File(
+                [blob],
+                "romaneio-interno.png",
+                {
+                    type: "image/png"
+                }
+            );
+
+            // Compartilhamento nativo do celular
+            if (
+                navigator.share &&
+                navigator.canShare &&
+                navigator.canShare({ files: [arquivo] })
+            ) {
+
+                await navigator.share({
+                    title: "Romaneio Interno",
+                    text: "Romaneio Interno",
+                    files: [arquivo]
+                });
+
+                return;
+            }
+
+            // Caso o navegador não permita compartilhar arquivo,
+            // abre a imagem para o usuário salvar/compartilhar.
+            const url = URL.createObjectURL(blob);
+
+            const novaAba = window.open(url, "_blank");
+
+            if (!novaAba) {
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "romaneio-interno.png";
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            }
+
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+            }, 10000);
+
+        }, "image/png");
+
+    } catch (erro) {
+
+        console.error("Erro ao compartilhar:", erro);
+
+        alert(
+            "Não foi possível compartilhar a imagem neste navegador. " +
+            "Tente novamente ou use outro navegador."
+        );
+    }
+}
+
+
+// Desenha retângulos com cantos arredondados
+function roundRect(ctx, x, y, width, height, radius) {
+
+    ctx.beginPath();
+
+    ctx.moveTo(x + radius, y);
+
+    ctx.lineTo(x + width - radius, y);
+
+    ctx.quadraticCurveTo(
+        x + width,
+        y,
+        x + width,
+        y + radius
+    );
+
+    ctx.lineTo(
+        x + width,
+        y + height - radius
+    );
+
+    ctx.quadraticCurveTo(
+        x + width,
+        y + height,
+        x + width - radius,
+        y + height
+    );
+
+    ctx.lineTo(
+        x + radius,
+        y + height
+    );
+
+    ctx.quadraticCurveTo(
+        x,
+        y + height,
+        x,
+        y + height - radius
+    );
+
+    ctx.lineTo(
+        x,
+        y + radius
+    );
+
+    ctx.quadraticCurveTo(
+        x,
+        y,
+        x + radius,
+        y
+    );
+
+    ctx.closePath();
 }
 
 
