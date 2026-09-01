@@ -5,11 +5,12 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1,
-               maximum-scale=1,
-               user-scalable=no">
+<meta
+    name="viewport"
+    content="width=device-width,
+             initial-scale=1,
+             maximum-scale=1,
+             user-scalable=no">
 
 <title>ROMANEIO INTERNO</title>
 
@@ -35,11 +36,19 @@ body {
     height: 84px;
     background: #111827;
     color: white;
-
     display: flex;
     align-items: center;
-
     padding: 0 22px;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.header img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
 }
 
 .header-title {
@@ -50,16 +59,11 @@ body {
 
 .header-new {
     margin-left: auto;
-
     border: none;
-
     background: #f3f4f6;
     color: #111827;
-
     border-radius: 13px;
-
     padding: 12px 18px;
-
     font-size: 16px;
     font-weight: 700;
 }
@@ -70,35 +74,22 @@ body {
 
 .container {
     max-width: 700px;
-
     margin: 16px auto;
-
     padding: 0 14px;
 }
 
-/* ----------------------------------------------------------
-   CARDS
----------------------------------------------------------- */
-
 .card {
     background: white;
-
     border: 1px solid #e1e5ea;
-
     border-radius: 17px;
-
     padding: 16px;
-
     margin-bottom: 14px;
-
     box-shadow: 0 2px 7px rgba(0,0,0,.04);
 }
 
 .card-title {
     font-size: 20px;
-
     font-weight: 800;
-
     margin-bottom: 14px;
 }
 
@@ -108,15 +99,12 @@ body {
 
 .grid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 12px;
 }
 
 .field {
     display: flex;
-
     flex-direction: column;
 }
 
@@ -126,32 +114,20 @@ body {
 
 label {
     font-size: 13px;
-
     color: #475569;
-
     margin-bottom: 6px;
 }
 
 input {
     width: 100%;
-
     height: 46px;
-
     border: 1px solid #cbd5e1;
-
     border-radius: 11px;
-
     padding: 0 12px;
-
     font-size: 16px;
-
     background: white;
-
     color: #111827;
-
     outline: none;
-
-    -webkit-appearance: none;
 }
 
 input:focus {
@@ -164,31 +140,24 @@ input:focus {
 
 .summary-grid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 10px;
 }
 
 .summary-box {
     background: #f7f8fa;
-
     border-radius: 13px;
-
     padding: 13px;
 }
 
 .summary-label {
     font-size: 13px;
-
     color: #64748b;
 }
 
 .summary-value {
     font-size: 21px;
-
     font-weight: 800;
-
     margin-top: 4px;
 }
 
@@ -198,37 +167,27 @@ input:focus {
 
 .pallet-title {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
 
 .pallet-title h2 {
     margin: 0;
-
     font-size: 20px;
 }
 
 .remove-pallet {
     border: none;
-
     background: #fee2e2;
-
     color: #b91c1c;
-
     border-radius: 9px;
-
     padding: 8px 10px;
-
     font-weight: 700;
 }
 
 .help {
     color: #64748b;
-
     font-size: 13px;
-
     margin: 8px 0 16px;
 }
 
@@ -238,27 +197,20 @@ input:focus {
 
 .item {
     border-top: 1px solid #e5e7eb;
-
     padding-top: 14px;
-
     margin-top: 14px;
 }
 
 .item:first-of-type {
     border-top: none;
-
     padding-top: 0;
-
     margin-top: 0;
 }
 
 .item-head {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     margin-bottom: 9px;
 }
 
@@ -268,29 +220,21 @@ input:focus {
 
 .item-status {
     color: #008a4b;
-
     font-size: 12px;
 }
 
 .remove-item {
     border: none;
-
     background: #fee2e2;
-
     color: #b91c1c;
-
     border-radius: 9px;
-
     padding: 7px 10px;
-
     font-weight: 700;
 }
 
 .item-fields {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 10px;
 }
 
@@ -300,89 +244,60 @@ input:focus {
 
 .bruto {
     margin-top: 15px;
-
     padding-top: 14px;
-
     border-top: 1px dashed #d1d5db;
 }
 
 .bruto-title {
     font-size: 13px;
-
     color: #475569;
-
     margin-bottom: 6px;
 }
 
 /* ----------------------------------------------------------
-   BOTÃO ADICIONAR ITEM
+   BOTÕES
 ---------------------------------------------------------- */
 
 .add-item {
     width: 100%;
-
     height: 44px;
-
     margin-top: 14px;
-
     border: 1px dashed #94a3b8;
-
     background: #f8fafc;
-
     border-radius: 11px;
-
     font-weight: 700;
-
     color: #334155;
 }
 
-/* ----------------------------------------------------------
-   BARRA INFERIOR
----------------------------------------------------------- */
-
 .bottom {
     position: fixed;
-
     left: 0;
     right: 0;
     bottom: 0;
-
     background: white;
-
     border-top: 1px solid #dbe0e6;
-
     padding: 10px 14px;
-
     display: flex;
-
     gap: 8px;
-
     z-index: 30;
 }
 
 .bottom button {
     flex: 1;
-
     height: 48px;
-
     border: none;
-
     border-radius: 12px;
-
     font-size: 15px;
-
     font-weight: 800;
 }
 
 .btn-light {
     background: #eef0f2;
-
     color: #111827;
 }
 
 .btn-dark {
     background: #111827;
-
     color: white;
 }
 
@@ -396,147 +311,113 @@ input:focus {
 
 .final-card {
     max-width: 700px;
-
     margin: 0 auto;
-
     background: white;
-
     border: 1.5px solid #111827;
-
     border-radius: 18px;
-
     padding: 18px;
 }
 
 .final-header {
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
+    gap: 16px;
     border-bottom: 2px solid #e5e7eb;
-
     padding-bottom: 17px;
-
     margin-bottom: 18px;
+}
+
+.final-header img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
 }
 
 .final-title {
     font-size: 27px;
-
     font-weight: 900;
-
     letter-spacing: 1px;
 }
 
 .final-grid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 10px;
 }
 
 .final-info {
     background: #f7f8fa;
-
     border-radius: 12px;
-
     padding: 12px;
 }
 
 .final-label {
     color: #6b7280;
-
     font-size: 13px;
 }
 
 .final-value {
     font-weight: 800;
-
     font-size: 16px;
-
     margin-top: 4px;
 }
 
 .final-line {
     border-top: 2px solid #e5e7eb;
-
     margin: 18px 0;
 }
 
 .final-weight-grid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 12px;
 }
 
 .final-weight {
     background: #f3f4f6;
-
     border-radius: 15px;
-
     text-align: center;
-
     padding: 22px 10px;
 }
 
 .final-weight-label {
     color: #6b7280;
-
     font-size: 15px;
-
     text-transform: uppercase;
 }
 
 .final-weight-value {
     font-size: 30px;
-
     font-weight: 900;
-
     margin-top: 10px;
 }
 
 .final-footer {
     text-align: center;
-
     color: #6b7280;
-
     margin-top: 70px;
-
     font-size: 14px;
 }
 
 .final-buttons {
     max-width: 700px;
-
     margin: 14px auto 0;
-
     display: grid;
-
     grid-template-columns: 1fr 1fr 1fr;
-
     gap: 8px;
 }
 
 .final-buttons button {
     height: 48px;
-
     border: none;
-
     border-radius: 12px;
-
     font-weight: 800;
-
     font-size: 14px;
 }
 
 .share {
     background: #111827;
-
     color: white;
 }
 
@@ -556,8 +437,13 @@ input:focus {
 
     .header {
         height: 82px;
-
         padding: 0 16px;
+        gap: 12px;
+    }
+
+    .header img {
+        width: 48px;
+        height: 48px;
     }
 
     .header-title {
@@ -583,6 +469,11 @@ input:focus {
     .final-buttons button {
         font-size: 12px;
     }
+
+    .header-new {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
 }
 
 </style>
@@ -596,11 +487,18 @@ input:focus {
 <script>
 
 /* ==========================================================
+   CONFIGURAÇÃO
+========================================================== */
+
+const LOGO =
+    "https://biomasterplast.com.br/static/sb_admin/images/logo_light.svg";
+
+
+/* ==========================================================
    DADOS
 ========================================================== */
 
 let pallets = [
-
     {
         items: [
             {
@@ -608,31 +506,23 @@ let pallets = [
                 liquido: ""
             }
         ],
-
         bruto: ""
     }
-
 ];
 
 let dados = {
-
     cliente: "",
-
     item: "",
-
     lote: "",
-
     data: "",
-
     dimensao: ""
-
 };
 
 let telaFinal = false;
 
 
 /* ==========================================================
-   DATA ATUAL
+   DATA
 ========================================================== */
 
 function dataHoje() {
@@ -654,7 +544,7 @@ dados.data = dataHoje();
 
 
 /* ==========================================================
-   FORMATAR DATA
+   FORMATA DATA
 ========================================================== */
 
 function formatarData(valor) {
@@ -678,41 +568,149 @@ function formatarData(valor) {
 
 
 /* ==========================================================
-   ESCAPAR HTML
+   ESCAPE HTML
 ========================================================== */
 
 function escapeHtml(text) {
 
     return String(text ?? "")
-
         .replace(/&/g, "&amp;")
-
         .replace(/</g, "&lt;")
-
         .replace(/>/g, "&gt;")
-
         .replace(/"/g, "&quot;")
-
         .replace(/'/g, "&#039;");
 }
 
 
 /* ==========================================================
-   FORMATAR PESO
+   CONVERTE PESO
+========================================================== */
+
+/*
+   Aceita:
+
+   10
+   10.5
+   10,5
+   100,50
+   1.250,50
+*/
+
+function numeroPeso(valor) {
+
+    if (
+        valor === null ||
+        valor === undefined ||
+        valor === ""
+    ) {
+        return NaN;
+    }
+
+    let texto = String(valor).trim();
+
+    /*
+       Se tiver vírgula, consideramos a vírgula
+       como separador decimal.
+    */
+
+    if (texto.includes(",")) {
+
+        texto = texto.replace(/\./g, "");
+
+        texto = texto.replace(",", ".");
+    }
+
+    const numero = parseFloat(texto);
+
+    return numero;
+}
+
+
+/* ==========================================================
+   FORMATA PESO
 ========================================================== */
 
 function formatPeso(valor) {
 
-    if (!valor) {
+    if (
+        valor === null ||
+        valor === undefined ||
+        isNaN(valor)
+    ) {
         return "0";
     }
 
     return Number(valor).toLocaleString(
         "pt-BR",
         {
+            minimumFractionDigits: 0,
             maximumFractionDigits: 2
         }
     );
+}
+
+
+/* ==========================================================
+   CALCULA TOTAL LÍQUIDO
+========================================================== */
+
+function calcularTotalLiquido() {
+
+    let total = 0;
+
+    pallets.forEach(function(pallet) {
+
+        pallet.items.forEach(function(item) {
+
+            const peso =
+                numeroPeso(item.liquido);
+
+            if (!isNaN(peso)) {
+                total += peso;
+            }
+        });
+    });
+
+    return total;
+}
+
+
+/* ==========================================================
+   CALCULA TOTAL BRUTO
+========================================================== */
+
+function calcularTotalBruto() {
+
+    let total = 0;
+
+    pallets.forEach(function(pallet) {
+
+        const bruto =
+            numeroPeso(pallet.bruto);
+
+        if (!isNaN(bruto)) {
+            total += bruto;
+        }
+    });
+
+    return total;
+}
+
+
+/* ==========================================================
+   QUANTIDADE DE ITENS
+========================================================== */
+
+function calcularQuantidadeItens() {
+
+    let quantidade = 0;
+
+    pallets.forEach(function(pallet) {
+
+        quantidade += pallet.items.length;
+    });
+
+    return quantidade;
 }
 
 
@@ -724,21 +722,20 @@ function calcularPendencias() {
 
     let pendencias = 0;
 
-    pallets.forEach(p => {
+    pallets.forEach(function(pallet) {
 
-        p.items.forEach(i => {
+        pallet.items.forEach(function(item) {
+
+            const peso =
+                numeroPeso(item.liquido);
 
             if (
-                i.liquido === "" ||
-                isNaN(parseFloat(i.liquido))
+                item.liquido === "" ||
+                isNaN(peso)
             ) {
-
                 pendencias++;
-
             }
-
         });
-
     });
 
     return pendencias;
@@ -746,66 +743,102 @@ function calcularPendencias() {
 
 
 /* ==========================================================
-   ATUALIZA RESUMO SEM RECARREGAR A TELA
+   ATUALIZA SOMENTE O RESUMO
 ========================================================== */
+
+/*
+   IMPORTANTE:
+
+   Esta função substitui o antigo "render()"
+   durante a digitação dos pesos.
+
+   Assim o campo NÃO é recriado a cada número
+   digitado e o teclado do celular permanece aberto.
+*/
 
 function atualizarResumo() {
 
-    let totalLiquido = 0;
+    const totalLiquido =
+        calcularTotalLiquido();
 
-    let totalBruto = 0;
+    const totalBruto =
+        calcularTotalBruto();
 
-    let quantidadeItens = 0;
+    const quantidadeItens =
+        calcularQuantidadeItens();
 
-    pallets.forEach(p => {
+    const pendencias =
+        calcularPendencias();
 
-        p.items.forEach(i => {
+    const liquidoElemento =
+        document.getElementById("totalLiquido");
 
-            const peso =
-                parseFloat(i.liquido);
+    const brutoElemento =
+        document.getElementById("totalBruto");
 
-            if (!isNaN(peso)) {
+    const itensElemento =
+        document.getElementById("quantidadeItens");
 
-                totalLiquido += peso;
+    const pendenciasElemento =
+        document.getElementById("pendencias");
 
-            }
+    if (liquidoElemento) {
 
-            quantidadeItens++;
-
-        });
-
-        const bruto =
-            parseFloat(p.bruto);
-
-        if (!isNaN(bruto)) {
-
-            totalBruto += bruto;
-
-        }
-
-    });
-
-
-    const elementos =
-        document.querySelectorAll(".summary-value");
-
-
-    if (elementos.length >= 4) {
-
-        elementos[0].textContent =
+        liquidoElemento.textContent =
             formatPeso(totalLiquido) + " kg";
-
-        elementos[1].textContent =
-            formatPeso(totalBruto) + " kg";
-
-        elementos[2].textContent =
-            quantidadeItens;
-
-        elementos[3].textContent =
-            calcularPendencias();
-
     }
 
+    if (brutoElemento) {
+
+        brutoElemento.textContent =
+            formatPeso(totalBruto) + " kg";
+    }
+
+    if (itensElemento) {
+
+        itensElemento.textContent =
+            quantidadeItens;
+    }
+
+    if (pendenciasElemento) {
+
+        pendenciasElemento.textContent =
+            pendencias;
+    }
+
+    /*
+       Atualiza também os indicadores
+       "✓ preenchido" sem reconstruir a tela.
+    */
+
+    document
+        .querySelectorAll("[data-status]")
+        .forEach(function(elemento) {
+
+            const pi =
+                Number(elemento.dataset.pallet);
+
+            const ii =
+                Number(elemento.dataset.item);
+
+            if (
+                pallets[pi] &&
+                pallets[pi].items[ii]
+            ) {
+
+                const valor =
+                    pallets[pi].items[ii].liquido;
+
+                const preenchido =
+                    valor !== "" &&
+                    !isNaN(numeroPeso(valor));
+
+                elemento.textContent =
+                    preenchido
+                        ? "✓ preenchido"
+                        : "";
+            }
+        });
 }
 
 
@@ -820,9 +853,7 @@ function render() {
         renderFinal();
 
         return;
-
     }
-
 
     let html = "";
 
@@ -834,6 +865,8 @@ function render() {
     html += `
 
     <div class="header">
+
+        <img src="${LOGO}">
 
         <div class="header-title">
             ROMANEIO INTERNO
@@ -852,9 +885,7 @@ function render() {
     `;
 
 
-    html += `
-    <div class="container">
-    `;
+    html += `<div class="container">`;
 
 
     /* ------------------------------------------------------
@@ -871,7 +902,6 @@ function render() {
 
         <div class="grid">
 
-
             <div class="field full">
 
                 <label>
@@ -879,6 +909,7 @@ function render() {
                 </label>
 
                 <input
+                    type="text"
                     value="${escapeHtml(dados.cliente)}"
                     oninput="dados.cliente=this.value">
 
@@ -892,6 +923,7 @@ function render() {
                 </label>
 
                 <input
+                    type="text"
                     value="${escapeHtml(dados.item)}"
                     oninput="dados.item=this.value">
 
@@ -905,6 +937,7 @@ function render() {
                 </label>
 
                 <input
+                    type="text"
                     value="${escapeHtml(dados.lote)}"
                     oninput="dados.lote=this.value">
 
@@ -932,11 +965,11 @@ function render() {
                 </label>
 
                 <input
+                    type="text"
                     value="${escapeHtml(dados.dimensao)}"
                     oninput="dados.dimensao=this.value">
 
             </div>
-
 
         </div>
 
@@ -946,49 +979,21 @@ function render() {
 
 
     /* ------------------------------------------------------
-       CALCULAR RESUMO
-    ------------------------------------------------------ */
-
-    let totalLiquido = 0;
-
-    let totalBruto = 0;
-
-    let quantidadeItens = 0;
-
-
-    pallets.forEach(p => {
-
-        p.items.forEach(i => {
-
-            const peso =
-                parseFloat(i.liquido);
-
-            if (!isNaN(peso)) {
-
-                totalLiquido += peso;
-
-            }
-
-            quantidadeItens++;
-
-        });
-
-
-        const bruto =
-            parseFloat(p.bruto);
-
-        if (!isNaN(bruto)) {
-
-            totalBruto += bruto;
-
-        }
-
-    });
-
-
-    /* ------------------------------------------------------
        RESUMO
     ------------------------------------------------------ */
+
+    const totalLiquido =
+        calcularTotalLiquido();
+
+    const totalBruto =
+        calcularTotalBruto();
+
+    const quantidadeItens =
+        calcularQuantidadeItens();
+
+    const pendencias =
+        calcularPendencias();
+
 
     html += `
 
@@ -999,8 +1004,7 @@ function render() {
             style="
                 display:flex;
                 justify-content:space-between;
-            "
-        >
+            ">
 
             <span>
                 Resumo
@@ -1013,8 +1017,7 @@ function render() {
                     border-radius:20px;
                     font-size:12px;
                     font-weight:500;
-                "
-            >
+                ">
 
                 ${pallets.length}
                 pallet${pallets.length !== 1 ? "s" : ""}
@@ -1033,8 +1036,13 @@ function render() {
                     Peso líquido total
                 </div>
 
-                <div class="summary-value">
-                    ${formatPeso(totalLiquido)} kg
+                <div
+                    class="summary-value"
+                    id="totalLiquido">
+
+                    ${formatPeso(totalLiquido)}
+                    kg
+
                 </div>
 
             </div>
@@ -1046,8 +1054,13 @@ function render() {
                     Peso bruto total
                 </div>
 
-                <div class="summary-value">
-                    ${formatPeso(totalBruto)} kg
+                <div
+                    class="summary-value"
+                    id="totalBruto">
+
+                    ${formatPeso(totalBruto)}
+                    kg
+
                 </div>
 
             </div>
@@ -1059,8 +1072,12 @@ function render() {
                     Itens
                 </div>
 
-                <div class="summary-value">
+                <div
+                    class="summary-value"
+                    id="quantidadeItens">
+
                     ${quantidadeItens}
+
                 </div>
 
             </div>
@@ -1072,8 +1089,12 @@ function render() {
                     Pendências
                 </div>
 
-                <div class="summary-value">
-                    ${calcularPendencias()}
+                <div
+                    class="summary-value"
+                    id="pendencias">
+
+                    ${pendencias}
+
                 </div>
 
             </div>
@@ -1090,8 +1111,7 @@ function render() {
        PALLETS
     ------------------------------------------------------ */
 
-    pallets.forEach((pallet, pi) => {
-
+    pallets.forEach(function(pallet, pi) {
 
         html += `
 
@@ -1103,7 +1123,6 @@ function render() {
                 <h2>
                     Pallet ${pi + 1}
                 </h2>
-
 
                 ${
                     pallets.length > 1
@@ -1120,7 +1139,6 @@ function render() {
                     :
                     ""
                 }
-
 
             </div>
 
@@ -1139,14 +1157,11 @@ function render() {
            ITENS
         -------------------------------------------------- */
 
-        pallet.items.forEach((item, ii) => {
-
+        pallet.items.forEach(function(item, ii) {
 
             const preenchido =
                 item.liquido !== "" &&
-                !isNaN(
-                    parseFloat(item.liquido)
-                );
+                !isNaN(numeroPeso(item.liquido));
 
 
             html += `
@@ -1169,21 +1184,19 @@ function render() {
                             display:flex;
                             gap:8px;
                             align-items:center;
-                        "
-                    >
+                        ">
 
 
                         <span
                             class="item-status"
-                            id="status-${pi}-${ii}"
-                        >
+                            data-status
+                            data-pallet="${pi}"
+                            data-item="${ii}">
 
                             ${
                                 preenchido
-                                ?
-                                "✓ preenchido"
-                                :
-                                ""
+                                ? "✓ preenchido"
+                                : ""
                             }
 
                         </span>
@@ -1208,7 +1221,6 @@ function render() {
 
                     </div>
 
-
                 </div>
 
 
@@ -1221,19 +1233,16 @@ function render() {
                             Número
                         </label>
 
-
                         <input
                             type="number"
-                            inputmode="numeric"
-                            value="${item.numero}"
+                            value="${escapeHtml(item.numero)}"
                             onchange="
                                 alterarNumero(
                                     ${pi},
                                     ${ii},
                                     this.value
                                 )
-                            "
-                        >
+                            ">
 
                     </div>
 
@@ -1244,20 +1253,19 @@ function render() {
                             Peso líquido (kg)
                         </label>
 
-
                         <input
-                            type="number"
-                            step="0.01"
+                            type="text"
                             inputmode="decimal"
-                            value="${item.liquido}"
+                            autocomplete="off"
+                            value="${escapeHtml(item.liquido)}"
+                            placeholder="Digite o peso"
                             oninput="
                                 alterarLiquido(
                                     ${pi},
                                     ${ii},
                                     this.value
                                 )
-                            "
-                        >
+                            ">
 
                     </div>
 
@@ -1289,7 +1297,6 @@ function render() {
                 </button>
 
             `;
-
         }
 
 
@@ -1301,7 +1308,6 @@ function render() {
 
             <div class="bruto">
 
-
                 <div class="bruto-title">
 
                     Peso Bruto do pallet (opcional)
@@ -1310,20 +1316,17 @@ function render() {
 
 
                 <input
-                    type="number"
-                    step="0.01"
+                    type="text"
                     inputmode="decimal"
+                    autocomplete="off"
                     placeholder="Digite o peso bruto"
-                    value="${pallet.bruto}"
-
+                    value="${escapeHtml(pallet.bruto)}"
                     oninput="
                         alterarBruto(
                             ${pi},
                             this.value
                         )
-                    "
-                >
-
+                    ">
 
             </div>
 
@@ -1335,21 +1338,16 @@ function render() {
     });
 
 
-    html += `
-
-    </div>
-
-    `;
+    html += `</div>`;
 
 
     /* ------------------------------------------------------
-       BOTÕES INFERIORES
+       BARRA INFERIOR
     ------------------------------------------------------ */
 
     html += `
 
     <div class="bottom">
-
 
         <button
             class="btn-light"
@@ -1368,16 +1366,13 @@ function render() {
 
         </button>
 
-
     </div>
 
     `;
 
 
-    document
-        .getElementById("app")
-        .innerHTML = html;
-
+    document.getElementById("app").innerHTML =
+        html;
 }
 
 
@@ -1387,7 +1382,8 @@ function render() {
 
 function alterarNumero(pi, ii, valor) {
 
-    pallets[pi].items[ii].numero = valor;
+    pallets[pi].items[ii].numero =
+        valor;
 
 }
 
@@ -1396,48 +1392,31 @@ function alterarNumero(pi, ii, valor) {
    ALTERAR PESO LÍQUIDO
 ========================================================== */
 
+/*
+   NÃO fazemos render() aqui.
+
+   Isso é o que resolve o problema do teclado.
+
+   O campo continua sendo o mesmo campo enquanto
+   a pessoa digita.
+
+   Exemplo:
+
+   1
+   10
+   100
+   100,5
+   100,50
+
+   O teclado permanece aberto.
+*/
+
 function alterarLiquido(pi, ii, valor) {
 
-    /*
-       IMPORTANTE:
-
-       NÃO usamos render() aqui.
-
-       Se usássemos render(), o campo perderia
-       o foco a cada algarismo digitado no celular.
-    */
-
-    pallets[pi].items[ii].liquido = valor;
-
-
-    const status =
-        document.getElementById(
-            `status-${pi}-${ii}`
-        );
-
-
-    if (status) {
-
-        if (
-            valor !== "" &&
-            !isNaN(parseFloat(valor))
-        ) {
-
-            status.textContent =
-                "✓ preenchido";
-
-        } else {
-
-            status.textContent =
-                "";
-
-        }
-
-    }
-
+    pallets[pi].items[ii].liquido =
+        valor;
 
     atualizarResumo();
-
 }
 
 
@@ -1447,14 +1426,10 @@ function alterarLiquido(pi, ii, valor) {
 
 function alterarBruto(pi, valor) {
 
-    /*
-       Também não usamos render() aqui.
-    */
-
-    pallets[pi].bruto = valor;
+    pallets[pi].bruto =
+        valor;
 
     atualizarResumo();
-
 }
 
 
@@ -1471,7 +1446,6 @@ function adicionarItem(pi) {
         );
 
         return;
-
     }
 
 
@@ -1486,7 +1460,6 @@ function adicionarItem(pi) {
 
 
     render();
-
 }
 
 
@@ -1503,7 +1476,6 @@ function removerItem(pi, ii) {
         );
 
         return;
-
     }
 
 
@@ -1511,7 +1483,7 @@ function removerItem(pi, ii) {
 
 
     pallets[pi].items.forEach(
-        (item, index) => {
+        function(item, index) {
 
             item.numero =
                 index + 1;
@@ -1521,7 +1493,6 @@ function removerItem(pi, ii) {
 
 
     render();
-
 }
 
 
@@ -1548,7 +1519,6 @@ function adicionarPallet() {
 
 
     render();
-
 }
 
 
@@ -1565,14 +1535,13 @@ function removerPallet(pi) {
         );
 
         return;
-
     }
 
 
     pallets.splice(pi, 1);
 
-    render();
 
+    render();
 }
 
 
@@ -1597,13 +1566,9 @@ function novoRomaneio() {
     dados = {
 
         cliente: "",
-
         item: "",
-
         lote: "",
-
         data: dataHoje(),
-
         dimensao: ""
 
     };
@@ -1633,7 +1598,6 @@ function novoRomaneio() {
 
 
     render();
-
 }
 
 
@@ -1663,14 +1627,13 @@ function finalizar() {
         if (!continuar) {
             return;
         }
-
     }
 
 
     telaFinal = true;
 
-    render();
 
+    render();
 }
 
 
@@ -1683,7 +1646,6 @@ function voltar() {
     telaFinal = false;
 
     render();
-
 }
 
 
@@ -1693,45 +1655,14 @@ function voltar() {
 
 function renderFinal() {
 
-    let totalLiquido = 0;
+    let totalLiquido =
+        calcularTotalLiquido();
 
-    let totalBruto = 0;
+    let totalBruto =
+        calcularTotalBruto();
 
-    let totalItens = 0;
-
-
-    pallets.forEach(p => {
-
-
-        p.items.forEach(i => {
-
-            const peso =
-                parseFloat(i.liquido);
-
-
-            if (!isNaN(peso)) {
-
-                totalLiquido += peso;
-
-            }
-
-
-            totalItens++;
-
-        });
-
-
-        const bruto =
-            parseFloat(p.bruto);
-
-
-        if (!isNaN(bruto)) {
-
-            totalBruto += bruto;
-
-        }
-
-    });
+    let totalItens =
+        calcularQuantidadeItens();
 
 
     const html = `
@@ -1741,11 +1672,13 @@ function renderFinal() {
 
         <div
             class="final-card"
-            id="romaneioImagem"
-        >
+            id="romaneioImagem">
 
 
             <div class="final-header">
+
+
+                <img src="${LOGO}">
 
 
                 <div class="final-title">
@@ -1770,9 +1703,8 @@ function renderFinal() {
                     <div class="final-value">
 
                         ${
-                            escapeHtml(
-                                dados.cliente
-                            ) || "-"
+                            escapeHtml(dados.cliente)
+                            || "-"
                         }
 
                     </div>
@@ -1789,9 +1721,8 @@ function renderFinal() {
                     <div class="final-value">
 
                         ${
-                            escapeHtml(
-                                dados.item
-                            ) || "-"
+                            escapeHtml(dados.item)
+                            || "-"
                         }
 
                     </div>
@@ -1808,9 +1739,8 @@ function renderFinal() {
                     <div class="final-value">
 
                         ${
-                            escapeHtml(
-                                dados.lote
-                            ) || "-"
+                            escapeHtml(dados.lote)
+                            || "-"
                         }
 
                     </div>
@@ -1827,9 +1757,8 @@ function renderFinal() {
                     <div class="final-value">
 
                         ${
-                            formatarData(
-                                dados.data
-                            ) || "-"
+                            formatarData(dados.data)
+                            || "-"
                         }
 
                     </div>
@@ -1846,9 +1775,8 @@ function renderFinal() {
                     <div class="final-value">
 
                         ${
-                            escapeHtml(
-                                dados.dimensao
-                            ) || "-"
+                            escapeHtml(dados.dimensao)
+                            || "-"
                         }
 
                     </div>
@@ -1864,14 +1792,24 @@ function renderFinal() {
 
                     <div class="final-value">
 
-                        ${pallets.length}
-                        pallet${pallets.length !== 1 ? "s" : ""}
+                        ${
+                            pallets.length
+                        }
+                        pallet${
+                            pallets.length !== 1
+                            ? "s"
+                            : ""
+                        }
 
                         /
 
                         ${totalItens}
 
-                        itens
+                        ${
+                            totalItens !== 1
+                            ? " itens"
+                            : " item"
+                        }
 
                     </div>
 
@@ -1898,7 +1836,10 @@ function renderFinal() {
 
                     <div class="final-weight-value">
 
-                        ${formatPeso(totalLiquido)}
+                        ${
+                            formatPeso(totalLiquido)
+                        }
+
                         kg
 
                     </div>
@@ -1917,7 +1858,10 @@ function renderFinal() {
 
                     <div class="final-weight-value">
 
-                        ${formatPeso(totalBruto)}
+                        ${
+                            formatPeso(totalBruto)
+                        }
+
                         kg
 
                     </div>
@@ -1976,10 +1920,8 @@ function renderFinal() {
     `;
 
 
-    document
-        .getElementById("app")
-        .innerHTML = html;
-
+    document.getElementById("app").innerHTML =
+        html;
 }
 
 
@@ -1990,21 +1932,16 @@ function renderFinal() {
 async function compartilhar() {
 
     /*
-       Por enquanto deixamos essa função preparada.
-
-       Futuramente podemos fazer o botão gerar
-       uma imagem real do romaneio.
+       Mantido o comando original para o Scriptable.
     */
 
-    alert(
-        "A função de compartilhar imagem será configurada na próxima etapa."
-    );
-
+    window.location.href =
+        "scriptable://compartilhar";
 }
 
 
 /* ==========================================================
-   INICIALIZAÇÃO
+   INICIALIZA
 ========================================================== */
 
 render();
