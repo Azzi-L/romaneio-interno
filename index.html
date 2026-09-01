@@ -1,1682 +1,2267 @@
-<!doctype html>
-<html lang="pt-BR" translate="no">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <meta name="theme-color" content="#111827">
+
 <title>ROMANEIO INTERNO</title>
 
 <style>
+
 :root{
-  --bg:#f3f4f6;
-  --card:#fff;
-  --text:#111827;
-  --muted:#6b7280;
-  --line:#e5e7eb;
-  --primary:#111827;
-  --ok:#166534;
-  --warn:#b45309
+    --bg:#f3f4f6;
+    --card:#ffffff;
+    --text:#111827;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --primary:#111827;
+    --secondary:#eef0f2;
+    --danger-bg:#fee2e2;
+    --danger:#991b1b;
+    --ok:#166534;
+    --warning:#b45309;
 }
 
 *{
-  box-sizing:border-box
+    box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  background:var(--bg);
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--text)
-}
-
-body.final-mode{
-  background:#f3f4f6
-}
-
-body.final-mode header{
-  display:none
-}
-
-body.final-mode main{
-  max-width:720px;
-  padding:18px 12px 30px
-}
-
-body.final-mode .editor-only{
-  display:none!important
-}
-
-body.final-mode .final-card{
-  display:block!important
-}
-
-body.final-mode .bottom{
-  display:none!important
-}
-
-body.final-mode .final-actions{
-  display:flex!important;
-  flex-wrap:wrap
-}
-
-.final-actions{
-  display:none;
-  gap:8px;
-  margin:12px 0 0
-}
-
-.final-actions button{
-  flex:1;
-  min-height:46px
-}
-
-.share-note{
-  font-size:11px;
-  color:var(--muted);
-  text-align:center;
-  margin-top:8px
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+    padding-bottom:100px;
 }
 
 header{
-  background:var(--primary);
-  color:white;
-  padding:18px 16px 16px;
-  position:sticky;
-  top:0;
-  z-index:10
-}
-
-h1{
-  font-size:21px;
-  margin:0 0 4px
-}
-
-.sub{
-  font-size:13px;
-  opacity:.75
-}
-
-main{
-  max-width:720px;
-  margin:auto;
-  padding:14px 12px 100px
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:14px;
-  margin-bottom:12px;
-  box-shadow:0 2px 8px #00000008
-}
-
-label{
-  font-size:12px;
-  font-weight:700;
-  color:var(--muted);
-  display:block;
-  margin-bottom:6px
-}
-
-input{
-  width:100%;
-  height:46px;
-  border:1px solid #d1d5db;
-  border-radius:10px;
-  padding:0 12px;
-  font-size:16px;
-  background:white
-}
-
-input:focus{
-  outline:2px solid #9ca3af;
-  border-color:#6b7280
-}
-
-.row{
-  display:grid;
-  grid-template-columns:1.05fr 1fr 1fr;
-  gap:8px;
-  align-items:end
-}
-
-.pallet-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:12px
-}
-
-.pallet-title{
-  font-size:18px;
-  font-weight:800
-}
-
-.badge{
-  font-size:12px;
-  padding:5px 8px;
-  border-radius:999px;
-  background:#f3f4f6;
-  color:var(--muted)
-}
-
-.item{
-  border-top:1px solid var(--line);
-  padding:12px 0
-}
-
-.item:first-child{
-  border-top:0;
-  padding-top:0
-}
-
-.item-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:8px
-}
-
-.item-num{
-  font-weight:700;
-  font-size:14px
-}
-
-.item-status{
-  font-size:11px;
-  color:var(--warn)
-}
-
-.item-status.ok{
-  color:var(--ok)
-}
-
-.actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap
-}
-
-button{
-  border:0;
-  border-radius:11px;
-  padding:12px 14px;
-  font-weight:700;
-  font-size:14px;
-  cursor:pointer
-}
-
-.primary{
-  background:#111827;
-  color:white
-}
-
-.secondary{
-  background:#eef0f2;
-  color:#111827
-}
-
-.danger{
-  background:#fee2e2;
-  color:#991b1b
-}
-
-.full{
-  width:100%;
-  margin-top:4px
-}
-
-.summary{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px
-}
-
-.stat{
-  background:#f9fafb;
-  border-radius:12px;
-  padding:12px
-}
-
-.stat b{
-  display:block;
-  font-size:20px;
-  margin-top:3px
-}
-
-.stat span{
-  font-size:12px;
-  color:var(--muted)
-}
-
-.bottom{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  background:white;
-  border-top:1px solid var(--line);
-  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-  z-index:20
-}
-
-.bottom-inner{
-  max-width:720px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px
-}
-
-.empty{
-  padding:18px;
-  text-align:center;
-  color:var(--muted);
-  font-size:14px
-}
-
-.small{
-  font-size:12px;
-  color:var(--muted);
-  line-height:1.4
-}
-
-.pallet-bruto{
-  margin:12px 0;
-  padding:12px 0;
-  border-top:1px solid var(--line)
-}
-
-.pallet-bruto label{
-  display:flex;
-  justify-content:space-between;
-  align-items:center
-}
-
-.pallet-bruto input{
-  width:100%;
-  box-sizing:border-box;
-  margin-top:6px
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px
-}
-
-.info-grid .wide{
-  grid-column:1/-1
-}
-
-.final-card{
-  display:none;
-  background:white;
-  border:2px solid #111827;
-  border-radius:18px;
-  padding:18px;
-  margin-bottom:14px
-}
-
-.final-title{
-  text-align:center;
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:1px;
-  margin-bottom:16px
-}
-
-.final-info{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  border-bottom:1px solid var(--line);
-  padding-bottom:14px;
-  margin-bottom:14px
-}
-
-.final-field{
-  background:#f9fafb;
-  border-radius:10px;
-  padding:10px
-}
-
-.final-field span{
-  display:block;
-  font-size:11px;
-  color:var(--muted);
-  font-weight:700;
-  margin-bottom:3px
-}
-
-.final-field b{
-  font-size:14px;
-  word-break:break-word
-}
-
-.weight-total{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px
-}
-
-.weight-box{
-  border-radius:12px;
-  background:#f3f4f6;
-  padding:13px;
-  text-align:center
-}
-
-.weight-box span{
-  display:block;
-  font-size:11px;
-  color:var(--muted);
-  font-weight:700
-}
-
-.weight-box b{
-  display:block;
-  font-size:21px;
-  margin-top:4px
-}
-
-@media(max-width:480px){
-  .row{
-    grid-template-columns:.9fr 1fr 1fr
-  }
-
-  input{
-    height:48px
-  }
-
-  .pallet-title{
-    font-size:17px
-  }
+    background:var(--primary);
+    color:#fff;
+    padding:18px 16px;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
 .header-inner{
-  max-width:980px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  min-width:0
-}
-
-.brand-logo{
-  width:58px;
-  height:38px;
-  object-fit:contain;
-  display:block;
-  background:transparent
+    max-width:980px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .brand h1{
-  margin:0;
-  font-size:22px;
-  line-height:1.1;
-  letter-spacing:.3px
+    margin:0;
+    font-size:22px;
+    letter-spacing:.3px;
 }
 
-.header-new{
-  white-space:nowrap
+main{
+    max-width:720px;
+    margin:auto;
+    padding:14px 12px 100px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px;
+    margin-bottom:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.03);
+}
+
+.pallet-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.pallet-title{
+    font-size:18px;
+    font-weight:800;
+}
+
+.badge{
+    font-size:12px;
+    padding:5px 9px;
+    border-radius:999px;
+    background:#f3f4f6;
+    color:var(--muted);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.info-grid .wide{
+    grid-column:1 / -1;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+}
+
+input{
+    width:100%;
+    height:46px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    padding:0 12px;
+    font-size:16px;
+    background:#fff;
+}
+
+input:focus{
+    outline:2px solid #9ca3af;
+    border-color:#6b7280;
+}
+
+.summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.stat{
+    background:#f9fafb;
+    border-radius:12px;
+    padding:12px;
+}
+
+.stat span{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.stat b{
+    display:block;
+    font-size:20px;
+    margin-top:4px;
+}
+
+.item{
+    border-top:1px solid var(--line);
+    padding:12px 0;
+}
+
+.item:first-child{
+    border-top:0;
+    padding-top:0;
+}
+
+.item-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:8px;
+}
+
+.item-num{
+    font-size:14px;
+    font-weight:700;
+}
+
+.item-status{
+    font-size:11px;
+    color:var(--warning);
+}
+
+.item-status.ok{
+    color:var(--ok);
+}
+
+.item-fields{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+button{
+    border:0;
+    border-radius:11px;
+    padding:12px 14px;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.primary{
+    background:var(--primary);
+    color:#fff;
+}
+
+.secondary{
+    background:var(--secondary);
+    color:var(--text);
+}
+
+.danger{
+    background:var(--danger-bg);
+    color:var(--danger);
+}
+
+.full{
+    width:100%;
+    margin-top:5px;
+}
+
+.small{
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.4;
+}
+
+.pallet-bruto{
+    border-top:1px solid var(--line);
+    margin-top:10px;
+    padding-top:12px;
+}
+
+.pallet-bruto-title{
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.bottom{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#fff;
+    border-top:1px solid var(--line);
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    z-index:20;
+}
+
+.bottom-inner{
+    max-width:720px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.final-card{
+    display:none;
+    background:#fff;
+    border:2px solid #111827;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:14px;
+}
+
+.final-title{
+    text-align:center;
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:16px;
+}
+
+.final-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+    margin-bottom:14px;
+}
+
+.final-field{
+    background:#f9fafb;
+    border-radius:10px;
+    padding:10px;
+}
+
+.final-field span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:4px;
+}
+
+.final-field b{
+    display:block;
+    font-size:14px;
+    word-break:break-word;
+}
+
+.weight-total{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.weight-box{
+    background:#f3f4f6;
+    border-radius:12px;
+    padding:14px;
+    text-align:center;
+}
+
+.weight-box span{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+}
+
+.weight-box b{
+    display:block;
+    font-size:23px;
+    margin-top:5px;
+}
+
+.final-actions{
+    display:none;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.final-actions button{
+    flex:1;
+    min-height:46px;
+}
+
+body.final-mode header{
+    display:none;
+}
+
+body.final-mode .editor-only{
+    display:none !important;
+}
+
+body.final-mode .bottom{
+    display:none;
+}
+
+body.final-mode .final-card{
+    display:block;
+}
+
+body.final-mode .final-actions{
+    display:flex;
+}
+
+body.final-mode main{
+    max-width:720px;
+    padding-top:18px;
 }
 
 @media(max-width:600px){
-  .header-inner{
-    gap:10px
-  }
 
-  .brand{
-    gap:9px
-  }
+    .brand h1{
+        font-size:19px;
+    }
 
-  .brand-logo{
-    width:58px;
-    height:39px
-  }
+    .info-grid{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .brand h1{
-    font-size:18px
-  }
+    .item-fields{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .header-new{
-    padding:9px 11px!important
-  }
 }
 
-.final-title-with-logo{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px
+@media(max-width:420px){
+
+    .brand h1{
+        font-size:18px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid .wide{
+        grid-column:auto;
+    }
+
+    .summary{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .item-fields{
+        grid-template-columns:1fr;
+    }
+
+    .final-info{
+        grid-template-columns:1fr 1fr;
+    }
+
 }
 
-.final-logo{
-  width:62px;
-  height:42px;
-  object-fit:contain
-}
-
-button,
-input{
-  touch-action:manipulation;
-}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
 
-    <div class="brand">
+    <div class="header-inner">
 
-      <img
-        class="brand-logo"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABECAYAAABtcnDsAAAEx0lEQVR4nO2cXahmUxjHf3sM0nDBKGJuJqGEQjMKJclnvgozzGhCYYbMDeUGRXOFksREk3IxZxgfhVHDkBiUMYXCBe5cGOEoH1M+Xxf7nLHedfaz9rP2Wmu/68xev5re9fHs/3r2+b/v3muvvfdUo9GIQr4smHQCBTfFoMwpBmVOMShzikGZUwzKnGJQ5hSDMqcYlDkxDdoOjKx/hUBiGXQ/cFFD+55I+oOlirQW5xKpYgwwVMo5KHNSG/RuYv39ntQGPZBYf78nhkHXOvreiaA/aGIYdGsEjYJAjFlcmcElpMziMielQW/NfK5n7gpD28/WXJU43+r7vEHr6gaNtxviPlDkbcYvNdqXN+g9rNALIuUhbgpYCRzgGl+pVzn6QuJMlgDfCrFTwPWeelFIfQ5S5WCUjwa+C9TT8BNwpNUWsh+7gDMDthcJPcStjJLF/zwWWU9icWS95ZH19hFq0G0RctholM+JoKfl0sh6Z0TWA8INOi9CDjcY5WMi6GlZYZSPjaAX+2gCpJ9mV7SfQA9Vak0DhzFuqMRqYBGw1xGz0Cjf16J3BO37sUiRlzcpDaqEss2fSr3FwG/A5pa4C6lnXXtx/9F2GWXXoboCfjbKEtMteXUilUHve8RqVrztP4xrmx3Kcbcq47R8GlkPCDNoqaPvGg+dTTOfp3hsc67Q7jNF19ztfc9D7yWPWDUhBq1z9H1v1c92xM5+k68IyGWWR6166Mzqeat+SKCeNyEGrfaI1UzHb+yYh8kzVn1FY9Q4Jzv6nrTqMb5EXoSsJPisYv+NvOTTtjyzg/rErxnbHncPcFRL7GZglVLvFWSTkiz39GWQJlaKWQVsMeoLgH8Cx90NLPPIrU3vL+Agh05nUszifB61+kgRs82qS992H16IoGHycmS9faQwyGc2c68i5lerLhn0h8e4zypiPvPQm/KI9aKrQa6lkec8dGbvGS10Ro1zidC+wUPDnmU28ZCH3qsesV50Nci13GJfpJ6l0FvTMQ+Tp6z6aYptLnD0bXH09UZXg9Z7xN6liHmwYx4mP1j12xXb3OPosycELjOT0XUW19cM7k3mPvOtnWKHjNuktxP5dkiyO6qTfGjkaUXM4wnG/bHjdpI5H3dNREMKg0ZC2UazumBPsWPc0NvYHgKM536nIy7Z3VTwmz35kOrdIGly8oWHxiMesRN/x2lSh7jrOuYg/ersRVIXv8x8nuixjcSy9pAwuhh0d4RxzVVin2+0xE6rrtG8I8K4uyNoOOli0EmBY9oznouFuE1CexNfWfUrFdus9dBvopfHmrsYdLPQrkm4KUZa7r+loe2ThrbtDW3HC5qXGeUDhRhofwCkt2fOu56DKupl+jeoL0Qro73pwnQt8k79O9O3AXgCuMkRezr1fajXqA+TS5CXfg4GvgS+of41VsDr0g5Z+WwFTmX8eYnfqa/Jen0hINY7qvMRace3AZf3mYiLYtBcTgC+7jMRF0N9/eQ4R1825sBwDbpq0gloGeohbho4XOjL6q3AoRo0b17bHOohTuLFSSdgM1SDpOUq138pMBGGeoiD+sH6ddTnog/RXcT2zpANmhcM9RA3bygGZU4xKHOKQZlTDMqcYlDmFIMypxiUOcWgzCkGZc5/VmPfNZasBw0AAAAASUVORK5CYII="
-        alt="BMP">
+        <div class="brand">
+            <h1>ROMANEIO INTERNO</h1>
+        </div>
 
-      <h1>ROMANEIO INTERNO</h1>
+        <button
+            class="secondary"
+            onclick="novoRomaneio()">
+            ＋ Novo
+        </button>
 
     </div>
 
-    <button class="secondary header-new" onclick="novoRomaneio()">
-      ＋ Novo
-    </button>
-
-  </div>
 </header>
+
 
 <main id="app"></main>
 
+
 <div class="bottom">
-  <div class="bottom-inner">
 
-    <button class="secondary" onclick="addPallet()">
-      ＋ Adicionar pallet
-    </button>
+    <div class="bottom-inner">
 
-    <button class="primary" onclick="finalizar()">
-      ✓ Finalizar romaneio
-    </button>
+        <button
+            class="secondary"
+            onclick="adicionarPallet()">
+            ＋ Adicionar pallet
+        </button>
 
-  </div>
+        <button
+            class="primary"
+            onclick="finalizar()">
+            ✓ Finalizar romaneio
+        </button>
+
+    </div>
+
 </div>
+
 
 <script>
 
-const KEY="romaneio_mobile_v1";
+const STORAGE_KEY = "romaneio_interno_v1";
 
-let state=JSON.parse(localStorage.getItem(KEY)||"null") || {
-  info:{
-    cliente:"",
-    item:"",
-    lote:"",
-    data:"",
-    dimensao:""
-  },
 
-  pallets:[
-    {
-      id:1,
-      items:Array.from(
-        {length:5},
-        (_,i)=>({
-          numero:i+1,
-          p1:""
-        })
-      )
-    }
-  ]
-};
+let state =
+    JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+    ) || criarEstadoInicial();
 
-if(!state.info){
-  state.info={
-    cliente:"",
-    item:"",
-    lote:"",
-    data:"",
-    dimensao:""
-  };
+
+function criarEstadoInicial(){
+
+    return {
+
+        info:{
+            cliente:"",
+            item:"",
+            lote:"",
+            data:"",
+            dimensao:""
+        },
+
+        pallets:[
+            criarPallet()
+        ]
+
+    };
+
 }
 
-state.pallets.forEach(p=>{
-  if(p.items){
-    p.items.forEach(i=>{
-      delete i.p2;
-    });
-  }
-});
 
-// Migração da versão antiga:
-// remove os 15 itens extras quando eram apenas os itens padrão vazios.
+function criarPallet(){
 
-state.pallets.forEach(p=>{
+    return {
 
-  if(p.items && p.items.length===20){
+        id:Date.now() + Math.random(),
 
-    const extrasVazios=
-      p.items.slice(5).every(i=>
-        String(i.numero??"")==="" ||
-        Number(i.numero)===(p.items.indexOf(i)+1)
-      )
-      &&
-      p.items.slice(5).every(i=>i.p1==="");
+        bruto:"",
 
-    if(extrasVazios){
-      p.items=p.items.slice(0,5);
-    }
+        items:Array.from(
+            {length:5},
+            (_,i)=>({
 
-  }
+                numero:i+1,
 
-});
+                p1:""
 
-save();
+            })
+        )
 
-function save(){
-  localStorage.setItem(KEY,JSON.stringify(state));
+    };
+
 }
 
-function num(v){
-  const n=parseFloat(
-    String(v).replace(",",".")
-  );
 
-  return Number.isFinite(n)?n:0;
+function salvar(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(state)
+    );
+
 }
 
-function fmt(v){
-  return new Intl.NumberFormat(
-    "pt-BR",
-    {
-      maximumFractionDigits:2
-    }
-  ).format(v);
+
+function numero(valor){
+
+    const n =
+        parseFloat(
+            String(valor)
+                .replace(",",".")
+        );
+
+    return Number.isFinite(n)
+        ? n
+        : 0;
+
 }
 
-function totals(){
 
-  let p1=0;
-  let items=0;
-  let pending=0;
+function formatarPeso(valor){
 
-  state.pallets.forEach(p=>
-    p.items.forEach(i=>{
+    return new Intl.NumberFormat(
+        "pt-BR",
+        {
+            minimumFractionDigits:0,
+            maximumFractionDigits:2
+        }
+    ).format(valor);
 
-      items++;
-
-      p1+=num(i.p1);
-
-      if(i.p1===""){
-        pending++;
-      }
-
-    })
-  );
-
-  return {
-    p1,
-    items,
-    pending
-  };
 }
+
+
+function totais(){
+
+    let liquido = 0;
+
+    let itens = 0;
+
+    let pendencias = 0;
+
+
+    state.pallets.forEach(
+        pallet=>{
+
+            pallet.items.forEach(
+                item=>{
+
+                    itens++;
+
+                    liquido += numero(
+                        item.p1
+                    );
+
+                    if(
+                        item.p1 === "" ||
+                        item.p1 === null ||
+                        item.p1 === undefined
+                    ){
+
+                        pendencias++;
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    return {
+
+        liquido,
+
+        itens,
+
+        pendencias
+
+    };
+
+}
+
+
+function brutoTotal(){
+
+    return state.pallets.reduce(
+        (total,pallet)=>
+            total + numero(pallet.bruto),
+        0
+    );
+
+}
+
 
 function render(){
 
-  const app=document.getElementById("app");
+    const app =
+        document.getElementById("app");
 
-  let t=totals();
 
-  let brutoTotal=
-    state.pallets.reduce(
-      (s,p)=>s+num(p.bruto),
-      0
+    app.innerHTML = "";
+
+
+    criarCardInformacoes(app);
+
+
+    criarCardResumo(app);
+
+
+    state.pallets.forEach(
+        (pallet,index)=>
+            criarCardPallet(
+                app,
+                pallet,
+                index
+            )
     );
 
-  app.innerHTML="";
 
-  const infoCard=document.createElement("div");
+    criarCardFinal(app);
 
-  infoCard.className="card editor-only";
 
-  infoCard.innerHTML=`
+    criarBotoesFinais(app);
 
-    <div class="pallet-head">
-      <div class="pallet-title">
-        Dados do Romaneio
-      </div>
-    </div>
+}
 
-    <div class="info-grid">
 
-      <div class="wide">
-        <label>Cliente</label>
+function criarCardInformacoes(app){
 
-        <input
-          value="${state.info.cliente}"
-          onchange="updateInfo('cliente',this.value)"
-          placeholder="Digite o cliente">
-      </div>
+    const card =
+        document.createElement("section");
 
-      <div>
-        <label>Item</label>
+    card.className =
+        "card editor-only";
 
-        <input
-          value="${state.info.item}"
-          onchange="updateInfo('item',this.value)"
-          placeholder="Item">
-      </div>
 
-      <div>
-        <label>Nº do lote</label>
+    card.innerHTML = `
 
-        <input
-          value="${state.info.lote}"
-          onchange="updateInfo('lote',this.value)"
-          placeholder="Lote">
-      </div>
+        <div class="pallet-head">
 
-      <div>
-        <label>Data de produção</label>
-
-        <input
-          type="date"
-          value="${state.info.data}"
-          onchange="updateInfo('data',this.value)">
-      </div>
-
-      <div>
-        <label>Dimensão</label>
-
-        <input
-          value="${state.info.dimensao}"
-          onchange="updateInfo('dimensao',this.value)"
-          placeholder="Ex.: 100 x 200 mm">
-      </div>
-
-    </div>
-  `;
-
-  app.appendChild(infoCard);
-
-  const finalCard=document.createElement("div");
-
-  finalCard.className="final-card";
-
-  finalCard.id="finalCard";
-
-  finalCard.innerHTML=`
-
-    <div class="final-title final-title-with-logo">
-
-      <img
-        class="final-logo"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABECAYAAABtcnDsAAAEwklEQVR4nO2cXagVVRTH/2OGhPZwVVDKF6kIQgMVFVKQ8KOStKD8SMUv0PwgHywIQQXFJw0kQkW5KD50KysfSkFLidSETLBAfUjfeshQr6AmaKA9zL26z76z9qw1e+1z9nX2Dy5nf6z5z5rzPzOzZ8/MzdqGvohEvPRpdQIJN8mgyEkGRU4yKHKSQZGTDIqcZFDkJIMiJxkUOZoGHQHwwPpLeKJl0EYArxW0X1HSry2Z0lyca2/JNFZQV9I5KHJCG/RzYP3HntAGbQqs/9ijYdAsR99PCvq1RsOg5QoaCQINg6YoaCQI0iguckIadKzrcw16zjCUzTKYsxKTrb7zBVrvFGgcL4j7hZG3GT/caB9XoLeNoeeFxoUq9WV3AJgD4AnX+pl6maPPJ85kGIC/iNgOAO8J9VQIaRA7B6M8FMDfnnocrgMYbLX5bMcZAOM9lifxPcTNUcniEZ8q61EMUtYbp6z3EF+D3lfIYZdRnqigx2W6st4YZT0A/ga9qpDDAqP8jIIel9lG+VkFPe2jCYDww+wM5SfQAUytTgBPo9FQivkA+gO444jpa5Q3lOgNRPl29GfkJSakQRlRtrnH1BsE4DaAz0vipiEfdd2B+0s7Y5Rdh+oMwA2jTNFZklclQhl0ShDLmfG2vxjXMj8y13uAGcfld2U9AH4GDXf0vSvQae/6HClYZhLRLhmic+72nhDofSuIZeNj0EpH3z9WfYIjtvuXPNMjl262W3XfkdVXVv0pTz0xPgbNF8RyhuOLK+Zhsteqzy6MamSEo2+nVdf4EYnwMUgyJJ7HiHmeaOeeU4B8hsBkEWOZdQJ9znao0qzZbNd8XBn7rLok5yFE+1mjLPnSqT3oP4GGiBAGSR61+pURc8iqa/yKv1bQMDmorPeQEAZJRjPrGTG3rDpl0F3BevczYv4Q6HUIYkVUNcg1NfKlQKf7nlFfZ1QjbxDtWwQa9iiziK0Cve8EsSKqSabrEvUl9h6C2smIfJbqs+irHMVEffFx65qFHVoDWC2A8ZMZsr5mFy1aqvYizzsaPPvj/kMjMYVW/YSR715cRSMT+g5zPfVKzmeov0ToK+HRLsjmorHxrZw4j5LMB6r1VcjjLnt6qJcAhh0AOibMOZXbCH2Bo39HaVhwBozP0DR1ywu6mAbPQkIdS7QdTg5IJA4xNBbMvfcWrVIW5uxRyovc6eJHVxs+tT472bsQoaTqoY9JHCes1ZYskvmuKkVedorlZY79nyED+qGPSS5zrtEc/rRFw70V7En1b9LcYyKwT6RTTlxbQqBi0l2jkJF8VQ0/3LCtrOFbQdKWh7gdB80yg/ScQA5Q+ANO2twarnoAz5swFHkV+IZkZ70YXpCtAbdb+rbwuAHQCWOGJHI78P9T3yw9W+0FM//QBcBHAZ+d6YAThMbZCVzwEAL6PxeYl/kV+TNfWVTq13VHsj1AjtEIAZzUzERXq7oSdrW52ASV0Nes7Rd6lpWTCoq0FvtzoBLnU9B3UCaCP6ovq/DnXdgyhzoqOuBlF80+oEbOpqEDVd5fqXAi2hrucgIH+wfiXyw91p8C5im06dDeoV1PUQ12tIBkVOMihykkGRkwyKnGRQ5CSDIicZFDnJoMhJBkXO/98AqZdj7gSaAAAAAElFTkSuQmCC"
-        alt="BMP">
-
-      <span>ROMANEIO INTERNO</span>
-
-    </div>
-
-    <div class="final-info">
-
-      <div class="final-field">
-        <span>Cliente</span>
-        <b id="f-cliente"></b>
-      </div>
-
-      <div class="final-field">
-        <span>Item</span>
-        <b id="f-item"></b>
-      </div>
-
-      <div class="final-field">
-        <span>Nº do lote</span>
-        <b id="f-lote"></b>
-      </div>
-
-      <div class="final-field">
-        <span>Data de produção</span>
-        <b id="f-data"></b>
-      </div>
-
-      <div class="final-field">
-        <span>Dimensão</span>
-        <b id="f-dimensao"></b>
-      </div>
-
-      <div class="final-field">
-        <span>Pallets / Itens</span>
-        <b id="f-qtd"></b>
-      </div>
-
-    </div>
-
-    <div class="weight-total">
-
-      <div class="weight-box">
-        <span>Peso Líquido TOTAL</span>
-        <b id="f-p1"></b>
-      </div>
-
-      <div class="weight-box">
-        <span>Peso Bruto TOTAL</span>
-        <b id="f-p2"></b>
-      </div>
-
-    </div>
-  `;
-
-  app.appendChild(finalCard);
-
-  const finalActions=document.createElement("div");
-
-  finalActions.className="final-actions";
-
-  finalActions.innerHTML=`
-
-    <button
-      class="primary"
-      onclick="compartilharImagem()">
-      ↗ Compartilhar imagem
-    </button>
-
-    <button
-      class="secondary"
-      onclick="voltarEditar()">
-      ← Voltar e alterar
-    </button>
-
-    <button
-      class="secondary"
-      onclick="novoRomaneio()">
-      ＋ Novo romaneio
-    </button>
-  `;
-
-  app.appendChild(finalActions);
-
-  const top=document.createElement("div");
-
-  top.className="card editor-only";
-
-  top.innerHTML=`
-
-    <div class="pallet-head">
-
-      <div class="pallet-title">
-        Resumo
-      </div>
-
-      <div class="badge">
-        ${state.pallets.length}
-        pallet${state.pallets.length==1?"":"s"}
-      </div>
-
-    </div>
-
-    <div class="summary">
-
-      <div class="stat">
-        <span>Peso líquido total</span>
-        <b>${fmt(t.p1)} kg</b>
-      </div>
-
-      <div class="stat">
-        <span>Peso bruto total</span>
-        <b>
-          ${
-            brutoTotal
-            ? fmt(brutoTotal)+" kg"
-            : "Não informado"
-          }
-        </b>
-      </div>
-
-      <div class="stat">
-        <span>Itens</span>
-        <b>${t.items}</b>
-      </div>
-
-      <div class="stat">
-        <span>Pendências</span>
-        <b>${t.pending}</b>
-      </div>
-
-    </div>
-  `;
-
-  app.appendChild(top);
-
-  state.pallets.forEach((p,pi)=>{
-
-    const card=document.createElement("section");
-
-    card.className="card editor-only";
-
-    card.innerHTML=`
-
-      <div class="pallet-head">
-
-        <div class="pallet-title">
-          Pallet ${pi+1}
-        </div>
-
-        <div class="actions">
-
-          ${
-            state.pallets.length>1
-            ?
-            `<button
-              class="danger"
-              onclick="removePallet(${p.id})">
-              Excluir
-            </button>`
-            :
-            ""
-          }
+            <div class="pallet-title">
+                Dados do Romaneio
+            </div>
 
         </div>
 
-      </div>
 
-      <div
-        class="small"
-        style="margin-bottom:12px">
+        <div class="info-grid">
 
-        Preencha o peso líquido de cada item.
-        O peso bruto do pallet é opcional.
+            <div class="wide">
 
-      </div>
-    `;
+                <label>Cliente</label>
 
-    const list=document.createElement("div");
-
-    p.items.forEach((it,ii)=>{
-
-      const row=document.createElement("div");
-
-      row.className="item";
-
-      const complete=it.p1!=="";
-
-      row.innerHTML=`
-
-        <div class="item-head">
-
-          <div class="item-num">
-            Item ${ii+1}
-          </div>
-
-          <div class="actions">
-
-            <div
-              class="item-status ${complete?"ok":""}">
-
-              ${
-                complete
-                ?
-                "✓ preenchido"
-                :
-                "Pendente"
-              }
+                <input
+                    type="text"
+                    value="${esc(state.info.cliente)}"
+                    placeholder="Digite o cliente"
+                    onchange="
+                        alterarInfo(
+                            'cliente',
+                            this.value
+                        )
+                    "
+                >
 
             </div>
 
-            <button
-              class="danger"
-              style="padding:7px 9px;font-size:11px"
-              onclick="removeItem(${p.id},${ii})">
 
-              Excluir item
+            <div>
 
-            </button>
+                <label>Item</label>
 
-          </div>
+                <input
+                    type="text"
+                    value="${esc(state.info.item)}"
+                    placeholder="Item"
+                    onchange="
+                        alterarInfo(
+                            'item',
+                            this.value
+                        )
+                    "
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>Nº do lote</label>
+
+                <input
+                    type="text"
+                    value="${esc(state.info.lote)}"
+                    placeholder="Lote"
+                    onchange="
+                        alterarInfo(
+                            'lote',
+                            this.value
+                        )
+                    "
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>Data de produção</label>
+
+                <input
+                    type="date"
+                    value="${esc(state.info.data)}"
+                    onchange="
+                        alterarInfo(
+                            'data',
+                            this.value
+                        )
+                    "
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>Dimensão</label>
+
+                <input
+                    type="text"
+                    value="${esc(state.info.dimensao)}"
+                    placeholder="Ex.: 100 x 200 mm"
+                    onchange="
+                        alterarInfo(
+                            'dimensao',
+                            this.value
+                        )
+                    "
+                >
+
+            </div>
 
         </div>
 
-        <div class="row">
-
-          <div>
-
-            <label>Número</label>
-
-            <input
-              inputmode="numeric"
-              value="${it.numero??""}"
-              onchange="updateItem(${p.id},${ii},'numero',this.value)">
-
-          </div>
-
-          <div>
-
-            <label>Peso líquido (kg)</label>
-
-            <input
-              inputmode="decimal"
-              type="number"
-              step="0.01"
-              min="0"
-              placeholder="0,00"
-              value="${it.p1}"
-              onchange="updateItem(${p.id},${ii},'p1',this.value)">
-
-          </div>
-
-        </div>
-      `;
-
-      list.appendChild(row);
-
-    });
-
-    card.appendChild(list);
-
-    const bruto=document.createElement("div");
-
-    bruto.className="pallet-bruto";
-
-    bruto.innerHTML=`
-
-      <label>
-        Peso Bruto do pallet
-        <span class="small">
-          (opcional)
-        </span>
-      </label>
-
-      <input
-        inputmode="decimal"
-        type="number"
-        step="0.01"
-        min="0"
-        placeholder="0,00"
-        value="${p.bruto??""}"
-        onchange="updateBruto(${p.id},this.value)">
     `;
 
-    card.appendChild(bruto);
-
-    const b=document.createElement("button");
-
-    b.className="secondary full";
-
-    b.textContent="＋ Adicionar item";
-
-    b.onclick=()=>addItem(p.id);
-
-    card.appendChild(b);
 
     app.appendChild(card);
 
-  });
+}
+
+
+function criarCardResumo(app){
+
+    const t = totais();
+
+
+    const card =
+        document.createElement("section");
+
+
+    card.className =
+        "card editor-only";
+
+
+    const bruto =
+        brutoTotal();
+
+
+    card.innerHTML = `
+
+        <div class="pallet-head">
+
+            <div class="pallet-title">
+                Resumo
+            </div>
+
+            <div class="badge">
+
+                ${state.pallets.length}
+                pallet${state.pallets.length === 1 ? "" : "s"}
+
+            </div>
+
+        </div>
+
+
+        <div class="summary">
+
+            <div class="stat">
+
+                <span>
+                    Peso Líquido Total
+                </span>
+
+                <b>
+                    ${formatarPeso(t.liquido)} kg
+                </b>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span>
+                    Peso Bruto Total
+                </span>
+
+                <b>
+                    ${
+                        bruto > 0
+                        ? formatarPeso(bruto) + " kg"
+                        : "Não informado"
+                    }
+                </b>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span>
+                    Itens
+                </span>
+
+                <b>
+                    ${t.itens}
+                </b>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span>
+                    Pendências
+                </span>
+
+                <b>
+                    ${t.pendencias}
+                </b>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    app.appendChild(card);
 
 }
 
-function updateInfo(key,val){
 
-  state.info[key]=val;
+function criarCardPallet(
+    app,
+    pallet,
+    index
+){
 
-  save();
+    const card =
+        document.createElement("section");
+
+
+    card.className =
+        "card editor-only";
+
+
+    card.innerHTML = `
+
+        <div class="pallet-head">
+
+            <div class="pallet-title">
+
+                Pallet ${index + 1}
+
+            </div>
+
+
+            <div class="actions">
+
+                ${
+                    state.pallets.length > 1
+
+                    ?
+
+                    `
+                    <button
+                        class="danger"
+                        onclick="
+                            removerPallet(
+                                '${pallet.id}'
+                            )
+                        "
+                    >
+                        Excluir
+                    </button>
+                    `
+
+                    :
+
+                    ""
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="small">
+
+            Preencha o peso líquido de cada item.
+            O peso bruto do pallet é opcional.
+
+        </div>
+
+    `;
+
+
+    pallet.items.forEach(
+        (item,itemIndex)=>{
+
+            const preenchido =
+                item.p1 !== "" &&
+                Number.isFinite(
+                    numero(item.p1)
+                );
+
+
+            const itemDiv =
+                document.createElement("div");
+
+
+            itemDiv.className =
+                "item";
+
+
+            itemDiv.innerHTML = `
+
+                <div class="item-head">
+
+                    <div class="item-num">
+                        Item ${itemIndex + 1}
+                    </div>
+
+
+                    <div class="
+                        item-status
+                        ${preenchido ? "ok" : ""}
+                    ">
+
+                        ${
+                            preenchido
+                            ? "✓ preenchido"
+                            : ""
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="item-fields">
+
+                    <div>
+
+                        <label>
+                            Número
+                        </label>
+
+                        <input
+                            type="number"
+                            value="${item.numero}"
+                            onchange="
+                                alterarNumero(
+                                    '${pallet.id}',
+                                    ${itemIndex},
+                                    this.value
+                                )
+                            "
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Peso líquido (kg)
+                        </label>
+
+                        <input
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            inputmode="decimal"
+                            value="${esc(item.p1)}"
+                            placeholder="0,00"
+                            oninput="
+                                alterarLiquido(
+                                    '${pallet.id}',
+                                    ${itemIndex},
+                                    this.value
+                                )
+                            "
+                        >
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            card.appendChild(itemDiv);
+
+        }
+    );
+
+
+    if(pallet.items.length < 5){
+
+        const adicionar =
+            document.createElement("button");
+
+
+        adicionar.className =
+            "secondary full";
+
+
+        adicionar.textContent =
+            "＋ Adicionar item";
+
+
+        adicionar.onclick =
+            ()=>adicionarItem(pallet.id);
+
+
+        card.appendChild(adicionar);
+
+    }
+
+
+    const bruto =
+        document.createElement("div");
+
+
+    bruto.className =
+        "pallet-bruto";
+
+
+    bruto.innerHTML = `
+
+        <div class="pallet-bruto-title">
+
+            Peso Bruto do pallet
+            (opcional)
+
+        </div>
+
+
+        <input
+            type="number"
+            step="0.01"
+            min="0"
+            inputmode="decimal"
+            placeholder="0,00"
+            value="${esc(pallet.bruto || "")}"
+            onchange="
+                alterarBruto(
+                    '${pallet.id}',
+                    this.value
+                )
+            "
+        >
+
+    `;
+
+
+    card.appendChild(bruto);
+
+
+    app.appendChild(card);
 
 }
 
-function updateBruto(pid,val){
 
-  const p=state.pallets.find(
-    x=>x.id===pid
-  );
+function criarCardFinal(app){
 
-  if(p){
+    const card =
+        document.createElement("section");
 
-    p.bruto=val;
 
-    save();
+    card.className =
+        "final-card";
+
+
+    card.id =
+        "finalCard";
+
+
+    card.innerHTML = `
+
+        <div class="final-title">
+
+            ROMANEIO INTERNO
+
+        </div>
+
+
+        <div class="final-info">
+
+            <div class="final-field">
+
+                <span>
+                    Cliente
+                </span>
+
+                <b id="f-cliente"></b>
+
+            </div>
+
+
+            <div class="final-field">
+
+                <span>
+                    Item
+                </span>
+
+                <b id="f-item"></b>
+
+            </div>
+
+
+            <div class="final-field">
+
+                <span>
+                    Nº do lote
+                </span>
+
+                <b id="f-lote"></b>
+
+            </div>
+
+
+            <div class="final-field">
+
+                <span>
+                    Data de produção
+                </span>
+
+                <b id="f-data"></b>
+
+            </div>
+
+
+            <div class="final-field">
+
+                <span>
+                    Dimensão
+                </span>
+
+                <b id="f-dimensao"></b>
+
+            </div>
+
+
+            <div class="final-field">
+
+                <span>
+                    Pallets / Itens
+                </span>
+
+                <b id="f-qtd"></b>
+
+            </div>
+
+        </div>
+
+
+        <div class="weight-total">
+
+            <div class="weight-box">
+
+                <span>
+                    Peso Líquido Total
+                </span>
+
+                <b id="f-p1"></b>
+
+            </div>
+
+
+            <div class="weight-box">
+
+                <span>
+                    Peso Bruto Total
+                </span>
+
+                <b id="f-p2"></b>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    app.appendChild(card);
+
+}
+
+
+function criarBotoesFinais(app){
+
+    const div =
+        document.createElement("div");
+
+
+    div.className =
+        "final-actions";
+
+
+    div.innerHTML = `
+
+        <button
+            class="primary"
+            onclick="compartilharImagem()"
+        >
+            ↗ Compartilhar imagem
+        </button>
+
+
+        <button
+            class="secondary"
+            onclick="voltarEditar()"
+        >
+            ← Voltar e alterar
+        </button>
+
+
+        <button
+            class="secondary"
+            onclick="novoRomaneio()"
+        >
+            ＋ Novo romaneio
+        </button>
+
+    `;
+
+
+    app.appendChild(div);
+
+}
+
+
+function alterarInfo(
+    campo,
+    valor
+){
+
+    state.info[campo] =
+        valor;
+
+
+    salvar();
+
+}
+
+
+function localizarPallet(id){
+
+    return state.pallets.find(
+        pallet =>
+            String(pallet.id) === String(id)
+    );
+
+}
+
+
+function alterarNumero(
+    palletId,
+    itemIndex,
+    valor
+){
+
+    const pallet =
+        localizarPallet(palletId);
+
+
+    if(!pallet){
+        return;
+    }
+
+
+    pallet.items[itemIndex].numero =
+        valor;
+
+
+    salvar();
+
+}
+
+
+function alterarLiquido(
+    palletId,
+    itemIndex,
+    valor
+){
+
+    const pallet =
+        localizarPallet(palletId);
+
+
+    if(!pallet){
+        return;
+    }
+
+
+    pallet.items[itemIndex].p1 =
+        valor;
+
+
+    salvar();
+
+
+    atualizarResumo();
+
+}
+
+
+function atualizarResumo(){
+
+    const t =
+        totais();
+
+
+    const bruto =
+        brutoTotal();
+
+
+    const estatisticas =
+        document.querySelectorAll(
+            ".stat b"
+        );
+
+
+    if(estatisticas.length >= 4){
+
+        estatisticas[0].textContent =
+            formatarPeso(t.liquido) + " kg";
+
+
+        estatisticas[1].textContent =
+            bruto > 0
+            ? formatarPeso(bruto) + " kg"
+            : "Não informado";
+
+
+        estatisticas[2].textContent =
+            t.itens;
+
+
+        estatisticas[3].textContent =
+            t.pendencias;
+
+    }
+
+}
+
+
+function alterarBruto(
+    palletId,
+    valor
+){
+
+    const pallet =
+        localizarPallet(palletId);
+
+
+    if(!pallet){
+        return;
+    }
+
+
+    pallet.bruto =
+        valor;
+
+
+    salvar();
+
 
     render();
 
-  }
-
 }
 
-function updateItem(pid,ii,key,val){
 
-  const p=state.pallets.find(
-    x=>x.id===pid
-  );
+function adicionarItem(
+    palletId
+){
 
-  p.items[ii][key]=val;
+    const pallet =
+        localizarPallet(palletId);
 
-  save();
 
-  render();
+    if(!pallet){
+        return;
+    }
 
-}
 
-function addItem(pid){
+    if(pallet.items.length >= 5){
 
-  const p=state.pallets.find(
-    x=>x.id===pid
-  );
+        alert(
+            "Cada pallet pode ter no máximo 5 itens."
+        );
 
-  p.items.push({
-    numero:p.items.length+1,
-    p1:""
-  });
+        return;
 
-  save();
+    }
 
-  render();
 
-}
+    pallet.items.push({
 
-function removeItem(pid,ii){
+        numero:
+            pallet.items.length + 1,
 
-  const p=state.pallets.find(
-    x=>x.id===pid
-  );
-
-  if(!p || p.items.length<=1){
-
-    alert(
-      "O pallet precisa ter pelo menos 1 item."
-    );
-
-    return;
-
-  }
-
-  if(
-    !confirm(
-      "Excluir este item?"
-    )
-  ){
-    return;
-  }
-
-  p.items.splice(ii,1);
-
-  save();
-
-  render();
-
-}
-
-function addPallet(){
-
-  state.pallets.push({
-
-    id:Date.now(),
-
-    items:Array.from(
-      {length:5},
-      (_,i)=>({
-        numero:i+1,
         p1:""
-      })
-    )
 
-  });
+    });
 
-  save();
 
-  render();
+    salvar();
 
-  window.scrollTo({
-    top:document.body.scrollHeight,
-    behavior:"smooth"
-  });
+    render();
 
 }
 
-function removePallet(pid){
 
-  if(
-    !confirm(
-      "Excluir este pallet e todos os seus itens?"
-    )
-  ){
-    return;
-  }
+function removerItem(
+    palletId,
+    itemIndex
+){
 
-  state.pallets=
-    state.pallets.filter(
-      p=>p.id!==pid
+    const pallet =
+        localizarPallet(palletId);
+
+
+    if(!pallet){
+        return;
+    }
+
+
+    if(pallet.items.length <= 1){
+
+        alert(
+            "O pallet precisa ter pelo menos 1 item."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Excluir este item?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    pallet.items.splice(
+        itemIndex,
+        1
     );
 
-  save();
 
-  render();
+    pallet.items.forEach(
+        (item,index)=>{
+            item.numero =
+                index + 1;
+        }
+    );
+
+
+    salvar();
+
+    render();
 
 }
+
+
+function adicionarPallet(){
+
+    state.pallets.push(
+        criarPallet()
+    );
+
+
+    salvar();
+
+    render();
+
+
+    window.scrollTo({
+
+        top:
+            document.body.scrollHeight,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+function removerPallet(id){
+
+    if(
+        state.pallets.length <= 1
+    ){
+
+        alert(
+            "O romaneio precisa ter pelo menos 1 pallet."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Excluir este pallet e todos os seus itens?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    state.pallets =
+        state.pallets.filter(
+            pallet =>
+                String(pallet.id)
+                !== String(id)
+        );
+
+
+    salvar();
+
+    render();
+
+}
+
 
 function finalizar(){
 
-  const t=totals();
+    const t =
+        totais();
 
-  if(t.pending>0){
 
-    alert(
-      `Ainda existem ${t.pending} item(ns) sem peso líquido preenchido.`
+    if(t.pendencias > 0){
+
+        alert(
+            "Ainda existem " +
+            t.pendencias +
+            " item(ns) sem peso líquido preenchido."
+        );
+
+        return;
+
+    }
+
+
+    const campos = [
+
+        ["Cliente",state.info.cliente],
+
+        ["Item",state.info.item],
+
+        ["Nº do lote",state.info.lote],
+
+        ["Data de produção",state.info.data],
+
+        ["Dimensão",state.info.dimensao]
+
+    ];
+
+
+    const faltando =
+        campos
+            .filter(
+                campo =>
+                    !String(campo[1] || "").trim()
+            )
+            .map(
+                campo =>
+                    campo[0]
+            );
+
+
+    if(faltando.length > 0){
+
+        alert(
+            "Preencha antes de finalizar:\n\n" +
+            faltando.join("\n")
+        );
+
+        return;
+
+    }
+
+
+    const bruto =
+        brutoTotal();
+
+
+    document.getElementById(
+        "f-cliente"
+    ).textContent =
+        state.info.cliente;
+
+
+    document.getElementById(
+        "f-item"
+    ).textContent =
+        state.info.item;
+
+
+    document.getElementById(
+        "f-lote"
+    ).textContent =
+        state.info.lote;
+
+
+    document.getElementById(
+        "f-data"
+    ).textContent =
+        formatarData(
+            state.info.data
+        );
+
+
+    document.getElementById(
+        "f-dimensao"
+    ).textContent =
+        state.info.dimensao;
+
+
+    document.getElementById(
+        "f-qtd"
+    ).textContent =
+
+        state.pallets.length +
+        (
+            state.pallets.length === 1
+            ? " pallet"
+            : " pallets"
+        ) +
+        " / " +
+        t.itens +
+        " itens";
+
+
+    document.getElementById(
+        "f-p1"
+    ).textContent =
+        formatarPeso(t.liquido) +
+        " kg";
+
+
+    document.getElementById(
+        "f-p2"
+    ).textContent =
+
+        bruto > 0
+        ? formatarPeso(bruto) + " kg"
+        : "Não informado";
+
+
+    document.body.classList.add(
+        "final-mode"
     );
 
-    return;
 
-  }
+    window.scrollTo({
 
-  const required=[
+        top:0,
 
-    ["Cliente",state.info.cliente],
+        behavior:"smooth"
 
-    ["Item",state.info.item],
-
-    ["Nº do lote",state.info.lote],
-
-    ["Data de produção",state.info.data],
-
-    ["Dimensão",state.info.dimensao]
-
-  ];
-
-  const missing=
-    required
-      .filter(x=>!x[1])
-      .map(x=>x[0]);
-
-  if(missing.length){
-
-    alert(
-      "Preencha antes de finalizar:\n\n"+
-      missing.join("\n")
-    );
-
-    return;
-
-  }
-
-  const brutoTotal=
-    state.pallets.reduce(
-      (s,p)=>s+num(p.bruto),
-      0
-    );
-
-  document
-    .getElementById("finalCard")
-    .style.display="block";
-
-  document.getElementById(
-    "f-cliente"
-  ).textContent=state.info.cliente;
-
-  document.getElementById(
-    "f-item"
-  ).textContent=state.info.item;
-
-  document.getElementById(
-    "f-lote"
-  ).textContent=state.info.lote;
-
-  document.getElementById(
-    "f-data"
-  ).textContent=
-    state.info.data
-      .split("-")
-      .reverse()
-      .join("/");
-
-  document.getElementById(
-    "f-dimensao"
-  ).textContent=state.info.dimensao;
-
-  document.getElementById(
-    "f-qtd"
-  ).textContent=
-    `${state.pallets.length} pallet${
-      state.pallets.length==1?"":"s"
-    } / ${t.items} itens`;
-
-  document.getElementById(
-    "f-p1"
-  ).textContent=
-    fmt(t.p1)+" kg";
-
-  document.getElementById(
-    "f-p2"
-  ).textContent=
-    brutoTotal
-    ?
-    fmt(brutoTotal)+" kg"
-    :
-    "Não informado";
-
-  document.body.classList.add(
-    "final-mode"
-  );
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    });
 
 }
 
-function novoRomaneio(){
 
-  if(
-    !confirm(
-      "Iniciar um novo romaneio? Todas as informações e pesos preenchidos serão apagados."
-    )
-  ){
-    return;
-  }
+function formatarData(data){
 
-  state={
+    if(!data){
+        return "";
+    }
 
-    info:{
-      cliente:"",
-      item:"",
-      lote:"",
-      data:"",
-      dimensao:""
-    },
 
-    pallets:[
-      {
-        id:Date.now(),
+    const partes =
+        data.split("-");
 
-        items:Array.from(
-          {length:5},
-          (_,i)=>({
-            numero:i+1,
-            p1:""
-          })
-        )
 
-      }
-    ]
+    if(partes.length !== 3){
+        return data;
+    }
 
-  };
 
-  save();
-
-  document.body.classList.remove(
-    "final-mode"
-  );
-
-  render();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    return (
+        partes[2] +
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0]
+    );
 
 }
+
 
 function voltarEditar(){
 
-  document.body.classList.remove(
-    "final-mode"
-  );
+    document.body.classList.remove(
+        "final-mode"
+    );
 
-  document
-    .getElementById("finalCard")
-    .style.display="none";
 
-  render();
+    render();
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+function novoRomaneio(){
+
+    if(
+        !confirm(
+            "Iniciar um novo romaneio? Todas as informações e pesos preenchidos serão apagados."
+        )
+    ){
+
+        return;
+
+    }
+
+
+    state =
+        criarEstadoInicial();
+
+
+    salvar();
+
+
+    document.body.classList.remove(
+        "final-mode"
+    );
+
+
+    render();
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
 
 }
 
-function escapeXml(v){
 
-  return String(v??"")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;");
+function esc(valor){
+
+    return String(valor ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
+
 
 function criarImagemRomaneio(){
 
-  const t=totals();
+    const t =
+        totais();
 
-  const brutoTotal=
-    state.pallets.reduce(
-      (s,p)=>s+num(p.bruto),
-      0
-    );
 
-  const info=state.info;
+    const bruto =
+        brutoTotal();
 
-  const data=
-    info.data
-    ?
-    info.data
-      .split("-")
-      .reverse()
-      .join("/")
-    :
-    "";
 
-  const W=900;
-  const H=760;
+    const data =
+        formatarData(
+            state.info.data
+        );
 
-  const svg=`
 
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="${W}"
-    height="${H}">
+    const W = 900;
 
-    <rect
-      width="100%"
-      height="100%"
-      fill="#f3f4f6"/>
+    const H = 760;
 
-    <rect
-      x="40"
-      y="35"
-      width="820"
-      height="690"
-      rx="24"
-      fill="white"
-      stroke="#111827"
-      stroke-width="3"/>
 
-    <image
-      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABECAYAAABtcnDsAAAEwklEQVR4nO2cXagVVRTH/2OGhPZwVVDKF6kIQgMVFVKQ8KOStKD8SMUv0PwgHywIQQXFJw0kQkW5KD50KysfSkFLidSETLBAfUjfeshQr6AmaKA9zL26z76z9qw1e+1z9nX2Dy5nf6z5z5rzPzOzZ8/MzdqGvohEvPRpdQIJN8mgyEkGRU4yKHKSQZGTDIqcZFDkJIMiJxkUOZoGHQHwwPpLeKJl0EYArxW0X1HSry2Z0lyca2/JNFZQV9I5KHJCG/RzYP3HntAGbQqs/9ijYdAsR99PCvq1RsOg5QoaCQINg6YoaCQI0iguckIadKzrcw16zjCUzTKYsxKTrb7zBVrvFGgcL4j7hZG3GT/caB9XoLeNoeeFxoUq9WV3AJgD4AnX+pl6maPPJ85kGIC/iNgOAO8J9VQIaRA7B6M8FMDfnnocrgMYbLX5bMcZAOM9lifxPcTNUcniEZ8q61EMUtYbp6z3EF+D3lfIYZdRnqigx2W6st4YZT0A/ga9qpDDAqP8jIIel9lG+VkFPe2jCYDww+wM5SfQAUytTgBPo9FQivkA+gO444jpa5Q3lOgNRPl29GfkJSakQRlRtrnH1BsE4DaAz0vipiEfdd2B+0s7Y5Rdh+oMwA2jTNFZklclQhl0ShDLmfG2vxjXMj8y13uAGcfld2U9AH4GDXf0vSvQae/6HClYZhLRLhmic+72nhDofSuIZeNj0EpH3z9WfYIjtvuXPNMjl262W3XfkdVXVv0pTz0xPgbNF8RyhuOLK+Zhsteqzy6MamSEo2+nVdf4EYnwMUgyJJ7HiHmeaOeeU4B8hsBkEWOZdQJ9znao0qzZbNd8XBn7rLok5yFE+1mjLPnSqT3oP4GGiBAGSR61+pURc8iqa/yKv1bQMDmorPeQEAZJRjPrGTG3rDpl0F3BevczYv4Q6HUIYkVUNcg1NfKlQKf7nlFfZ1QjbxDtWwQa9iiziK0Cve8EsSKqSabrEvUl9h6C2smIfJbqs+irHMVEffFx65qFHVoDWC2A8ZMZsr5mFy1aqvYizzsaPPvj/kMjMYVW/YSR715cRSMT+g5zPfVKzmeov0ToK+HRLsjmorHxrZw4j5LMB6r1VcjjLnt6qJcAhh0AOibMOZXbCH2Bo39HaVhwBozP0DR1ywu6mAbPQkIdS7QdTg5IJA4xNBbMvfcWrVIW5uxRyovc6eJHVxs+tT472bsQoaTqoY9JHCes1ZYskvmuKkVedorlZY79nyED+qGPSS5zrtEc/rRFw70V7En1b9LcYyKwT6RTTlxbQqBi0l2jkJF8VQ0/3LCtrOFbQdKWh7gdB80yg/ScQA5Q+NO2twarnoAz5swFHkV+IZkZ70YXpCtAbdb+rbwuAHQCWOGJHI78P9T3yw9W+0FM//QBcBHAZ+d6YAThMbZCVzwEAL6PxeYl/kV+TNfWVTq13VHsj1AjtEIAZzUzERXq7oSdrW52ASV0Nes7Rd6lpWTCoq0FvtzoBLnU9B3UCaCP6ovq/DnXdgyhzoqOuBlF80+oEbOpqEDVd5fqXAi2hrucgIH+wfiXyw91p8C5im06dDeoV1PUQ12tIBkVOMihykkGRkwyKnGRQ5CSDIicZFDnJoMhJBkXO/98AqZdj7gSaAAAAAElFTkSuQmCC"
-      x="265"
-      y="55"
-      width="62"
-      height="42"
-      preserveAspectRatio="xMidYMid meet"/>
+    const svg = `
 
-    <text
-      x="505"
-      y="88"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="30"
-      font-weight="900"
-      fill="#111827">
-      ROMANEIO INTERNO
-    </text>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="${W}"
+        height="${H}"
+    >
 
-    <line
-      x1="70"
-      y1="115"
-      x2="830"
-      y2="115"
-      stroke="#e5e7eb"
-      stroke-width="2"/>
+        <rect
+            width="100%"
+            height="100%"
+            fill="#f3f4f6"
+        />
 
-    ${[
-      ["Cliente",info.cliente,70,150],
-      ["Item",info.item,460,150],
-      ["Nº do lote",info.lote,70,235],
-      ["Data de produção",data,460,235],
-      ["Dimensão",info.dimensao,70,320],
-      [
-        "Pallets / Itens",
-        `${state.pallets.length} pallet${
-          state.pallets.length==1?"":"s"
-        } / ${t.items} itens`,
-        460,
-        320
-      ]
 
-    ].map(
-      ([lab,val,x,y])=>
+        <rect
+            x="40"
+            y="35"
+            width="820"
+            height="690"
+            rx="24"
+            fill="white"
+            stroke="#111827"
+            stroke-width="3"
+        />
 
-      `<rect
-        x="${x}"
-        y="${y}"
-        width="370"
-        height="65"
-        rx="12"
-        fill="#f9fafb"/>
 
-      <text
-        x="${x+14}"
-        y="${y+22}"
-        font-family="Arial"
-        font-size="14"
-        fill="#6b7280">
-        ${escapeXml(lab)}
-      </text>
+        <text
+            x="450"
+            y="88"
+            text-anchor="middle"
+            font-family="Arial"
+            font-size="30"
+            font-weight="900"
+            fill="#111827"
+        >
+            ROMANEIO INTERNO
+        </text>
 
-      <text
-        x="${x+14}"
-        y="${y+48}"
-        font-family="Arial"
-        font-size="18"
-        font-weight="700"
-        fill="#111827">
-        ${escapeXml(val)}
-      </text>`
 
-    ).join("")}
+        <line
+            x1="70"
+            y1="115"
+            x2="830"
+            y2="115"
+            stroke="#e5e7eb"
+            stroke-width="2"
+        />
 
-    <line
-      x1="70"
-      y1="415"
-      x2="830"
-      y2="415"
-      stroke="#e5e7eb"
-      stroke-width="2"/>
 
-    <rect
-      x="70"
-      y="450"
-      width="370"
-      height="150"
-      rx="16"
-      fill="#f3f4f6"/>
+        ${campoImagem(
+            "Cliente",
+            state.info.cliente,
+            70,
+            150
+        )}
 
-    <rect
-      x="460"
-      y="450"
-      width="370"
-      height="150"
-      rx="16"
-      fill="#f3f4f6"/>
 
-    <text
-      x="255"
-      y="492"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="15"
-      fill="#6b7280">
-      PESO LÍQUIDO TOTAL
-    </text>
+        ${campoImagem(
+            "Item",
+            state.info.item,
+            460,
+            150
+        )}
 
-    <text
-      x="255"
-      y="548"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="34"
-      font-weight="900"
-      fill="#111827">
-      ${escapeXml(fmt(t.p1))} kg
-    </text>
 
-    <text
-      x="645"
-      y="492"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="15"
-      fill="#6b7280">
-      PESO BRUTO TOTAL
-    </text>
+        ${campoImagem(
+            "Nº do lote",
+            state.info.lote,
+            70,
+            235
+        )}
 
-    <text
-      x="645"
-      y="548"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="34"
-      font-weight="900"
-      fill="#111827">
-      ${
-        escapeXml(
-          brutoTotal
-          ? fmt(brutoTotal)
-          : "Não informado"
-        )
-      } kg
-    </text>
 
-    <text
-      x="450"
-      y="680"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="13"
-      fill="#6b7280">
-      Romaneio interno
-    </text>
+        ${campoImagem(
+            "Data de produção",
+            data,
+            460,
+            235
+        )}
 
-  </svg>
-  `;
 
-  return svg;
+        ${campoImagem(
+            "Dimensão",
+            state.info.dimensao,
+            70,
+            320
+        )}
+
+
+        ${campoImagem(
+            "Pallets / Itens",
+            state.pallets.length +
+            (
+                state.pallets.length === 1
+                ? " pallet"
+                : " pallets"
+            ) +
+            " / " +
+            t.itens +
+            " itens",
+            460,
+            320
+        )}
+
+
+        <line
+            x1="70"
+            y1="415"
+            x2="830"
+            y2="415"
+            stroke="#e5e7eb"
+            stroke-width="2"
+        />
+
+
+        <rect
+            x="70"
+            y="450"
+            width="370"
+            height="150"
+            rx="16"
+            fill="#f3f4f6"
+        />
+
+
+        <rect
+            x="460"
+            y="450"
+            width="370"
+            height="150"
+            rx="16"
+            fill="#f3f4f6"
+        />
+
+
+        <text
+            x="255"
+            y="492"
+            text-anchor="middle"
+            font-family="Arial"
+            font-size="15"
+            fill="#6b7280"
+        >
+            PESO LÍQUIDO TOTAL
+        </text>
+
+
+        <text
+            x="255"
+            y="548"
+            text-anchor="middle"
+            font-family="Arial"
+            font-size="34"
+            font-weight="900"
+            fill="#111827"
+        >
+            ${esc(formatarPeso(t.liquido))} kg
+        </text>
+
+
+        <text
+            x="645"
+            y="492"
+            text-anchor="middle"
+            font-family="Arial"
+            font-size="15"
+            fill="#6b7280"
+        >
+            PESO BRUTO TOTAL
+        </text>
+
+
+        <text
+            x="645"
+            y="548"
+            text-anchor="middle"
+            font-family="Arial"
+            font-size="34"
+            font-weight="900"
+            fill="#111827"
+        >
+            ${
+                bruto > 0
+                ? esc(formatarPeso(bruto)) + " kg"
+                : "Não informado"
+            }
+        </text>
+
+
+        <text
+            x="450"
+            y="680"
+            text-anchor="middle"
+            font-family="Arial"
+            font-size="13"
+            fill="#6b7280"
+        >
+            Romaneio interno
+        </text>
+
+    </svg>
+
+    `;
+
+
+    return svg;
 
 }
+
+
+function campoImagem(
+    titulo,
+    valor,
+    x,
+    y
+){
+
+    return `
+
+        <rect
+            x="${x}"
+            y="${y}"
+            width="370"
+            height="65"
+            rx="12"
+            fill="#f9fafb"
+        />
+
+
+        <text
+            x="${x + 14}"
+            y="${y + 22}"
+            font-family="Arial"
+            font-size="14"
+            fill="#6b7280"
+        >
+            ${esc(titulo)}
+        </text>
+
+
+        <text
+            x="${x + 14}"
+            y="${y + 48}"
+            font-family="Arial"
+            font-size="18"
+            font-weight="700"
+            fill="#111827"
+        >
+            ${esc(valor)}
+        </text>
+
+    `;
+
+}
+
 
 async function compartilharImagem(){
 
-  const svg=criarImagemRomaneio();
+    const svg =
+        criarImagemRomaneio();
 
-  const blobSvg=
-    new Blob(
-      [svg],
-      {
-        type:"image/svg+xml;charset=utf-8"
-      }
-    );
 
-  const url=
-    URL.createObjectURL(blobSvg);
-
-  const img=new Image();
-
-  img.onload=async ()=>{
-
-    const canvas=
-      document.createElement("canvas");
-
-    canvas.width=1800;
-    canvas.height=1520;
-
-    const ctx=
-      canvas.getContext("2d");
-
-    ctx.drawImage(
-      img,
-      0,
-      0,
-      1800,
-      1520
-    );
-
-    URL.revokeObjectURL(url);
-
-    canvas.toBlob(
-      async blob=>{
-
-        if(!blob){
-          return;
-        }
-
-        const file=
-          new File(
-            [blob],
-            "romaneio-interno.png",
+    const blobSvg =
+        new Blob(
+            [svg],
             {
-              type:"image/png"
+                type:
+                    "image/svg+xml;charset=utf-8"
             }
-          );
+        );
 
-        try{
 
-          if(
-            navigator.share &&
-            (
-              !navigator.canShare ||
-              navigator.canShare({
-                files:[file]
-              })
-            )
-          ){
+    const url =
+        URL.createObjectURL(
+            blobSvg
+        );
 
-            await navigator.share({
-              title:"Romaneio Interno",
-              files:[file]
-            });
 
-          }else{
+    const imagem =
+        new Image();
 
-            const a=
-              document.createElement("a");
 
-            a.href=
-              URL.createObjectURL(blob);
+    imagem.onload =
+        async function(){
 
-            a.download=
-              "romaneio-interno.png";
+            const canvas =
+                document.createElement(
+                    "canvas"
+                );
 
-            a.click();
 
-            setTimeout(
-              ()=>URL.revokeObjectURL(a.href),
-              1000
+            canvas.width = 1800;
+
+            canvas.height = 1520;
+
+
+            const ctx =
+                canvas.getContext("2d");
+
+
+            ctx.drawImage(
+                imagem,
+                0,
+                0,
+                1800,
+                1520
             );
 
-            alert(
-              "A imagem foi gerada. No computador, ela será salva como arquivo PNG."
+
+            URL.revokeObjectURL(
+                url
             );
 
-          }
 
-        }catch(e){
+            canvas.toBlob(
+                async function(blob){
 
-          if(e.name!=="AbortError"){
+                    if(!blob){
+                        return;
+                    }
 
-            alert(
-              "Não foi possível compartilhar a imagem neste dispositivo."
+
+                    const arquivo =
+                        new File(
+                            [blob],
+                            "romaneio-interno.png",
+                            {
+                                type:
+                                    "image/png"
+                            }
+                        );
+
+
+                    try{
+
+                        if(
+                            navigator.share &&
+                            (
+                                !navigator.canShare ||
+                                navigator.canShare({
+                                    files:[arquivo]
+                                })
+                            )
+                        ){
+
+                            await navigator.share({
+
+                                title:
+                                    "Romaneio Interno",
+
+                                files:[
+                                    arquivo
+                                ]
+
+                            });
+
+                        }else{
+
+                            const link =
+                                document.createElement(
+                                    "a"
+                                );
+
+
+                            link.href =
+                                URL.createObjectURL(
+                                    blob
+                                );
+
+
+                            link.download =
+                                "romaneio-interno.png";
+
+
+                            link.click();
+
+
+                            setTimeout(
+                                ()=>{
+                                    URL.revokeObjectURL(
+                                        link.href
+                                    );
+                                },
+                                1000
+                            );
+
+                        }
+
+                    }catch(erro){
+
+                        if(
+                            erro.name !==
+                            "AbortError"
+                        ){
+
+                            alert(
+                                "Não foi possível compartilhar a imagem neste dispositivo."
+                            );
+
+                        }
+
+                    }
+
+                },
+                "image/png"
             );
 
-          }
+        };
 
-        }
 
-      },
-      "image/png"
-    );
-
-  };
-
-  img.src=url;
+    imagem.src = url;
 
 }
+
 
 render();
 
