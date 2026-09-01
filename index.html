@@ -1,2495 +1,2444 @@
-<!doctype html>
-<html lang="pt-BR" translate="no">
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-
-<meta charset="utf-8">
-
+<meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width,
-               initial-scale=1,
-               viewport-fit=cover">
-
-<meta name="theme-color"
-      content="#111827">
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
 <title>ROMANEIO INTERNO</title>
 
 <style>
-
-:root{
-    --bg:#f3f4f6;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
-    --line:#e5e7eb;
-    --primary:#111827;
-    --ok:#166534;
-    --danger-bg:#fee2e2;
-    --danger:#991b1b;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    background:var(--bg);
-    font-family:Arial,Helvetica,sans-serif;
-    color:var(--text);
-}
-
-header{
-    background:var(--primary);
-    color:white;
-    padding:16px;
-    position:sticky;
-    top:0;
-    z-index:20;
-}
-
-.header-inner{
-    max-width:720px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-}
-
-h1{
-    margin:0;
-    font-size:21px;
-    font-weight:900;
-}
-
-main{
-    max-width:720px;
-    margin:auto;
-    padding:14px 12px 110px;
-}
-
-.card{
-    background:white;
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:14px;
-    margin-bottom:12px;
-    box-shadow:0 2px 8px #00000008;
-}
-
-label{
-    display:block;
-    font-size:12px;
-    font-weight:700;
-    color:var(--muted);
-    margin-bottom:6px;
-}
-
-input{
-    width:100%;
-    height:48px;
-    border:1px solid #d1d5db;
-    border-radius:10px;
-    padding:0 12px;
-    font-size:16px;
-    background:white;
-    color:#111827;
-}
-
-input:focus{
-    outline:2px solid #9ca3af;
-    border-color:#6b7280;
-}
-
-button{
-    border:0;
-    border-radius:11px;
-    padding:12px 14px;
-    font-weight:700;
-    font-size:14px;
-    cursor:pointer;
-    touch-action:manipulation;
-}
-
-.primary{
-    background:#111827;
-    color:white;
-}
-
-.secondary{
-    background:#eef0f2;
-    color:#111827;
-}
-
-.danger{
-    background:var(--danger-bg);
-    color:var(--danger);
-}
-
-.full{
-    width:100%;
-}
-
-.info-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.info-grid .wide{
-    grid-column:1/-1;
-}
-
-.pallet-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:12px;
-}
-
-.pallet-title{
-    font-size:18px;
-    font-weight:900;
-}
-
-.badge{
-    font-size:12px;
-    padding:5px 9px;
-    border-radius:999px;
-    background:#f3f4f6;
-    color:var(--muted);
-}
-
-.item{
-    border-top:1px solid var(--line);
-    padding:13px 0;
-}
-
-.item:first-child{
-    border-top:0;
-    padding-top:0;
-}
-
-.item-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:8px;
-    margin-bottom:8px;
-}
-
-.item-num{
-    font-size:14px;
-    font-weight:800;
-}
-
-.item-status{
-    font-size:11px;
-    color:#b45309;
-}
-
-.item-status.ok{
-    color:var(--ok);
-}
-
-.actions{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    flex-wrap:wrap;
-}
-
-.row{
-    display:grid;
-    grid-template-columns:1fr 1.3fr;
-    gap:8px;
-}
-
-.summary{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
-
-.stat{
-    background:#f9fafb;
-    border-radius:12px;
-    padding:12px;
-}
-
-.stat span{
-    display:block;
-    font-size:12px;
-    color:var(--muted);
-}
-
-.stat b{
-    display:block;
-    font-size:20px;
-    margin-top:4px;
-}
-
-.small{
-    font-size:12px;
-    line-height:1.4;
-    color:var(--muted);
-}
-
-.pallet-bruto{
-    margin-top:12px;
-    padding-top:12px;
-    border-top:1px solid var(--line);
-}
-
-.pallet-bruto label{
-    display:flex;
-    justify-content:space-between;
-}
-
-.bottom{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    background:white;
-    border-top:1px solid var(--line);
-    padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-    z-index:30;
-}
-
-.bottom-inner{
-    max-width:720px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
-
-.final-card{
-    display:none;
-    background:white;
-    border:2px solid #111827;
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:14px;
-}
-
-.final-title{
-    text-align:center;
-    font-size:23px;
-    font-weight:900;
-    letter-spacing:1px;
-    margin-bottom:18px;
-}
-
-.final-info{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    border-bottom:1px solid var(--line);
-    padding-bottom:14px;
-    margin-bottom:14px;
-}
-
-.final-field{
-    background:#f9fafb;
-    border-radius:10px;
-    padding:11px;
-}
-
-.final-field span{
-    display:block;
-    font-size:11px;
-    color:var(--muted);
-    font-weight:700;
-    margin-bottom:4px;
-}
-
-.final-field b{
-    font-size:14px;
-    word-break:break-word;
-}
-
-.weight-total{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.weight-box{
-    background:#f3f4f6;
-    border-radius:13px;
-    padding:18px 10px;
-    text-align:center;
-}
-
-.weight-box span{
-    display:block;
-    font-size:12px;
-    color:var(--muted);
-    font-weight:700;
-}
-
-.weight-box b{
-    display:block;
-    font-size:24px;
-    margin-top:7px;
-}
-
-.final-actions{
-    display:none;
-    gap:8px;
-    margin-top:12px;
-}
-
-.final-actions button{
-    flex:1;
-}
-
-body.final-mode header{
-    display:none;
-}
-
-body.final-mode .editor-only{
-    display:none !important;
-}
-
-body.final-mode .bottom{
-    display:none !important;
-}
-
-body.final-mode .final-card{
-    display:block;
-}
-
-body.final-mode .final-actions{
-    display:flex;
-    flex-wrap:wrap;
-}
-
-body.final-mode main{
-    max-width:720px;
-    padding-bottom:30px;
-}
-
-.share-note{
-    text-align:center;
-    font-size:11px;
-    color:var(--muted);
-    margin-top:8px;
-}
-
-@media(max-width:480px){
-
-    h1{
-        font-size:18px;
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
     }
 
-    .info-grid{
-        grid-template-columns:1fr 1fr;
+    html {
+        background: #eef0f3;
     }
 
-    .row{
-        grid-template-columns:1fr 1.3fr;
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #eef0f3;
+        color: #07152f;
     }
 
-    .final-info{
-        grid-template-columns:1fr 1fr;
+    button,
+    input {
+        font-family: inherit;
     }
 
-    .final-actions button{
-        font-size:12px;
-        padding:11px 8px;
+    .top-bar {
+        width: 100%;
+        background: #101827;
+        color: white;
+        padding: 22px 20px 18px;
+        border-top: 5px solid #74789c;
     }
 
-}
+    .top-bar-inner {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
 
+    .top-title {
+        font-size: 23px;
+        font-weight: 900;
+        letter-spacing: .2px;
+        margin: 0;
+    }
+
+    .btn-new {
+        border: 0;
+        border-radius: 10px;
+        background: #f1f3f6;
+        color: #07152f;
+        padding: 13px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .page {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 18px 15px 50px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 17px;
+        padding: 18px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 7px rgba(0,0,0,.07);
+    }
+
+    .card-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .card-title h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 900;
+        color: #07152f;
+    }
+
+    .section-title {
+        font-size: 17px;
+        font-weight: 900;
+        margin: 0 0 14px;
+        color: #07152f;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .field {
+        min-width: 0;
+    }
+
+    .field.full {
+        grid-column: 1 / -1;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        color: #4d5c73;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    input {
+        width: 100%;
+        height: 49px;
+        border: 1px solid #ccd3dd;
+        border-radius: 10px;
+        padding: 0 12px;
+        background: white;
+        color: #07152f;
+        font-size: 16px;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    input:focus {
+        border-color: #6d7898;
+        box-shadow: 0 0 0 2px rgba(109,120,152,.12);
+    }
+
+    input::placeholder {
+        color: #8c96a5;
+        opacity: 1;
+    }
+
+    .pallet {
+        margin-top: 16px;
+    }
+
+    .pallet-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .pallet-header h2 {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 900;
+    }
+
+    .pallet-help {
+        color: #607089;
+        font-size: 12px;
+        margin: 0 0 15px;
+    }
+
+    .btn {
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 11px 14px;
+    }
+
+    .btn-delete-pallet {
+        background: #ffdede;
+        color: #a90000;
+    }
+
+    .btn-delete-item {
+        background: #ffe1e1;
+        color: #a90000;
+        padding: 7px 11px;
+        font-size: 12px;
+    }
+
+    .item {
+        border-top: 1px solid #e1e4e9;
+        padding: 16px 0 14px;
+    }
+
+    .item:first-child {
+        border-top: 0;
+        padding-top: 0;
+    }
+
+    .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 9px;
+    }
+
+    .item-title {
+        font-size: 15px;
+        font-weight: 900;
+        color: #07152f;
+    }
+
+    .item-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .pending {
+        font-size: 11px;
+        color: #c84a00;
+    }
+
+    .complete {
+        font-size: 11px;
+        color: #187a3b;
+    }
+
+    .item-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 9px;
+    }
+
+    .item input {
+        height: 48px;
+    }
+
+    .weight-input {
+        color: #52647b;
+    }
+
+    .add-item-area {
+        padding-top: 5px;
+        border-top: 1px solid #e1e4e9;
+        margin-top: 3px;
+    }
+
+    .btn-add-item {
+        width: 100%;
+        background: #e9edf3;
+        color: #07152f;
+        padding: 13px;
+        font-size: 14px;
+    }
+
+    .gross-area {
+        margin-top: 14px;
+        border-top: 1px solid #e1e4e9;
+        padding-top: 14px;
+    }
+
+    .gross-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+    .optional {
+        font-size: 12px;
+        color: #607089;
+        font-weight: 400;
+    }
+
+    .summary-card {
+        background: #101827;
+        color: white;
+        border-radius: 17px;
+        padding: 19px;
+        margin-top: 16px;
+        margin-bottom: 15px;
+    }
+
+    .summary-card h2 {
+        margin: 0 0 17px;
+        font-size: 19px;
+    }
+
+    .summary-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .summary-box {
+        background: rgba(255,255,255,.08);
+        border-radius: 11px;
+        padding: 13px;
+    }
+
+    .summary-label {
+        color: #c6ccda;
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .summary-value {
+        font-size: 20px;
+        font-weight: 900;
+    }
+
+    .summary-status {
+        margin-top: 13px;
+        color: #c6ccda;
+        font-size: 12px;
+    }
+
+    .main-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-main {
+        width: 100%;
+        height: 51px;
+        border: 0;
+        border-radius: 11px;
+        font-size: 15px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .btn-finalize {
+        background: #101827;
+        color: white;
+    }
+
+    .btn-add-pallet {
+        background: white;
+        color: #07152f;
+        border: 1px solid #ccd3dd;
+    }
+
+    .final-screen {
+        display: none;
+    }
+
+    .final-card {
+        background: white;
+        border-radius: 17px;
+        padding: 20px;
+        box-shadow: 0 2px 7px rgba(0,0,0,.07);
+    }
+
+    .final-title {
+        text-align: center;
+        margin: 0 0 20px;
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+    .final-info {
+        border-top: 1px solid #e1e4e9;
+        padding: 13px 0;
+    }
+
+    .final-info:first-of-type {
+        border-top: 0;
+    }
+
+    .final-info-label {
+        color: #607089;
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .final-info-value {
+        font-size: 16px;
+        font-weight: 700;
+        word-break: break-word;
+    }
+
+    .final-pallet {
+        margin-top: 16px;
+        border: 1px solid #dde2e9;
+        border-radius: 13px;
+        padding: 14px;
+    }
+
+    .final-pallet h3 {
+        margin: 0 0 12px;
+        font-size: 17px;
+    }
+
+    .final-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        border-top: 1px solid #e8ebef;
+        padding: 9px 0;
+        font-size: 13px;
+    }
+
+    .final-item:first-of-type {
+        border-top: 0;
+    }
+
+    .final-total {
+        margin-top: 17px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .final-total-box {
+        border-radius: 11px;
+        background: #eef1f5;
+        padding: 14px;
+    }
+
+    .final-total-label {
+        font-size: 11px;
+        color: #607089;
+        margin-bottom: 5px;
+    }
+
+    .final-total-value {
+        font-size: 19px;
+        font-weight: 900;
+    }
+
+    .final-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .btn-share {
+        background: #101827;
+        color: white;
+    }
+
+    .btn-back {
+        background: #e9edf3;
+        color: #07152f;
+    }
+
+    .btn-new-final {
+        background: white;
+        color: #07152f;
+        border: 1px solid #ccd3dd;
+    }
+
+    .empty-message {
+        text-align: center;
+        color: #607089;
+        padding: 15px 0;
+    }
+
+    @media (max-width: 650px) {
+        .top-bar {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .top-title {
+            font-size: 20px;
+        }
+
+        .page {
+            padding: 12px 10px 40px;
+        }
+
+        .card {
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        .field.full {
+            grid-column: auto;
+        }
+
+        .item-grid {
+            grid-template-columns: 1fr 1.1fr;
+        }
+
+        .summary-grid,
+        .final-total {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .top-title {
+            font-size: 18px;
+        }
+
+        .btn-new {
+            padding: 11px 13px;
+        }
+
+        .item-grid {
+            grid-template-columns: 1fr 1.05fr;
+        }
+
+        input {
+            font-size: 16px;
+        }
+    }
 </style>
-
 </head>
 
 <body>
 
-<header>
+<header class="top-bar">
+    <div class="top-bar-inner">
+        <h1 class="top-title">ROMANEIO INTERNO</h1>
 
-    <div class="header-inner">
-
-        <h1>
-            ROMANEIO INTERNO
-        </h1>
-
-        <button
-            class="secondary"
-            onclick="novoRomaneio()">
-
-            ＋ Novo
-
+        <button class="btn-new" onclick="novoRomaneio()">
+            + Novo
         </button>
-
     </div>
-
 </header>
 
 
-<main id="app"></main>
+<!-- =========================
+     TELA PRINCIPAL
+========================= -->
+
+<main id="main-screen" class="page">
+
+    <section class="card">
+
+        <h2 class="section-title">Informações do romaneio</h2>
+
+        <div class="grid">
+
+            <div class="field">
+                <label for="cliente">Cliente</label>
+                <input
+                    id="cliente"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Digite o cliente"
+                    oninput="updateCliente(this.value)"
+                >
+            </div>
+
+            <div class="field">
+                <label for="item-geral">Item</label>
+                <input
+                    id="item-geral"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Digite o item"
+                    oninput="updateItemGeral(this.value)"
+                >
+            </div>
+
+            <div class="field">
+                <label for="lote">Nº do lote</label>
+                <input
+                    id="lote"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Digite o lote"
+                    oninput="updateLote(this.value)"
+                >
+            </div>
+
+            <div class="field">
+                <label for="data-producao">Data de produção</label>
+                <input
+                    id="data-producao"
+                    type="date"
+                    onchange="updateData(this.value)"
+                >
+            </div>
+
+            <div class="field full">
+                <label for="dimensao">Dimensão</label>
+                <input
+                    id="dimensao"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Digite a dimensão"
+                    oninput="updateDimensao(this.value)"
+                >
+            </div>
+
+        </div>
+
+    </section>
 
 
-<div class="bottom">
+    <!-- PALLETS -->
 
-    <div class="bottom-inner">
+    <div id="pallets-container"></div>
+
+
+    <!-- RESUMO -->
+
+    <section class="summary-card">
+
+        <h2>Resumo</h2>
+
+        <div class="summary-grid">
+
+            <div class="summary-box">
+                <div class="summary-label">
+                    Peso Líquido Total
+                </div>
+
+                <div id="sum-liquid" class="summary-value">
+                    0,00 kg
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <div class="summary-label">
+                    Peso Bruto Total
+                </div>
+
+                <div id="sum-gross" class="summary-value">
+                    0,00 kg
+                </div>
+            </div>
+
+        </div>
+
+        <div id="summary-status" class="summary-status">
+            5 itens cadastrados.
+        </div>
+
+    </section>
+
+
+    <!-- AÇÕES -->
+
+    <section class="main-actions">
 
         <button
-            class="secondary"
-            onclick="addPallet()">
-
-            ＋ Adicionar pallet
-
+            class="btn-main btn-add-pallet"
+            onclick="addPallet()"
+        >
+            + Adicionar pallet
         </button>
 
         <button
-            class="primary"
-            onclick="finalizar()">
-
-            ✓ Finalizar romaneio
-
+            class="btn-main btn-finalize"
+            onclick="finalizar()"
+        >
+            Finalizar romaneio
         </button>
 
-    </div>
+    </section>
 
-</div>
+</main>
+
+
+<!-- =========================
+     TELA FINAL
+========================= -->
+
+<main id="final-screen" class="page final-screen">
+
+    <section class="final-card">
+
+        <h2 class="final-title">
+            ROMANEIO INTERNO
+        </h2>
+
+        <div id="final-content"></div>
+
+        <div class="final-total">
+
+            <div class="final-total-box">
+                <div class="final-total-label">
+                    Peso Líquido Total
+                </div>
+
+                <div
+                    id="final-liquid"
+                    class="final-total-value"
+                >
+                    0,00 kg
+                </div>
+            </div>
+
+            <div class="final-total-box">
+                <div class="final-total-label">
+                    Peso Bruto Total
+                </div>
+
+                <div
+                    id="final-gross"
+                    class="final-total-value"
+                >
+                    0,00 kg
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="final-actions">
+
+            <button
+                class="btn-main btn-share"
+                onclick="compartilharImagem()"
+            >
+                Compartilhar imagem
+            </button>
+
+            <button
+                class="btn-main btn-back"
+                onclick="voltarAlterar()"
+            >
+                Voltar e alterar
+            </button>
+
+            <button
+                class="btn-main btn-new-final"
+                onclick="novoRomaneio()"
+            >
+                Novo romaneio
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
 
 
 <script>
 
-/* ==========================================================
-   CONFIGURAÇÃO
-========================================================== */
-
-const KEY =
-    "romaneio_mobile_v2";
-
-
-/* ==========================================================
+/* ============================================================
    ESTADO INICIAL
-========================================================== */
+============================================================ */
 
-function criarItensIniciais(){
+const QUANTIDADE_INICIAL_ITENS = 5;
 
-    return Array.from(
-        {length:5},
-        (_,i)=>({
+let state = {
+    cliente: "",
+    itemGeral: "",
+    lote: "",
+    dataProducao: "",
+    dimensao: "",
 
-            numero:i+1,
+    pallets: [
+        criarPallet(1)
+    ]
+};
 
-            p1:""
-
-        })
-    );
-
-}
+let imagemRomaneioPronta = null;
 
 
-function criarPallet(){
+/* ============================================================
+   CRIAÇÃO DE PALLET
+============================================================ */
+
+function criarPallet(numero) {
 
     return {
+        numero: numero,
 
-        id:Date.now()+Math.random(),
+        items: Array.from(
+            { length: QUANTIDADE_INICIAL_ITENS },
+            (_, index) => ({
+                numero: index + 1,
+                liquido: ""
+            })
+        ),
 
-        items:criarItensIniciais(),
-
-        bruto:""
-
+        bruto: ""
     };
-
 }
 
 
-/* ==========================================================
-   CARREGAMENTO
-========================================================== */
+/* ============================================================
+   FORMATAÇÃO DE PESO
+============================================================ */
 
-let state =
-    JSON.parse(
-        localStorage.getItem(KEY) || "null"
-    );
+function parsePeso(valor) {
 
+    if (valor === null || valor === undefined) {
+        return 0;
+    }
 
-if(!state){
+    let texto = String(valor)
+        .trim()
+        .replace(/\s/g, "");
 
-    state={
+    if (!texto) {
+        return 0;
+    }
 
-        info:{
+    /*
+       Permite:
 
-            cliente:"",
-            item:"",
-            lote:"",
-            data:"",
-            dimensao:""
+       10
+       10,5
+       10.5
+       1.234,56
+       1,234.56
+    */
 
-        },
+    if (texto.includes(",") && texto.includes(".")) {
 
-        pallets:[
-            criarPallet()
-        ]
+        if (texto.lastIndexOf(",") > texto.lastIndexOf(".")) {
 
-    };
+            texto = texto
+                .replace(/\./g, "")
+                .replace(",", ".");
 
-}
+        } else {
 
+            texto = texto
+                .replace(/,/g, "");
 
-/* ==========================================================
-   GARANTE ESTRUTURA
-========================================================== */
+        }
 
-if(!state.info){
+    } else if (texto.includes(",")) {
 
-    state.info={
-
-        cliente:"",
-        item:"",
-        lote:"",
-        data:"",
-        dimensao:""
-
-    };
-
-}
-
-
-if(!Array.isArray(state.pallets) ||
-   state.pallets.length===0){
-
-    state.pallets=[
-        criarPallet()
-    ];
-
-}
-
-
-/* ==========================================================
-   MIGRAÇÃO:
-   SE O PALLET ANTIGO TIVER APENAS 1 ITEM,
-   COMPLETA ATÉ 5.
-========================================================== */
-
-state.pallets.forEach(pallet=>{
-
-    if(!Array.isArray(pallet.items)){
-
-        pallet.items=[];
+        texto = texto.replace(",", ".");
 
     }
 
-    while(
-        pallet.items.length < 5
-    ){
+    const numero = parseFloat(texto);
 
-        pallet.items.push({
+    return Number.isFinite(numero) ? numero : 0;
+}
 
-            numero:
-                pallet.items.length+1,
 
-            p1:""
+function formatarPeso(valor) {
+
+    const numero = Number(valor) || 0;
+
+    return numero.toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+
+/* ============================================================
+   SALVAR
+============================================================ */
+
+function saveState() {
+
+    try {
+        localStorage.setItem(
+            "romaneioInterno",
+            JSON.stringify(state)
+        );
+    } catch (e) {
+        console.log("Não foi possível salvar:", e);
+    }
+}
+
+
+/* ============================================================
+   CARREGAR
+============================================================ */
+
+function loadState() {
+
+    try {
+
+        const salvo = localStorage.getItem(
+            "romaneioInterno"
+        );
+
+        if (!salvo) {
+            return;
+        }
+
+        const dados = JSON.parse(salvo);
+
+        if (!dados || !Array.isArray(dados.pallets)) {
+            return;
+        }
+
+        state = dados;
+
+        if (!state.pallets.length) {
+            state.pallets.push(criarPallet(1));
+        }
+
+        /*
+           Garante que pallets antigos tenham
+           a estrutura correta.
+        */
+
+        state.pallets.forEach((pallet, palletIndex) => {
+
+            if (!Array.isArray(pallet.items)) {
+                pallet.items = [];
+            }
+
+            if (!pallet.items.length) {
+
+                pallet.items.push({
+                    numero: 1,
+                    liquido: ""
+                });
+            }
+
+            pallet.numero = palletIndex + 1;
+
+            pallet.items.forEach((item, itemIndex) => {
+
+                item.numero = itemIndex + 1;
+
+                if (
+                    item.liquido === undefined ||
+                    item.liquido === null
+                ) {
+                    item.liquido = "";
+                }
+
+            });
+
+            if (
+                pallet.bruto === undefined ||
+                pallet.bruto === null
+            ) {
+                pallet.bruto = "";
+            }
 
         });
 
-    }
+    } catch (e) {
 
-    pallet.items.forEach(
-        (item,index)=>{
-
-            if(item.numero===undefined){
-
-                item.numero=index+1;
-
-            }
-
-            if(item.p1===undefined){
-
-                item.p1="";
-
-            }
-
-        }
-    );
-
-    if(pallet.bruto===undefined){
-
-        pallet.bruto="";
+        console.log(
+            "Não foi possível carregar os dados:",
+            e
+        );
 
     }
-
-});
-
-
-save();
-
-
-/* ==========================================================
-   SALVAR
-========================================================== */
-
-function save(){
-
-    localStorage.setItem(
-        KEY,
-        JSON.stringify(state)
-    );
-
 }
 
 
-/* ==========================================================
-   NÚMERO
-========================================================== */
+/* ============================================================
+   ATUALIZAÇÕES DOS CAMPOS PRINCIPAIS
+============================================================ */
 
-function num(valor){
+function updateCliente(valor) {
 
-    if(
-        valor === null ||
-        valor === undefined ||
-        valor === ""
-    ){
-
-        return 0;
-
-    }
-
-    const n =
-        parseFloat(
-            String(valor)
-                .replace(",",".")
-        );
-
-    return Number.isFinite(n)
-        ? n
-        : 0;
-
+    state.cliente = valor;
+    saveState();
 }
 
 
-/* ==========================================================
-   FORMATAÇÃO
-========================================================== */
+function updateItemGeral(valor) {
 
-function fmt(valor){
-
-    return new Intl.NumberFormat(
-        "pt-BR",
-        {
-            maximumFractionDigits:2
-        }
-    ).format(valor);
-
+    state.itemGeral = valor;
+    saveState();
 }
 
 
-/* ==========================================================
-   TOTAIS
-========================================================== */
+function updateLote(valor) {
 
-function totals(){
-
-    let p1=0;
-
-    let items=0;
-
-    let pending=0;
-
-
-    state.pallets.forEach(
-        pallet=>{
-
-            pallet.items.forEach(
-                item=>{
-
-                    items++;
-
-                    p1 += num(item.p1);
-
-                    if(
-                        item.p1 === "" ||
-                        item.p1 === null ||
-                        item.p1 === undefined
-                    ){
-
-                        pending++;
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-    return {
-
-        p1,
-        items,
-        pending
-
-    };
-
+    state.lote = valor;
+    saveState();
 }
 
 
-/* ==========================================================
-   RENDER
-========================================================== */
+function updateData(valor) {
 
-function render(){
-
-    const app =
-        document.getElementById("app");
-
-
-    app.innerHTML="";
-
-
-    /* ======================================================
-       DADOS
-    ====================================================== */
-
-    const infoCard =
-        document.createElement("div");
-
-
-    infoCard.className =
-        "card editor-only";
-
-
-    infoCard.innerHTML=`
-
-        <div class="pallet-head">
-
-            <div class="pallet-title">
-                Dados do Romaneio
-            </div>
-
-        </div>
-
-
-        <div class="info-grid">
-
-            <div class="wide">
-
-                <label>
-                    Cliente
-                </label>
-
-                <input
-                    value="${esc(state.info.cliente)}"
-                    onchange="
-                        updateInfo(
-                            'cliente',
-                            this.value
-                        )
-                    "
-                    placeholder="Digite o cliente">
-
-            </div>
-
-
-            <div>
-
-                <label>
-                    Item
-                </label>
-
-                <input
-                    value="${esc(state.info.item)}"
-                    onchange="
-                        updateInfo(
-                            'item',
-                            this.value
-                        )
-                    "
-                    placeholder="Item">
-
-            </div>
-
-
-            <div>
-
-                <label>
-                    Nº do lote
-                </label>
-
-                <input
-                    value="${esc(state.info.lote)}"
-                    onchange="
-                        updateInfo(
-                            'lote',
-                            this.value
-                        )
-                    "
-                    placeholder="Lote">
-
-            </div>
-
-
-            <div>
-
-                <label>
-                    Data de produção
-                </label>
-
-                <input
-                    type="date"
-                    value="${state.info.data}"
-                    onchange="
-                        updateInfo(
-                            'data',
-                            this.value
-                        )
-                    ">
-
-            </div>
-
-
-            <div>
-
-                <label>
-                    Dimensão
-                </label>
-
-                <input
-                    value="${esc(state.info.dimensao)}"
-                    onchange="
-                        updateInfo(
-                            'dimensao',
-                            this.value
-                        )
-                    "
-                    placeholder="Ex.: 100 x 200 mm">
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    app.appendChild(infoCard);
-
-
-    /* ======================================================
-       RESUMO
-    ====================================================== */
-
-    const t=totals();
-
-
-    const brutoTotal =
-        state.pallets.reduce(
-            (s,p)=>
-                s + num(p.bruto),
-            0
-        );
-
-
-    const resumo =
-        document.createElement("div");
-
-
-    resumo.className =
-        "card editor-only";
-
-
-    resumo.innerHTML=`
-
-        <div class="pallet-head">
-
-            <div class="pallet-title">
-                Resumo
-            </div>
-
-            <div class="badge">
-
-                ${state.pallets.length}
-
-                pallet
-                ${state.pallets.length===1?"":"s"}
-
-            </div>
-
-        </div>
-
-
-        <div class="summary">
-
-            <div class="stat">
-
-                <span>
-                    Peso líquido total
-                </span>
-
-                <b>
-                    ${fmt(t.p1)} kg
-                </b>
-
-            </div>
-
-
-            <div class="stat">
-
-                <span>
-                    Peso bruto total
-                </span>
-
-                <b>
-
-                    ${
-                        brutoTotal
-                        ?
-                        fmt(brutoTotal)+" kg"
-                        :
-                        "Não informado"
-                    }
-
-                </b>
-
-            </div>
-
-
-            <div class="stat">
-
-                <span>
-                    Itens
-                </span>
-
-                <b>
-                    ${t.items}
-                </b>
-
-            </div>
-
-
-            <div class="stat">
-
-                <span>
-                    Pendências
-                </span>
-
-                <b>
-                    ${t.pending}
-                </b>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    app.appendChild(resumo);
-
-
-    /* ======================================================
-       PALLETS
-    ====================================================== */
-
-    state.pallets.forEach(
-        (pallet,pi)=>{
-
-
-            const card =
-                document.createElement(
-                    "section"
-                );
-
-
-            card.className =
-                "card editor-only";
-
-
-            card.innerHTML=`
-
-                <div class="pallet-head">
-
-                    <div class="pallet-title">
-                        Pallet ${pi+1}
-                    </div>
-
-
-                    <div class="actions">
-
-                        ${
-                            state.pallets.length > 1
-                            ?
-                            `
-                            <button
-                                class="danger"
-                                onclick="
-                                    removePallet(
-                                        ${pallet.id}
-                                    )
-                                ">
-
-                                Excluir pallet
-
-                            </button>
-                            `
-                            :
-                            ""
-                        }
-
-                    </div>
-
-                </div>
-
-
-                <div class="small"
-                     style="margin-bottom:12px">
-
-                    Preencha o peso líquido de cada item.
-                    O peso bruto do pallet é opcional.
-
-                </div>
-
-            `;
-
-
-            const lista =
-                document.createElement(
-                    "div"
-                );
-
-
-            /* ==================================================
-               ITENS
-            ================================================== */
-
-            pallet.items.forEach(
-                (item,ii)=>{
-
-
-                    const linha =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    linha.className =
-                        "item";
-
-
-                    const preenchido =
-                        item.p1 !== "" &&
-                        item.p1 !== null &&
-                        item.p1 !== undefined;
-
-
-                    linha.innerHTML=`
-
-                        <div class="item-head">
-
-                            <div class="item-num">
-
-                                Item ${ii+1}
-
-                            </div>
-
-
-                            <div class="actions">
-
-                                <div
-                                    class="
-                                        item-status
-                                        ${preenchido?"ok":""}
-                                    ">
-
-                                    ${
-                                        preenchido
-                                        ?
-                                        "✓ preenchido"
-                                        :
-                                        "Pendente"
-                                    }
-
-                                </div>
-
-
-                                ${
-                                    pallet.items.length > 1
-                                    ?
-                                    `
-                                    <button
-                                        class="danger"
-                                        style="
-                                            padding:7px 9px;
-                                            font-size:11px
-                                        "
-                                        onclick="
-                                            removeItem(
-                                                ${pallet.id},
-                                                ${ii}
-                                            )
-                                        ">
-
-                                        Excluir item
-
-                                    </button>
-                                    `
-                                    :
-                                    ""
-                                }
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-
-                            <div>
-
-                                <label>
-                                    Número
-                                </label>
-
-                                <input
-                                    inputmode="numeric"
-                                    value="${esc(item.numero)}"
-                                    onchange="
-                                        updateItem(
-                                            ${pallet.id},
-                                            ${ii},
-                                            'numero',
-                                            this.value
-                                        )
-                                    ">
-
-                            </div>
-
-
-                            <div>
-
-                                <label>
-                                    Peso líquido (kg)
-                                </label>
-
-                                <input
-                                    type="number"
-                                    inputmode="decimal"
-                                    step="0.01"
-                                    min="0"
-                                    placeholder="0,00"
-                                    value="${esc(item.p1)}"
-                                    onchange="
-                                        updateItem(
-                                            ${pallet.id},
-                                            ${ii},
-                                            'p1',
-                                            this.value
-                                        )
-                                    ">
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-
-                    lista.appendChild(linha);
-
-                }
-            );
-
-
-            card.appendChild(lista);
-
-
-            /* ==================================================
-               PESO BRUTO
-            ================================================== */
-
-            const bruto =
-                document.createElement(
-                    "div"
-                );
-
-
-            bruto.className =
-                "pallet-bruto";
-
-
-            bruto.innerHTML=`
-
-                <label>
-
-                    Peso Bruto do pallet
-
-                    <span class="small">
-                        (opcional)
-                    </span>
-
-                </label>
-
-
-                <input
-                    type="number"
-                    inputmode="decimal"
-                    step="0.01"
-                    min="0"
-                    placeholder="0,00"
-                    value="${esc(pallet.bruto)}"
-                    onchange="
-                        updateBruto(
-                            ${pallet.id},
-                            this.value
-                        )
-                    ">
-
-            `;
-
-
-            card.appendChild(bruto);
-
-
-            /* ==================================================
-               ADICIONAR ITEM
-            ================================================== */
-
-            if(
-                pallet.items.length < 5
-            ){
-
-                const adicionar =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                adicionar.className =
-                    "secondary full";
-
-
-                adicionar.textContent =
-                    "＋ Adicionar item";
-
-
-                adicionar.onclick =
-                    () =>
-                        addItem(
-                            pallet.id
-                        );
-
-
-                card.appendChild(
-                    adicionar
-                );
-
-            }
-
-
-            app.appendChild(card);
-
-        }
-    );
-
-
-    /* ======================================================
-       CARTÃO FINAL
-    ====================================================== */
-
-    const finalCard =
-        document.createElement(
-            "div"
-        );
-
-
-    finalCard.className =
-        "final-card";
-
-
-    finalCard.id =
-        "finalCard";
-
-
-    finalCard.innerHTML=`
-
-        <div class="final-title">
-            ROMANEIO INTERNO
-        </div>
-
-
-        <div class="final-info">
-
-            <div class="final-field">
-                <span>Cliente</span>
-                <b id="f-cliente"></b>
-            </div>
-
-
-            <div class="final-field">
-                <span>Item</span>
-                <b id="f-item"></b>
-            </div>
-
-
-            <div class="final-field">
-                <span>Nº do lote</span>
-                <b id="f-lote"></b>
-            </div>
-
-
-            <div class="final-field">
-                <span>Data de produção</span>
-                <b id="f-data"></b>
-            </div>
-
-
-            <div class="final-field">
-                <span>Dimensão</span>
-                <b id="f-dimensao"></b>
-            </div>
-
-
-            <div class="final-field">
-                <span>Pallets / Itens</span>
-                <b id="f-qtd"></b>
-            </div>
-
-        </div>
-
-
-        <div class="weight-total">
-
-            <div class="weight-box">
-
-                <span>
-                    Peso Líquido Total
-                </span>
-
-                <b id="f-p1"></b>
-
-            </div>
-
-
-            <div class="weight-box">
-
-                <span>
-                    Peso Bruto Total
-                </span>
-
-                <b id="f-p2"></b>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    app.appendChild(
-        finalCard
-    );
-
-
-    /* ======================================================
-       BOTÕES FINAIS
-    ====================================================== */
-
-    const actions =
-        document.createElement(
-            "div"
-        );
-
-
-    actions.className =
-        "final-actions";
-
-
-    actions.innerHTML=`
-
-        <button
-            class="primary"
-            onclick="compartilharImagem()">
-
-            ↗ Compartilhar imagem
-
-        </button>
-
-
-        <button
-            class="secondary"
-            onclick="voltarEditar()">
-
-            ← Voltar e alterar
-
-        </button>
-
-
-        <button
-            class="secondary"
-            onclick="novoRomaneio()">
-
-            ＋ Novo romaneio
-
-        </button>
-
-    `;
-
-
-    app.appendChild(actions);
-
+    state.dataProducao = valor;
+    saveState();
 }
 
 
-/* ==========================================================
-   ATUALIZA DADOS
-========================================================== */
+function updateDimensao(valor) {
 
-function updateInfo(
-    key,
+    state.dimensao = valor;
+    saveState();
+}
+
+
+/* ============================================================
+   PESO LÍQUIDO
+   IMPORTANTE:
+   NÃO chama render() aqui.
+   Isso impede o teclado do iPhone de fechar.
+============================================================ */
+
+function updateLiquidInput(
+    palletIndex,
+    itemIndex,
     valor
-){
+) {
 
-    state.info[key]=valor;
+    state.pallets[palletIndex]
+        .items[itemIndex]
+        .liquido = valor;
 
-    save();
+    saveState();
 
+    refreshSummary();
+
+    atualizarStatusItem(
+        palletIndex,
+        itemIndex
+    );
 }
 
 
-/* ==========================================================
-   ATUALIZA BRUTO
-========================================================== */
+/* ============================================================
+   PESO BRUTO
+   Também não reconstrói o DOM.
+============================================================ */
 
-function updateBruto(
-    pid,
+function updateBrutoInput(
+    palletIndex,
     valor
-){
+) {
 
-    const pallet =
-        state.pallets.find(
-            p=>p.id===pid
-        );
+    state.pallets[palletIndex].bruto = valor;
 
+    saveState();
 
-    if(!pallet) return;
-
-
-    pallet.bruto =
-        valor;
-
-
-    save();
-
-    render();
-
+    refreshSummary();
 }
 
 
-/* ==========================================================
-   ATUALIZA ITEM
-========================================================== */
+/* ============================================================
+   STATUS DO ITEM
+============================================================ */
 
-function updateItem(
-    pid,
-    ii,
-    key,
-    valor
-){
+function atualizarStatusItem(
+    palletIndex,
+    itemIndex
+) {
 
-    const pallet =
-        state.pallets.find(
-            p=>p.id===pid
-        );
+    const item =
+        state.pallets[palletIndex]
+            .items[itemIndex];
 
+    const elemento = document.getElementById(
+        `status-${palletIndex}-${itemIndex}`
+    );
 
-    if(!pallet) return;
-
-
-    if(!pallet.items[ii])
+    if (!elemento) {
         return;
+    }
 
+    if (String(item.liquido).trim() !== "") {
 
-    pallet.items[ii][key]=
-        valor;
+        elemento.textContent = "Preenchido";
+        elemento.className = "complete";
 
+    } else {
 
-    save();
-
-    render();
-
+        elemento.textContent = "Pendente";
+        elemento.className = "pending";
+    }
 }
 
 
-/* ==========================================================
+/* ============================================================
    ADICIONAR ITEM
-========================================================== */
+============================================================ */
 
-function addItem(pid){
+function addItem(palletIndex) {
 
-    const pallet =
-        state.pallets.find(
-            p=>p.id===pid
-        );
-
-
-    if(!pallet)
-        return;
-
-
-    if(
-        pallet.items.length >= 5
-    ){
-
-        alert(
-            "Cada pallet pode ter no máximo 5 itens."
-        );
-
-        return;
-
-    }
-
+    const pallet = state.pallets[palletIndex];
 
     pallet.items.push({
-
-        numero:
-            pallet.items.length+1,
-
-        p1:""
-
+        numero: pallet.items.length + 1,
+        liquido: ""
     });
 
-
-    save();
+    saveState();
 
     render();
-
 }
 
 
-/* ==========================================================
+/* ============================================================
    EXCLUIR ITEM
-========================================================== */
+============================================================ */
 
 function removeItem(
-    pid,
-    ii
-){
+    palletIndex,
+    itemIndex
+) {
 
-    const pallet =
-        state.pallets.find(
-            p=>p.id===pid
-        );
-
-
-    if(!pallet)
-        return;
-
-
-    if(
-        pallet.items.length <= 1
-    ){
-
-        alert(
-            "O pallet precisa ter pelo menos 1 item."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        !confirm(
-            "Excluir este item?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    pallet.items.splice(
-        ii,
-        1
-    );
-
+    const pallet = state.pallets[palletIndex];
 
     /*
-       RENÚMERA OS ITENS
-       APÓS A EXCLUSÃO
+       Mantemos pelo menos 1 item no pallet.
+    */
+
+    if (pallet.items.length <= 1) {
+
+        alert(
+            "Cada pallet precisa ter pelo menos 1 item."
+        );
+
+        return;
+    }
+
+    pallet.items.splice(itemIndex, 1);
+
+    /*
+       Renumera os itens.
     */
 
     pallet.items.forEach(
-        (item,index)=>{
-
-            item.numero =
-                index+1;
-
+        (item, index) => {
+            item.numero = index + 1;
         }
     );
 
-
-    save();
+    saveState();
 
     render();
-
 }
 
 
-/* ==========================================================
+/* ============================================================
    ADICIONAR PALLET
-========================================================== */
+============================================================ */
 
-function addPallet(){
+function addPallet() {
 
     state.pallets.push(
-        criarPallet()
+        criarPallet(
+            state.pallets.length + 1
+        )
     );
 
-
-    save();
+    saveState();
 
     render();
 
+    setTimeout(() => {
 
-    setTimeout(
-        ()=>{
-            window.scrollTo({
-                top:
-                    document.body.scrollHeight,
-                behavior:"smooth"
-            });
-        },
-        100
-    );
+        const pallets =
+            document.querySelectorAll(".pallet");
 
+        if (pallets.length) {
+
+            pallets[pallets.length - 1]
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+        }
+
+    }, 100);
 }
 
 
-/* ==========================================================
+/* ============================================================
    EXCLUIR PALLET
-========================================================== */
+============================================================ */
 
-function removePallet(
-    pid
-){
+function removePallet(palletIndex) {
 
-    if(
-        state.pallets.length <= 1
-    ){
+    if (state.pallets.length <= 1) {
 
         alert(
             "O romaneio precisa ter pelo menos 1 pallet."
         );
 
         return;
-
     }
 
+    const confirmar = confirm(
+        `Deseja excluir o Pallet ${palletIndex + 1}?`
+    );
 
-    if(
-        !confirm(
-            "Excluir este pallet e todos os seus itens?"
-        )
-    ){
-
+    if (!confirmar) {
         return;
-
     }
 
+    state.pallets.splice(
+        palletIndex,
+        1
+    );
 
-    state.pallets =
-        state.pallets.filter(
-            p=>p.id!==pid
-        );
+    state.pallets.forEach(
+        (pallet, index) => {
+            pallet.numero = index + 1;
+        }
+    );
 
-
-    save();
+    saveState();
 
     render();
-
 }
 
 
-/* ==========================================================
-   FINALIZAR
-========================================================== */
+/* ============================================================
+   RESUMO
+============================================================ */
 
-function finalizar(){
+function calcularTotais() {
 
-    const t =
-        totals();
+    let liquido = 0;
+    let bruto = 0;
+
+    let totalItens = 0;
+    let pendentes = 0;
+
+    state.pallets.forEach(
+        pallet => {
+
+            pallet.items.forEach(
+                item => {
+
+                    totalItens++;
+
+                    if (
+                        String(item.liquido)
+                            .trim() === ""
+                    ) {
+
+                        pendentes++;
+
+                    }
+
+                    liquido += parsePeso(
+                        item.liquido
+                    );
+                }
+            );
+
+            bruto += parsePeso(
+                pallet.bruto
+            );
+        }
+    );
+
+    return {
+        liquido,
+        bruto,
+        totalItens,
+        pendentes
+    };
+}
 
 
-    if(
-        t.pending > 0
-    ){
+/* ============================================================
+   ATUALIZA APENAS O RESUMO
+   Não mexe nos inputs.
+============================================================ */
 
-        alert(
-            "Ainda existem " +
-            t.pending +
-            " item(ns) sem peso líquido preenchido."
+function refreshSummary() {
+
+    const totais = calcularTotais();
+
+    const liquid =
+        document.getElementById(
+            "sum-liquid"
         );
 
-        return;
+    const gross =
+        document.getElementById(
+            "sum-gross"
+        );
 
+    const status =
+        document.getElementById(
+            "summary-status"
+        );
+
+    if (liquid) {
+
+        liquid.textContent =
+            `${formatarPeso(totais.liquido)} kg`;
     }
 
+    if (gross) {
 
-    const required=[
+        gross.textContent =
+            `${formatarPeso(totais.bruto)} kg`;
+    }
 
-        [
-            "Cliente",
-            state.info.cliente
-        ],
+    if (status) {
 
-        [
-            "Item",
-            state.info.item
-        ],
+        if (totais.pendentes === 0) {
 
-        [
-            "Nº do lote",
-            state.info.lote
-        ],
+            status.textContent =
+                `${totais.totalItens} itens cadastrados. Todos os pesos líquidos foram preenchidos.`;
 
-        [
-            "Data de produção",
-            state.info.data
-        ],
+        } else {
 
-        [
-            "Dimensão",
-            state.info.dimensao
-        ]
-
-    ];
+            status.textContent =
+                `${totais.totalItens} itens cadastrados. ${totais.pendentes} peso(s) líquido(s) pendente(s).`;
+        }
+    }
+}
 
 
-    const missing =
-        required
-            .filter(
-                x=>!x[1]
-            )
-            .map(
-                x=>x[0]
+/* ============================================================
+   RENDERIZAÇÃO DOS PALLETS
+============================================================ */
+
+function render() {
+
+    const container =
+        document.getElementById(
+            "pallets-container"
+        );
+
+    container.innerHTML = "";
+
+    state.pallets.forEach(
+        (pallet, palletIndex) => {
+
+            const palletElement =
+                document.createElement("section");
+
+            palletElement.className =
+                "card pallet";
+
+            let itemsHTML = "";
+
+            pallet.items.forEach(
+                (item, itemIndex) => {
+
+                    const preenchido =
+                        String(item.liquido)
+                            .trim() !== "";
+
+                    itemsHTML += `
+
+                        <div class="item">
+
+                            <div class="item-header">
+
+                                <div class="item-title">
+                                    Item ${itemIndex + 1}
+                                </div>
+
+                                <div class="item-actions">
+
+                                    <span
+                                        id="status-${palletIndex}-${itemIndex}"
+                                        class="${
+                                            preenchido
+                                                ? "complete"
+                                                : "pending"
+                                        }"
+                                    >
+                                        ${
+                                            preenchido
+                                                ? "Preenchido"
+                                                : "Pendente"
+                                        }
+                                    </span>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-delete-item"
+                                        onclick="removeItem(
+                                            ${palletIndex},
+                                            ${itemIndex}
+                                        )"
+                                    >
+                                        Excluir item
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="item-grid">
+
+                                <div class="field">
+
+                                    <label>
+                                        Número
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        inputmode="numeric"
+                                        value="${escapeHTML(
+                                            item.numero
+                                        )}"
+                                        autocomplete="off"
+                                        onchange="
+                                            updateItemNumero(
+                                                ${palletIndex},
+                                                ${itemIndex},
+                                                this.value
+                                            )
+                                        "
+                                    >
+
+                                </div>
+
+
+                                <div class="field">
+
+                                    <label>
+                                        Peso líquido (kg)
+                                    </label>
+
+                                    <input
+                                        class="weight-input"
+                                        type="text"
+                                        inputmode="decimal"
+                                        value="${escapeHTML(
+                                            item.liquido
+                                        )}"
+                                        placeholder="0,00"
+                                        autocomplete="off"
+                                        oninput="
+                                            updateLiquidInput(
+                                                ${palletIndex},
+                                                ${itemIndex},
+                                                this.value
+                                            )
+                                        "
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+                }
             );
 
 
-    if(
-        missing.length
-    ){
+            palletElement.innerHTML = `
 
-        alert(
-            "Preencha antes de finalizar:\n\n" +
-            missing.join("\n")
-        );
+                <div class="pallet-header">
 
-        return;
+                    <h2>
+                        Pallet ${palletIndex + 1}
+                    </h2>
 
+                    <button
+                        type="button"
+                        class="btn btn-delete-pallet"
+                        onclick="removePallet(
+                            ${palletIndex}
+                        )"
+                    >
+                        Excluir pallet
+                    </button>
+
+                </div>
+
+
+                <p class="pallet-help">
+                    Preencha o peso líquido de cada item.
+                    O peso bruto do pallet é opcional.
+                </p>
+
+
+                ${itemsHTML}
+
+
+                <!--
+                    IMPORTANTE:
+                    ESTE BOTÃO NÃO TEM MAIS LIMITE DE 5.
+                    Os 5 itens são apenas a quantidade inicial.
+                -->
+
+                <div class="add-item-area">
+
+                    <button
+                        type="button"
+                        class="btn btn-add-item"
+                        onclick="addItem(
+                            ${palletIndex}
+                        )"
+                    >
+                        + Adicionar item
+                    </button>
+
+                </div>
+
+
+                <div class="gross-area">
+
+                    <div class="gross-label">
+
+                        <label
+                            for="bruto-${palletIndex}"
+                        >
+                            Peso Bruto do pallet
+                        </label>
+
+                        <span class="optional">
+                            (opcional)
+                        </span>
+
+                    </div>
+
+                    <input
+                        id="bruto-${palletIndex}"
+                        class="weight-input"
+                        type="text"
+                        inputmode="decimal"
+                        value="${escapeHTML(
+                            pallet.bruto
+                        )}"
+                        placeholder="0,00"
+                        autocomplete="off"
+                        oninput="
+                            updateBrutoInput(
+                                ${palletIndex},
+                                this.value
+                            )
+                        "
+                    >
+
+                </div>
+
+            `;
+
+            container.appendChild(
+                palletElement
+            );
+        }
+    );
+
+
+    /*
+       Atualiza os campos principais
+       somente quando renderizamos de verdade.
+    */
+
+    const cliente =
+        document.getElementById("cliente");
+
+    const itemGeral =
+        document.getElementById("item-geral");
+
+    const lote =
+        document.getElementById("lote");
+
+    const data =
+        document.getElementById("data-producao");
+
+    const dimensao =
+        document.getElementById("dimensao");
+
+
+    if (cliente) {
+        cliente.value =
+            state.cliente || "";
+    }
+
+    if (itemGeral) {
+        itemGeral.value =
+            state.itemGeral || "";
+    }
+
+    if (lote) {
+        lote.value =
+            state.lote || "";
+    }
+
+    if (data) {
+        data.value =
+            state.dataProducao || "";
+    }
+
+    if (dimensao) {
+        dimensao.value =
+            state.dimensao || "";
     }
 
 
-    const brutoTotal =
-        state.pallets.reduce(
-            (s,p)=>
-                s+num(p.bruto),
-            0
-        );
-
-
-    document.getElementById(
-        "f-cliente"
-    ).textContent =
-        state.info.cliente;
-
-
-    document.getElementById(
-        "f-item"
-    ).textContent =
-        state.info.item;
-
-
-    document.getElementById(
-        "f-lote"
-    ).textContent =
-        state.info.lote;
-
-
-    document.getElementById(
-        "f-data"
-    ).textContent =
-        state.info.data
-            .split("-")
-            .reverse()
-            .join("/");
-
-
-    document.getElementById(
-        "f-dimensao"
-    ).textContent =
-        state.info.dimensao;
-
-
-    document.getElementById(
-        "f-qtd"
-    ).textContent =
-        `${state.pallets.length} pallet${
-            state.pallets.length===1
-            ?
-            ""
-            :
-            "s"
-        } / ${t.items} itens`;
-
-
-    document.getElementById(
-        "f-p1"
-    ).textContent =
-        fmt(t.p1)+" kg";
-
-
-    document.getElementById(
-        "f-p2"
-    ).textContent =
-        brutoTotal
-        ?
-        fmt(brutoTotal)+" kg"
-        :
-        "Não informado";
-
-
-    document.body.classList.add(
-        "final-mode"
-    );
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
+    refreshSummary();
 }
 
 
-/* ==========================================================
-   VOLTAR
-========================================================== */
+/* ============================================================
+   NÚMERO DO ITEM
+============================================================ */
 
-function voltarEditar(){
+function updateItemNumero(
+    palletIndex,
+    itemIndex,
+    valor
+) {
 
-    document.body.classList.remove(
-        "final-mode"
+    state.pallets[palletIndex]
+        .items[itemIndex]
+        .numero = valor;
+
+    saveState();
+}
+
+
+/* ============================================================
+   ESCAPE HTML
+============================================================ */
+
+function escapeHTML(valor) {
+
+    if (
+        valor === null ||
+        valor === undefined
+    ) {
+        return "";
+    }
+
+    return String(valor)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* ============================================================
+   VALIDAÇÃO
+============================================================ */
+
+function validarRomaneio() {
+
+    const erros = [];
+
+
+    if (!String(state.cliente).trim()) {
+
+        erros.push(
+            "Preencha o Cliente."
+        );
+    }
+
+
+    if (!String(state.itemGeral).trim()) {
+
+        erros.push(
+            "Preencha o Item."
+        );
+    }
+
+
+    if (!String(state.lote).trim()) {
+
+        erros.push(
+            "Preencha o Nº do lote."
+        );
+    }
+
+
+    if (!String(state.dataProducao).trim()) {
+
+        erros.push(
+            "Preencha a Data de produção."
+        );
+    }
+
+
+    if (!String(state.dimensao).trim()) {
+
+        erros.push(
+            "Preencha a Dimensão."
+        );
+    }
+
+
+    state.pallets.forEach(
+        (pallet, palletIndex) => {
+
+            pallet.items.forEach(
+                (item, itemIndex) => {
+
+                    if (
+                        String(item.liquido)
+                            .trim() === ""
+                    ) {
+
+                        erros.push(
+                            `Preencha o peso líquido do Pallet ${
+                                palletIndex + 1
+                            }, Item ${
+                                itemIndex + 1
+                            }.`
+                        );
+                    }
+                }
+            );
+        }
     );
+
+
+    return erros;
+}
+
+
+/* ============================================================
+   FORMATA DATA
+============================================================ */
+
+function formatarData(data) {
+
+    if (!data) {
+        return "";
+    }
+
+    const partes =
+        data.split("-");
+
+    if (partes.length !== 3) {
+        return data;
+    }
+
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
+}
+
+
+/* ============================================================
+   FINALIZAR
+============================================================ */
+
+function finalizar() {
+
+    const erros =
+        validarRomaneio();
+
+    if (erros.length) {
+
+        alert(
+            erros.join("\n")
+        );
+
+        return;
+    }
+
+
+    const totais =
+        calcularTotais();
+
+
+    document.getElementById(
+        "final-liquid"
+    ).textContent =
+        `${formatarPeso(totais.liquido)} kg`;
+
+
+    document.getElementById(
+        "final-gross"
+    ).textContent =
+        `${formatarPeso(totais.bruto)} kg`;
+
+
+    montarTelaFinal();
+
+
+    document.getElementById(
+        "main-screen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "final-screen"
+    ).style.display = "block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
+    /*
+       Prepara a imagem ANTES do clique
+       no botão Compartilhar.
+       Isso é importante para o iPhone.
+    */
+
+    prepararImagemRomaneio();
+}
+
+
+/* ============================================================
+   TELA FINAL
+============================================================ */
+
+function montarTelaFinal() {
+
+    const container =
+        document.getElementById(
+            "final-content"
+        );
+
+    let html = "";
+
+
+    html += `
+
+        <div class="final-info">
+
+            <div class="final-info-label">
+                Cliente
+            </div>
+
+            <div class="final-info-value">
+                ${escapeHTML(
+                    state.cliente
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="final-info">
+
+            <div class="final-info-label">
+                Item
+            </div>
+
+            <div class="final-info-value">
+                ${escapeHTML(
+                    state.itemGeral
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="final-info">
+
+            <div class="final-info-label">
+                Nº do lote
+            </div>
+
+            <div class="final-info-value">
+                ${escapeHTML(
+                    state.lote
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="final-info">
+
+            <div class="final-info-label">
+                Data de produção
+            </div>
+
+            <div class="final-info-value">
+                ${escapeHTML(
+                    formatarData(
+                        state.dataProducao
+                    )
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="final-info">
+
+            <div class="final-info-label">
+                Dimensão
+            </div>
+
+            <div class="final-info-value">
+                ${escapeHTML(
+                    state.dimensao
+                )}
+            </div>
+
+        </div>
+
+    `;
+
+
+    state.pallets.forEach(
+        (pallet, palletIndex) => {
+
+            html += `
+
+                <div class="final-pallet">
+
+                    <h3>
+                        Pallet ${
+                            palletIndex + 1
+                        }
+                    </h3>
+
+            `;
+
+
+            pallet.items.forEach(
+                (item, itemIndex) => {
+
+                    html += `
+
+                        <div class="final-item">
+
+                            <span>
+                                Item ${
+                                    itemIndex + 1
+                                }
+                                — Nº ${
+                                    escapeHTML(
+                                        item.numero
+                                    )
+                                }
+                            </span>
+
+                            <strong>
+                                ${
+                                    formatarPeso(
+                                        parsePeso(
+                                            item.liquido
+                                        )
+                                    )
+                                } kg
+                            </strong>
+
+                        </div>
+
+                    `;
+                }
+            );
+
+
+            html += `
+
+                    <div class="final-item">
+
+                        <span>
+                            Peso Bruto do pallet
+                        </span>
+
+                        <strong>
+                            ${
+                                String(
+                                    pallet.bruto
+                                ).trim()
+                                    ? formatarPeso(
+                                        parsePeso(
+                                            pallet.bruto
+                                        )
+                                    ) + " kg"
+                                    : "Não informado"
+                            }
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            `;
+        }
+    );
+
+
+    container.innerHTML = html;
+}
+
+
+/* ============================================================
+   VOLTAR E ALTERAR
+============================================================ */
+
+function voltarAlterar() {
+
+    document.getElementById(
+        "final-screen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "main-screen"
+    ).style.display = "block";
 
 
     render();
 
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
-
 }
 
 
-/* ==========================================================
+/* ============================================================
    NOVO ROMANEIO
-========================================================== */
+============================================================ */
 
-function novoRomaneio(){
+function novoRomaneio() {
 
-    if(
-        !confirm(
-            "Iniciar um novo romaneio? Todas as informações e pesos preenchidos serão apagados."
-        )
-    ){
+    const temDados =
+        state.cliente ||
+        state.itemGeral ||
+        state.lote ||
+        state.dataProducao ||
+        state.dimensao ||
+        state.pallets.some(
+            pallet =>
+                pallet.items.some(
+                    item =>
+                        String(
+                            item.liquido
+                        ).trim() !== ""
+                ) ||
+                String(
+                    pallet.bruto
+                ).trim() !== ""
+        );
 
-        return;
 
+    if (temDados) {
+
+        const confirmar =
+            confirm(
+                "Deseja iniciar um novo romaneio? Os dados atuais serão apagados."
+            );
+
+        if (!confirmar) {
+            return;
+        }
     }
 
 
-    state={
+    state = {
+        cliente: "",
+        itemGeral: "",
+        lote: "",
+        dataProducao: "",
+        dimensao: "",
 
-        info:{
-
-            cliente:"",
-            item:"",
-            lote:"",
-            data:"",
-            dimensao:""
-
-        },
-
-        pallets:[
-            criarPallet()
+        pallets: [
+            criarPallet(1)
         ]
-
     };
 
 
-    save();
+    imagemRomaneioPronta = null;
 
 
-    document.body.classList.remove(
-        "final-mode"
+    localStorage.removeItem(
+        "romaneioInterno"
     );
+
+
+    document.getElementById(
+        "final-screen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "main-screen"
+    ).style.display = "block";
 
 
     render();
 
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
-
 }
 
 
-/* ==========================================================
-   ESCAPE HTML
-========================================================== */
+/* ============================================================
+   DESENHO DA IMAGEM
+============================================================ */
 
-function esc(valor){
+/*
+   A imagem é criada diretamente em Canvas.
+   Não depende de SVG externo, imagem ou logo.
+*/
 
-    return String(
-        valor ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
+function criarCanvasRomaneio() {
+
+    const largura = 1000;
+
+    let altura = 700;
+
+    const linhasPorPallet =
+        state.pallets.reduce(
+            (total, pallet) =>
+                total +
+                110 +
+                pallet.items.length * 48,
+            0
+        );
+
+    altura += linhasPorPallet;
+
+
+    const canvas =
+        document.createElement("canvas");
+
+    canvas.width = largura;
+    canvas.height = altura;
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.fillRect(
+        0,
+        0,
+        largura,
+        altura
     );
 
+
+    let y = 60;
+
+
+    /*
+       Cabeçalho
+    */
+
+    ctx.fillStyle = "#101827";
+
+    ctx.fillRect(
+        0,
+        0,
+        largura,
+        100
+    );
+
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.font =
+        "900 32px Arial";
+
+    ctx.fillText(
+        "ROMANEIO INTERNO",
+        55,
+        62
+    );
+
+
+    /*
+       Informações
+    */
+
+    y = 145;
+
+    ctx.fillStyle = "#07152f";
+
+    ctx.font =
+        "700 20px Arial";
+
+    ctx.fillText(
+        `Cliente: ${state.cliente || "-"}`,
+        55,
+        y
+    );
+
+    y += 40;
+
+    ctx.fillText(
+        `Item: ${state.itemGeral || "-"}`,
+        55,
+        y
+    );
+
+    y += 40;
+
+    ctx.fillText(
+        `Nº do lote: ${state.lote || "-"}`,
+        55,
+        y
+    );
+
+    y += 40;
+
+    ctx.fillText(
+        `Data de produção: ${
+            formatarData(
+                state.dataProducao
+            ) || "-"
+        }`,
+        55,
+        y
+    );
+
+    y += 40;
+
+    ctx.fillText(
+        `Dimensão: ${state.dimensao || "-"}`,
+        55,
+        y
+    );
+
+
+    /*
+       Pallets
+    */
+
+    y += 65;
+
+
+    state.pallets.forEach(
+        (pallet, palletIndex) => {
+
+            ctx.fillStyle = "#101827";
+
+            ctx.fillRect(
+                45,
+                y - 28,
+                910,
+                48
+            );
+
+
+            ctx.fillStyle = "#ffffff";
+
+            ctx.font =
+                "900 21px Arial";
+
+            ctx.fillText(
+                `Pallet ${palletIndex + 1}`,
+                65,
+                y + 4
+            );
+
+
+            y += 55;
+
+
+            ctx.fillStyle = "#07152f";
+
+            ctx.font =
+                "700 16px Arial";
+
+            ctx.fillText(
+                "Item",
+                65,
+                y
+            );
+
+            ctx.fillText(
+                "Número",
+                300,
+                y
+            );
+
+            ctx.fillText(
+                "Peso líquido",
+                700,
+                y
+            );
+
+
+            y += 30;
+
+
+            pallet.items.forEach(
+                (item, itemIndex) => {
+
+                    ctx.font =
+                        "400 16px Arial";
+
+                    ctx.fillText(
+                        `Item ${itemIndex + 1}`,
+                        65,
+                        y
+                    );
+
+                    ctx.fillText(
+                        `${item.numero}`,
+                        300,
+                        y
+                    );
+
+                    ctx.fillText(
+                        `${formatarPeso(
+                            parsePeso(
+                                item.liquido
+                            )
+                        )} kg`,
+                        700,
+                        y
+                    );
+
+
+                    ctx.strokeStyle =
+                        "#e0e4e9";
+
+                    ctx.beginPath();
+
+                    ctx.moveTo(
+                        55,
+                        y + 15
+                    );
+
+                    ctx.lineTo(
+                        945,
+                        y + 15
+                    );
+
+                    ctx.stroke();
+
+
+                    y += 48;
+                }
+            );
+
+
+            ctx.font =
+                "700 16px Arial";
+
+            ctx.fillStyle =
+                "#52647b";
+
+            ctx.fillText(
+                `Peso Bruto do pallet: ${
+                    String(
+                        pallet.bruto
+                    ).trim()
+                        ? formatarPeso(
+                            parsePeso(
+                                pallet.bruto
+                            )
+                        ) + " kg"
+                        : "Não informado"
+                }`,
+                65,
+                y + 5
+            );
+
+
+            y += 65;
+        }
+    );
+
+
+    /*
+       Totais
+    */
+
+    const totais =
+        calcularTotais();
+
+
+    ctx.fillStyle = "#eef1f5";
+
+    ctx.fillRect(
+        45,
+        y,
+        910,
+        100
+    );
+
+
+    ctx.fillStyle = "#07152f";
+
+    ctx.font =
+        "900 19px Arial";
+
+    ctx.fillText(
+        "Peso Líquido Total",
+        75,
+        y + 40
+    );
+
+    ctx.fillText(
+        "Peso Bruto Total",
+        555,
+        y + 40
+    );
+
+
+    ctx.font =
+        "900 24px Arial";
+
+    ctx.fillText(
+        `${formatarPeso(
+            totais.liquido
+        )} kg`,
+        75,
+        y + 72
+    );
+
+    ctx.fillText(
+        `${formatarPeso(
+            totais.bruto
+        )} kg`,
+        555,
+        y + 72
+    );
+
+
+    return canvas;
 }
 
 
-/* ==========================================================
-   COMPARTILHAR IMAGEM
-========================================================== */
+/* ============================================================
+   PREPARAR IMAGEM
+============================================================ */
 
-function compartilharImagem(){
+function prepararImagemRomaneio() {
 
-    try{
-
-        const t =
-            totals();
-
-
-        const brutoTotal =
-            state.pallets.reduce(
-                (s,p)=>
-                    s+num(p.bruto),
-                0
-            );
-
+    try {
 
         const canvas =
-            document.createElement(
-                "canvas"
-            );
+            criarCanvasRomaneio();
 
 
-        canvas.width=1800;
-
-        canvas.height=1520;
-
-
-        const ctx =
-            canvas.getContext(
-                "2d"
-            );
-
-
-        /* ==================================================
-           FUNÇÃO RETÂNGULO ARREDONDADO
-        ================================================== */
-
-        function roundRect(
-            x,
-            y,
-            w,
-            h,
-            r
-        ){
-
-            ctx.beginPath();
-
-            ctx.moveTo(
-                x+r,
-                y
-            );
-
-            ctx.lineTo(
-                x+w-r,
-                y
-            );
-
-            ctx.quadraticCurveTo(
-                x+w,
-                y,
-                x+w,
-                y+r
-            );
-
-            ctx.lineTo(
-                x+w,
-                y+h-r
-            );
-
-            ctx.quadraticCurveTo(
-                x+w,
-                y+h,
-                x+w-r,
-                y+h
-            );
-
-            ctx.lineTo(
-                x+r,
-                y+h
-            );
-
-            ctx.quadraticCurveTo(
-                x,
-                y+h,
-                x,
-                y+h-r
-            );
-
-            ctx.lineTo(
-                x,
-                y+r
-            );
-
-            ctx.quadraticCurveTo(
-                x,
-                y,
-                x+r,
-                y
-            );
-
-            ctx.closePath();
-
-        }
-
-
-        /* ==================================================
-           FUNÇÃO CAMPO
-        ================================================== */
-
-        function campo(
-            x,
-            y,
-            titulo,
-            valor
-        ){
-
-            ctx.fillStyle=
-                "#f9fafb";
-
-
-            roundRect(
-                x,
-                y,
-                730,
-                150,
-                22
-            );
-
-
-            ctx.fill();
-
-
-            ctx.textAlign=
-                "left";
-
-
-            ctx.fillStyle=
-                "#6b7280";
-
-
-            ctx.font=
-                "500 28px Arial";
-
-
-            ctx.fillText(
-                titulo,
-                x+30,
-                y+45
-            );
-
-
-            ctx.fillStyle=
-                "#111827";
-
-
-            ctx.font=
-                "700 34px Arial";
-
-
-            let texto =
-                String(
-                    valor || "-"
-                );
-
-
-            if(
-                texto.length > 32
-            ){
-
-                texto =
-                    texto.substring(
-                        0,
-                        29
-                    ) +
-                    "...";
-
-            }
-
-
-            ctx.fillText(
-                texto,
-                x+30,
-                y+93
-            );
-
-        }
-
-
-        /* ==================================================
-           FUNDO
-        ================================================== */
-
-        ctx.fillStyle=
-            "#f3f4f6";
-
-
-        ctx.fillRect(
-            0,
-            0,
-            1800,
-            1520
-        );
-
-
-        /* ==================================================
-           CARTÃO
-        ================================================== */
-
-        ctx.fillStyle=
-            "#ffffff";
-
-
-        ctx.strokeStyle=
-            "#111827";
-
-
-        ctx.lineWidth=5;
-
-
-        roundRect(
-            80,
-            60,
-            1640,
-            1400,
-            40
-        );
-
-
-        ctx.fill();
-
-        ctx.stroke();
-
-
-        /* ==================================================
-           TÍTULO
-        ================================================== */
-
-        ctx.textAlign=
-            "center";
-
-
-        ctx.fillStyle=
-            "#111827";
-
-
-        ctx.font=
-            "900 58px Arial";
-
-
-        ctx.fillText(
-            "ROMANEIO INTERNO",
-            900,
-            145
-        );
-
-
-        /* ==================================================
-           LINHA
-        ================================================== */
-
-        ctx.strokeStyle=
-            "#e5e7eb";
-
-
-        ctx.lineWidth=3;
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            140,
-            185
-        );
-
-        ctx.lineTo(
-            1660,
-            185
-        );
-
-        ctx.stroke();
-
-
-        /* ==================================================
-           CAMPOS
-        ================================================== */
-
-        campo(
-            140,
-            240,
-            "Cliente",
-            state.info.cliente
-        );
-
-
-        campo(
-            930,
-            240,
-            "Item",
-            state.info.item
-        );
-
-
-        campo(
-            140,
-            430,
-            "Nº do lote",
-            state.info.lote
-        );
-
-
-        campo(
-            930,
-            430,
-            "Data de produção",
-            state.info.data
-                ?
-                state.info.data
-                    .split("-")
-                    .reverse()
-                    .join("/")
-                :
-                ""
-        );
-
-
-        campo(
-            140,
-            620,
-            "Dimensão",
-            state.info.dimensao
-        );
-
-
-        campo(
-            930,
-            620,
-            "Pallets / Itens",
-            `${state.pallets.length} pallet${
-                state.pallets.length===1
-                ?
-                ""
-                :
-                "s"
-            } / ${t.items} itens`
-        );
-
-
-        /* ==================================================
-           DIVISÓRIA
-        ================================================== */
-
-        ctx.strokeStyle=
-            "#e5e7eb";
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            140,
-            830
-        );
-
-        ctx.lineTo(
-            1660,
-            830
-        );
-
-        ctx.stroke();
-
-
-        /* ==================================================
-           PESO LÍQUIDO
-        ================================================== */
-
-        ctx.fillStyle=
-            "#f3f4f6";
-
-
-        roundRect(
-            140,
-            890,
-            730,
-            260,
-            30
-        );
-
-
-        ctx.fill();
-
-
-        ctx.textAlign=
-            "center";
-
-
-        ctx.fillStyle=
-            "#6b7280";
-
-
-        ctx.font=
-            "600 30px Arial";
-
-
-        ctx.fillText(
-            "Peso Líquido Total",
-            505,
-            965
-        );
-
-
-        ctx.fillStyle=
-            "#111827";
-
-
-        ctx.font=
-            "900 58px Arial";
-
-
-        ctx.fillText(
-            `${fmt(t.p1)} kg`,
-            505,
-            1060
-        );
-
-
-        /* ==================================================
-           PESO BRUTO
-        ================================================== */
-
-        ctx.fillStyle=
-            "#f3f4f6";
-
-
-        roundRect(
-            930,
-            890,
-            730,
-            260,
-            30
-        );
-
-
-        ctx.fill();
-
-
-        ctx.fillStyle=
-            "#6b7280";
-
-
-        ctx.font=
-            "600 30px Arial";
-
-
-        ctx.fillText(
-            "Peso Bruto Total",
-            1295,
-            965
-        );
-
-
-        ctx.fillStyle=
-            "#111827";
-
-
-        ctx.font=
-            "900 58px Arial";
-
-
-        ctx.fillText(
-            brutoTotal
-            ?
-            `${fmt(brutoTotal)} kg`
-            :
-            "Não informado",
-            1295,
-            1060
-        );
-
-
-        /* ==================================================
-           RODAPÉ
-        ================================================== */
-
-        ctx.fillStyle=
-            "#6b7280";
-
-
-        ctx.font=
-            "24px Arial";
-
-
-        ctx.fillText(
-            "Romaneio interno",
-            900,
-            1335
-        );
-
-
-        /* ==================================================
-           CONVERTE PARA PNG
-        ================================================== */
+        /*
+           toDataURL é síncrono.
+           Isso ajuda a manter o arquivo pronto
+           para o gesto do botão no iPhone.
+        */
 
         const dataURL =
             canvas.toDataURL(
@@ -2497,233 +2446,242 @@ function compartilharImagem(){
             );
 
 
-        /* ==================================================
-           CONVERTE BASE64 PARA ARQUIVO
-        ================================================== */
-
-        const base64 =
-            dataURL.split(",")[1];
+        const partes =
+            dataURL.split(",");
 
 
-        const binary =
-            atob(base64);
+        const mime =
+            partes[0]
+                .match(/:(.*?);/)[1];
 
 
-        const bytes =
-            new Uint8Array(
-                binary.length
-            );
+        const binario =
+            atob(partes[1]);
 
 
-        for(
-            let i=0;
-            i<binary.length;
+        const tamanho =
+            binario.length;
+
+
+        const array =
+            new Uint8Array(tamanho);
+
+
+        for (
+            let i = 0;
+            i < tamanho;
             i++
-        ){
+        ) {
 
-            bytes[i] =
-                binary.charCodeAt(i);
-
+            array[i] =
+                binario.charCodeAt(i);
         }
 
 
-        const arquivo =
+        const blob =
+            new Blob(
+                [array],
+                { type: mime }
+            );
+
+
+        imagemRomaneioPronta =
             new File(
-                [bytes],
+                [blob],
                 "romaneio-interno.png",
                 {
-                    type:"image/png"
+                    type: "image/png"
                 }
             );
 
-
-        /* ==================================================
-           COMPARTILHAMENTO NATIVO
-        ================================================== */
-
-        if(
-            navigator.share &&
-            navigator.canShare &&
-            navigator.canShare({
-                files:[arquivo]
-            })
-        ){
-
-            navigator.share({
-
-                title:
-                    "Romaneio Interno",
-
-                text:
-                    "Romaneio Interno",
-
-                files:[
-                    arquivo
-                ]
-
-            })
-            .catch(
-                erro=>{
-
-                    if(
-                        erro.name !==
-                        "AbortError"
-                    ){
-
-                        abrirImagem(
-                            dataURL
-                        );
-
-                    }
-
-                }
-            );
-
-
-            return;
-
-        }
-
-
-        /* ==================================================
-           FALLBACK
-        ================================================== */
-
-        abrirImagem(
-            dataURL
-        );
-
-    }
-
-    catch(erro){
+    } catch (erro) {
 
         console.error(
+            "Erro ao preparar imagem:",
             erro
         );
 
-
-        alert(
-            "Não foi possível gerar a imagem."
-        );
-
+        imagemRomaneioPronta = null;
     }
-
 }
 
 
-/* ==========================================================
-   ABRIR IMAGEM NO NAVEGADOR
-========================================================== */
+/* ============================================================
+   COMPARTILHAR IMAGEM
+============================================================ */
 
-function abrirImagem(
-    dataURL
-){
+function compartilharImagem() {
+
+    /*
+       Se por algum motivo a imagem não tiver
+       sido preparada, tentamos preparar agora.
+    */
+
+    if (!imagemRomaneioPronta) {
+
+        prepararImagemRomaneio();
+    }
+
+
+    if (!imagemRomaneioPronta) {
+
+        alert(
+            "Não foi possível preparar a imagem do romaneio."
+        );
+
+        return;
+    }
+
+
+    const arquivo =
+        imagemRomaneioPronta;
+
+
+    /*
+       iPhone / navegadores que aceitam
+       compartilhamento de arquivos.
+    */
+
+    if (
+        navigator.share &&
+        navigator.canShare
+    ) {
+
+        try {
+
+            const podeCompartilhar =
+                navigator.canShare({
+                    files: [arquivo]
+                });
+
+
+            if (podeCompartilhar) {
+
+                /*
+                   IMPORTANTE:
+                   Não usamos await antes do navigator.share.
+                   O compartilhamento acontece diretamente
+                   no clique do botão.
+                */
+
+                navigator.share({
+                    title: "Romaneio Interno",
+                    text: "Romaneio Interno",
+                    files: [arquivo]
+                })
+                .catch(
+                    erro => {
+
+                        /*
+                           Cancelamento pelo usuário
+                           não precisa gerar alerta.
+                        */
+
+                        if (
+                            erro &&
+                            erro.name !==
+                                "AbortError"
+                        ) {
+
+                            abrirImagemFallback(
+                                arquivo
+                            );
+                        }
+                    }
+                );
+
+                return;
+            }
+
+        } catch (erro) {
+
+            console.log(
+                "Compartilhamento de arquivo não disponível:",
+                erro
+            );
+        }
+    }
+
+
+    /*
+       Fallback para navegadores que não aceitam
+       navigator.share com arquivos.
+    */
+
+    abrirImagemFallback(
+        arquivo
+    );
+}
+
+
+/* ============================================================
+   FALLBACK DA IMAGEM
+============================================================ */
+
+function abrirImagemFallback(
+    arquivo
+) {
+
+    const url =
+        URL.createObjectURL(
+            arquivo
+        );
+
+
+    /*
+       Tenta abrir a imagem em uma nova aba.
+    */
 
     const novaAba =
         window.open(
-            "",
+            url,
             "_blank"
         );
 
 
-    if(!novaAba){
+    /*
+       Se o navegador bloquear nova aba,
+       oferece download.
+    */
 
-        alert(
-            "O navegador bloqueou a abertura da imagem. Permita pop-ups e tente novamente."
+    if (!novaAba) {
+
+        const link =
+            document.createElement("a");
+
+        link.href = url;
+
+        link.download =
+            "romaneio-interno.png";
+
+        document.body.appendChild(
+            link
         );
 
-        return;
+        link.click();
 
+        link.remove();
     }
 
 
-    novaAba.document.write(`
-
-        <!doctype html>
-
-        <html>
-
-        <head>
-
-            <meta
-                name="viewport"
-                content="
-                    width=device-width,
-                    initial-scale=1
-                ">
-
-            <title>
-                Romaneio Interno
-            </title>
-
-            <style>
-
-                body{
-
-                    margin:0;
-
-                    padding:20px;
-
-                    background:#f3f4f6;
-
-                    text-align:center;
-
-                    font-family:Arial;
-
-                }
-
-                img{
-
-                    max-width:100%;
-
-                    height:auto;
-
-                }
-
-                p{
-
-                    color:#555;
-
-                    font-size:16px;
-
-                }
-
-            </style>
-
-        </head>
-
-
-        <body>
-
-            <p>
-                Pressione e segure a imagem
-                para salvar ou compartilhar.
-            </p>
-
-            <img
-                src="${dataURL}"
-                alt="Romaneio Interno">
-
-        </body>
-
-        </html>
-
-    `);
-
-
-    novaAba.document.close();
-
+    setTimeout(
+        () => {
+            URL.revokeObjectURL(url);
+        },
+        60000
+    );
 }
 
 
-/* ==========================================================
-   INICIA
-========================================================== */
+/* ============================================================
+   INICIALIZAÇÃO
+============================================================ */
+
+loadState();
 
 render();
 
 </script>
 
 </body>
-
 </html>
